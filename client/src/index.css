@@ -1,13 +1,54 @@
 body {
+  background-color: #F1EEE9;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+  color: #125B50;
+}
+/* 
+@media screen and (max-width: 720px) {
+  .header-container {
+    border: solid blue 5px;
+    line-height: normal;
+  }
+} */
+
+.header-container {
+  background-color: #F1EEE9;
+  height: 10rem;
+  display: flex;
+  padding-top: 1rem;
+  /* border: solid green 2px; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#login-logo-cincy-social {
+  padding-left: 18rem;
+  font-size: 3rem;
+  flex-grow: 1;
+}
+
+#login-nav {
+  text-align: right;
+  flex-grow: 8;
+  padding-right: 18rem;
+}
+
+.login-welcome-div{
+  text-align: center;
+  border: 3px solid #E1A400;
+  margin-right: 18rem;  
+  margin-left: 18rem;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+#login-header-whats-happening {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #E85F5F;
+}
+
+.welcome-sentences {
+  margin-top: 2rem;
+  font-weight: 200;
 }
