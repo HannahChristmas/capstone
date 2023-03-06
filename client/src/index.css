@@ -12,24 +12,31 @@ body {
   }
 } */
 
+#welcome-avatar {
+  margin-right: 19rem;
+  margin-top: 2rem;
+}
+
 .header-container {
   background-color: #F1EEE9;
   height: 10rem;
   display: flex;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
   /* border: solid green 2px; */
 }
 
 #login-logo-cincy-social {
   padding-left: 18rem;
   font-size: 3rem;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 
 #login-nav {
   text-align: right;
-  flex-grow: 8;
-  padding-right: 18rem;
+  /* flex-grow: 8; */
+  /* padding-right: 16rem; */
+  /* padding-left: 20rem; */
+  margin-left: 28rem;
 }
 
 .login-welcome-div{
@@ -40,6 +47,7 @@ body {
   margin-bottom: 3rem;
   padding-bottom: 1rem;
   font-size: 1.2rem;
+  border-radius: 5px;
 }
 
 #login-header-whats-happening {
