@@ -1,6 +1,14 @@
 import './index.css';
 import React, { useEffect, useState } from "react";
-import LoginScreen from './components/LoginScreen.js'
+import { Routes, Route } from "react-router-dom";
+import LoginHomeScreen from './pages/LoginHomeScreen.js'
+import LoginNav from './components/LoginNav';
+import Login from './pages/Login.js';
+import CreateAccount from './pages/CreateAccount.js'
+import AllActivities from './pages/AllActivities.js'
+import Interested from './pages/Interested.js'
+import Visited from './pages/Visited.js'
+
 
 function App() {
 
@@ -21,11 +29,24 @@ function App() {
     });
   }, []);
 
-  if (!user) return <LoginScreen onLogin={setUser}/>
+  // if (!user) return <LoginHomeScreen onLogin={setUser}/>
 
   return (
     <>
-      <h1>Hey what's up. I'll put a nav bar here.</h1>
+    
+      <LoginNav></LoginNav>
+      <main>
+        <Routes>
+          <Route path="/" element={<LoginHomeScreen/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/create-account" element={<CreateAccount/>}></Route>
+          <Route path="/logged-in" element={<AllActivities/>}></Route>
+          <Route path="/activities" element={<AllActivities/>}></Route>
+          <Route path="/interested" element={<Interested/>}></Route>
+          <Route path="/visited" element={<Visited/>}></Route>
+
+        </Routes>
+    </main>
    </>
   );
 }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #F1EEE9;
   margin: 0;
@@ -6,37 +10,88 @@ body {
 }
 /* 
 @media screen and (max-width: 720px) {
-  .header-container {
+  .nav {
     border: solid blue 5px;
     line-height: normal;
   }
 } */
-
+/* 
 #welcome-avatar {
   margin-right: 19rem;
   margin-top: 2rem;
-}
+} */
 
-.header-container {
+.nav {
   background-color: #F1EEE9;
   height: 10rem;
   display: flex;
-  /* padding-top: 1rem; */
+  justify-content: space-between;
+  align-items: center;
   /* border: solid green 2px; */
+  gap: 2rem;
+  padding: 0 1rem;
 }
 
-#login-logo-cincy-social {
-  padding-left: 18rem;
-  font-size: 3rem;
-  /* flex-grow: 1; */
+#login-form label{
+  color: red;
+  display: center;
+  align-items: center;
 }
 
-#login-nav {
+.nav ul {
+  padding: 0; 
+  margin: 0; 
+  list-style: none;
   text-align: right;
-  /* flex-grow: 8; */
-  /* padding-right: 16rem; */
-  /* padding-left: 20rem; */
-  margin-left: 28rem;
+  /* display: flex; */
+  /* gap: 1rem; */
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* .nav li.active {
+  color: #E1A400;
+} */
+
+nav li:hover {
+  color: #E85F5F;
+  text-decoration: underline;
+  text-decoration-color: #E1A400;
+}
+
+.activity-nav ul {
+  list-style: none;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: left;
+  /* border: solid green 2px; */
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.site-title {
+  font-size: 3rem;
+}
+
+#login-footer {
+  position: absolute;
+  bottom: 0px;
+  /* object-position: left bottom; */
+  border: 1px solid red;
+  /* margin-bottom: 0px; */
+  padding: 0px;
+}
+
+#footer-image {
+  border: 1px solid blue;
+  margin-bottom: 0px;
+  position: absolute;
+  bottom: 0px;
 }
 
 .login-welcome-div{
@@ -44,10 +99,11 @@ body {
   border: 3px solid #E1A400;
   margin-right: 18rem;  
   margin-left: 18rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem !important;
   padding-bottom: 1rem;
   font-size: 1.2rem;
   border-radius: 5px;
+  overflow: scroll;
 }
 
 #login-header-whats-happening {
