@@ -4,7 +4,7 @@ import { UserContext } from '../UserContext';
 import ActivityNav from '../components/ActivityNav';
 
 function Visited() {
-    const message = useContext(UserContext)
+    // const message = useContext(UserContext)
 
   return (
     <>
@@ -12,7 +12,7 @@ function Visited() {
    <div className="all-activities">
 
         <h1>I've been there</h1>
-        <div>{message}</div>
+        {/* <div>{message}</div> */}
 
     
    </div>

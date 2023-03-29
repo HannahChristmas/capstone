@@ -11,7 +11,7 @@ import Visited from './pages/Visited.js'
 import { UserContext } from './UserContext';
 
 function App() {
-  // const [value, setValue] = useState("New hello from context!")
+  const [value, setValue] = useState("New hello from context!")
   // const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
 
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value='hello from context'>
+      <UserContext.Provider value={{value, setValue}}>
       <LoginNav></LoginNav>
       <main>
         <Routes>
