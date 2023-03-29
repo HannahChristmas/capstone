@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import ActivityNav from '../components/ActivityNav';
+// import ActivityNav from '../components/ActivityNav';
 import { UserContext } from '../UserContext';
 
 function Interested({activities}) {
@@ -9,7 +9,7 @@ function Interested({activities}) {
 
     return (
     <>
-    <ActivityNav></ActivityNav>
+    {/* <ActivityNav></ActivityNav> */}
    <div className="all-activities">
     <h2>HOME- from video</h2>
     <h1>I'm Interested</h1>

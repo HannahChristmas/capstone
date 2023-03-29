@@ -1,10 +1,10 @@
-import ActivityNav from '../components/ActivityNav';
+// import ActivityNav from '../components/ActivityNav';
 
 function AllActivities() {
 
   return (
     <>
-    <ActivityNav></ActivityNav>
+    {/* <ActivityNav></ActivityNav> */}
    <div className="all-activities">
 
     <h1>All activities</h1>

@@ -11,7 +11,7 @@ import Visited from './pages/Visited.js'
 import { UserContext } from './UserContext';
 
 function App() {
-  const [value, setValue] = useState("New hello from context!")
+  const [value, setValue] = useState("hello from context!")
   // const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
 
@@ -34,16 +34,18 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{value, setValue}}>
-        <LoginNav></LoginNav>
-        <Routes>
-          <Route path="/" element={<LoginHomeScreen/>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/create-account" element={<CreateAccount/>}></Route>
-          <Route path="/logged-in" element={<AllActivities/>}></Route>
-          <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>
-          <Route path="/interested" element={<Interested/>}></Route>
-          <Route path="/visited" element={<Visited/>}></Route>
-        </Routes>
+        <LoginNav />
+        <main>
+          <Routes>
+            <Route path="/" element={<LoginHomeScreen/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
+            <Route path="/create-account" element={<CreateAccount/>}></Route>
+            <Route path="/logged-in" element={<AllActivities/>}></Route>
+            <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>
+            <Route path="/interested" element={<Interested/>}></Route>
+            <Route path="/visited" element={<Visited/>}></Route>
+          </Routes>
+        </main>
     </UserContext.Provider>
    </>
   );
