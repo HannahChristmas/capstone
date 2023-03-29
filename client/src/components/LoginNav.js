@@ -1,18 +1,25 @@
+import {Link} from 'react-router-dom'
 
 function LoginNav() {
 
     return (
-        <>    <nav className="nav">
-        <a href="/" className="site-title">CINCY SOCIAL</a>
+        <>    
+        <nav className="nav">
+        <Link to='/' className="site-title">CINCY SOCIAL</Link>
+
+        {/* <a href="/" className="site-title">CINCY SOCIAL</a> */}
         <ul>
             <li>
-                <a href="/login" className="login-nav">LOGIN</a>
+                <Link to='/login' className="login-nav">LOGIN</Link>
+                {/* <a href="/login" className="login-nav">LOGIN</a> */}
             </li>
             <li>
-                <a href="/create-account" className="login-nav">CREATE ACCOUNT</a>
+                <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
+                {/* <a href="/create-account" className="login-nav">CREATE ACCOUNT</a> */}
             </li>
             <li>
-                <a href="/logged-in" className="login-nav">LOGGED IN</a>
+                <Link to='/logged-in' className="login-nav">LOGGED IN</Link>
+                {/* <a href="/logged-in" className="login-nav">LOGGED IN</a> */}
             </li>
         </ul>
       </nav>
@@ -20,13 +27,19 @@ function LoginNav() {
 <nav className="activity-nav">
 <ul>
     <li>
-        <a href="/activities" className="login-nav">ALL ACTIVITIES</a>
+        <Link to='/activities' className="login-nav">ALL ACTIVITIES</Link>
+
+        {/* <a href="/activities" className="login-nav">ALL ACTIVITIES</a> */}
     </li>
     <li>
-        <a href="/interested" className="login-nav">I'M INTERESTED</a>
+        <Link to='/interested' className="login-nav">I'M INTERESTED</Link>
+
+        {/* <a href="/interested" className="login-nav">I'M INTERESTED</a> */}
     </li>
     <li>
-        <a href="/visited" className="login-nav">I'VE BEEN THERE</a>
+        <Link to='/visited' className="login-nav">I'VE BEEN THERE</Link>
+
+        {/* <a href="/visited" className="login-nav">I'VE BEEN THERE</a> */}
     </li>
 </ul>
 
