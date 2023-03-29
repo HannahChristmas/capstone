@@ -1,14 +1,19 @@
-import '../index.css';
+import { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../UserContext';
+
 import ActivityNav from '../components/ActivityNav';
 
 function Visited() {
+    const message = useContext(UserContext)
 
   return (
     <>
     <ActivityNav></ActivityNav>
    <div className="all-activities">
 
-    <h1>I've been there</h1>
+        <h1>I've been there</h1>
+        <div>{message}</div>
+
     
    </div>
    <div id="login-footer">

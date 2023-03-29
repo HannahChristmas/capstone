@@ -1,4 +1,3 @@
-import '../index.css';
 import ActivityNav from '../components/ActivityNav';
 
 function AllActivities() {
