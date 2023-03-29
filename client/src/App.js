@@ -1,5 +1,5 @@
 import './index.css';
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { Routes, Route } from "react-router-dom";
 import LoginHomeScreen from './pages/LoginHomeScreen.js'
 import LoginNav from './components/LoginNav';
@@ -14,6 +14,8 @@ function App() {
   const [value, setValue] = useState("hello from context!")
   // const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
+
+  const providerValue = useMemo(() => ({ value, setValue }), [value, setValue]);
 
   useEffect(() => {
     fetch("/activities")
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <>
-      <UserContext.Provider value={{value, setValue}}>
+      <UserContext.Provider value={providerValue}>
         <LoginNav />
         <main>
           <Routes>
