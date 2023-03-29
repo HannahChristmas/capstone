@@ -34,8 +34,7 @@ function App() {
   return (
     <>
       <UserContext.Provider value={{value, setValue}}>
-      <LoginNav></LoginNav>
-      <main>
+        <LoginNav></LoginNav>
         <Routes>
           <Route path="/" element={<LoginHomeScreen/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
@@ -44,9 +43,7 @@ function App() {
           <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>
           <Route path="/interested" element={<Interested/>}></Route>
           <Route path="/visited" element={<Visited/>}></Route>
-
         </Routes>
-    </main>
     </UserContext.Provider>
    </>
   );
