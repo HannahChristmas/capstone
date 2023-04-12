@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useContext } from 'react';
-// import ActivityNav from '../components/ActivityNav';
+import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 function Interested({activities}) {
   
     const {user, setUser} = useContext(UserContext)
-    // const message = useContext(UserContext)
-
     return (
     <>
     {/* <ActivityNav></ActivityNav> */}

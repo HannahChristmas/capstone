@@ -1,16 +1,18 @@
 import '../index.css';
-import LoginNav from '../components/LoginNav';
 
 function LoginScreen() {
 
+    function handleSubmit(e){
+        e.preventDefault();
+        console.log("I CLICKED IT!")
+    }
+
   return (
     <>
-    {/* <LoginNav></LoginNav> */}
-
    <div className="login-welcome-div">
 
     <h1>create an account</h1>
-    <form id="login-form">
+    <form onSubmit={handleSubmit} id="login-form">
         <label>
             username:
             <input

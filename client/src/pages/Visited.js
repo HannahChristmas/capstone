@@ -1,15 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
-// import ActivityNav from '../components/ActivityNav';
 
 function Visited() {
-    // const message = useContext(UserContext)
-    const {user, setUser} = useContext(UserContext);
+    const {user} = useContext(UserContext);
   
     return (
     <>
-    {/* <ActivityNav></ActivityNav> */}
    <div className="all-activities">
         <h2>ABOUT- from video</h2>
         <h1>I've been there</h1>

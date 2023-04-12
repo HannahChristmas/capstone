@@ -1,13 +1,10 @@
 import '../index.css';
-import { useState } from "react";
 import * as React from 'react';
-import LoginNav from '../components/LoginNav';
 
 function LoginHomeScreen() {
 
   return (
     <>
-    {/* <LoginNav></LoginNav> */}
       <div className="login-welcome-div">
 
         <h1 id="login-header-whats-happening">what's happening in cincy?</h1>

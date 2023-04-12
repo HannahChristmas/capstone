@@ -9,7 +9,7 @@ function LoginNav() {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    console.log(isMenuOpen ? 'Open' : 'Closed');
+    console.log(isMenuOpen ? 'Menu is open in LoginNav.js' : 'Menu is closed in LoginNav.js');
 
     return (
         <>    
@@ -37,7 +37,7 @@ function LoginNav() {
                 <li onClick={toggleMenu}>x</li>
             </ul>
         ) : (
-            <img src={profile} onClick={toggleMenu}></img>
+            <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
         )}
       </nav>
 

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
 
-function LoginForm ( { onLogin } ) {
+function LoginForm() {
+    const { setUser } = useContext(UserContext)
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -8,6 +11,7 @@ function LoginForm ( { onLogin } ) {
 
     function handleSubmit(e) {
         e.preventDefault();
+        console.log("I clicked Login in LoginForm.js")
         setIsLoading(true);
         setErrors([]);
         fetch("/login", {
@@ -18,7 +22,8 @@ function LoginForm ( { onLogin } ) {
             body: JSON.stringify({ username, password }),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => onLogin(user));
+                r.json().then((user) => setUser(user));
+                console.log("user is logged in")
             } else {
                 r.json().then((err) => setErrors(err.errors))
             }
@@ -27,7 +32,10 @@ function LoginForm ( { onLogin } ) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <>
+        <div className="login-welcome-div">
+            <h1>log in</h1>
+        <form id="login-form" onSubmit={handleSubmit}>
             <label>
                 Username: 
                 <input 
@@ -36,7 +44,7 @@ function LoginForm ( { onLogin } ) {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}/>
-            </label>
+            </label><br/>
             <label>
                 Password: 
                 <input 
@@ -46,7 +54,7 @@ function LoginForm ( { onLogin } ) {
                     autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}/>
-            </label>
+            </label><br/>
             <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
             <label>
                 {errors.map((err) => (
@@ -55,6 +63,8 @@ function LoginForm ( { onLogin } ) {
             </label>
 
         </form>
+        </div>
+        </>
     )
 }
 
