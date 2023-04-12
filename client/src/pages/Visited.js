@@ -5,7 +5,7 @@ import { UserContext } from '../UserContext';
 
 function Visited() {
     // const message = useContext(UserContext)
-    const {value, setValue} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
   
     return (
     <>
@@ -13,7 +13,7 @@ function Visited() {
    <div className="all-activities">
         <h2>ABOUT- from video</h2>
         <h1>I've been there</h1>
-        <div>{value}</div>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
    </div>
    <div id="login-footer">
     <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/>

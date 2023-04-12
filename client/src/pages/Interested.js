@@ -4,7 +4,7 @@ import { UserContext } from '../UserContext';
 
 function Interested({activities}) {
   
-    const {value, setValue} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
     // const message = useContext(UserContext)
 
     return (
@@ -14,8 +14,8 @@ function Interested({activities}) {
     <h2>HOME- from video</h2>
     <h1>I'm Interested</h1>
     {/* <div>{message}</div> */}
-    <div>{value}</div>
-    <button onClick={() => setValue("Sup boys")}>Change Value</button>
+    <pre>{JSON.stringify(user, null, 2)}</pre>
+    <button onClick={() => setUser("Sup boys")}>login</button>
     
    </div>
    <div id="login-footer">

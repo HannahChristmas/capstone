@@ -11,11 +11,11 @@ import Visited from './pages/Visited.js'
 import { UserContext } from './UserContext';
 
 function App() {
-  const [value, setValue] = useState("hello from context!")
-  // const [user, setUser] = useState(null);
+  // const [value, setValue] = useState("hello from context!")
+  const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
 
-  const providerValue = useMemo(() => ({ value, setValue }), [value, setValue]);
+  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   useEffect(() => {
     fetch("/activities")
@@ -23,19 +23,19 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
-  // useEffect(() => {
-  //   fetch("/me").then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((user) => setUser(user));
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    fetch("/me").then((res) => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   // if (!user) return <LoginHomeScreen onLogin={setUser}/>
 
   return (
     <>
-      <UserContext.Provider value={providerValue}>
+      <UserContext.Provider value={value}>
         <LoginNav />
         <main>
           <Routes>
