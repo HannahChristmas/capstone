@@ -4,22 +4,24 @@ import { UserContext } from '../UserContext';
 function Interested({activities}) {
   
     const {user, setUser} = useContext(UserContext)
+    if (user) {
     return (
-    <>
-    {/* <ActivityNav></ActivityNav> */}
-   <div className="all-activities">
-    <h2>HOME- from video</h2>
-    <h1>I'm Interested</h1>
-    {/* <div>{message}</div> */}
-    <pre>{JSON.stringify(user, null, 2)}</pre>
-    <button onClick={() => setUser("Sup boys")}>login</button>
-    
-   </div>
-   <div id="login-footer">
-    <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/>
-   </div>
+      <>
+        <div className="all-activities">
+          <h1>I'm Interested</h1>
+          <h2>HOME- from video</h2>
+          <pre>{JSON.stringify(user, null, 2)}</pre>
+        </div>
+        <div id="login-footer">
+          {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}
+        </div>
    </>
   );
+} else {
+  return (
+    <h2>No user logged in rn boys</h2>
+  )
+  }
 }
 
 export default Interested;

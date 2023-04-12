@@ -1,8 +1,11 @@
-import {useState} from 'react'
+import { useState, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import profile from '../profile.png'
+import { UserContext } from "../UserContext";
+
 
 function LoginNav() {
+    const { user, setUser } = useContext(UserContext)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
@@ -10,26 +13,19 @@ function LoginNav() {
     };
 
     console.log(isMenuOpen ? 'Menu is open in LoginNav.js' : 'Menu is closed in LoginNav.js');
+    console.log(user ? `Welcome, ${user.username}` : "No user logged in")
 
     return (
         <>    
         <nav className="nav">
         <Link to='/' className="site-title">CINCY SOCIAL</Link>
-        <ul>
-            {/* <li>
-                <Link to='/login' className="login-nav">LOGIN</Link>
-            </li>
-            <li>
-                <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
-            </li>
-            <li>
-                <Link to='/logged-in' className="login-nav">LOGGED IN</Link>
-            </li> */}
-        </ul>
         {isMenuOpen ? (
             <ul>
                 <li>
-                    <Link to='/login' className="login-nav">LOGIN</Link>
+                    
+                    <Link to='/login' className="login-nav">
+                        {user ? "LOGOUT" : "LOGIN"}
+                    </Link>
                 </li>
                 <li>
                     <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
@@ -40,8 +36,8 @@ function LoginNav() {
             <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
         )}
       </nav>
-
 <nav className="activity-nav">
+        <h1>Welcome, {user.username}!</h1>
 <ul>
     <li>
         <Link to='/activities' className="login-nav">ALL ACTIVITIES</Link>

@@ -43,15 +43,6 @@ function App() {
 }
 
   // if (!user) return <LoginHomeScreen onLogin={setUser}/>
-
-  if (user) {
-    return (
-      <>
-        <h2>Welcome, {user.username}!</h2>
-        <button onClick={handleLogoutClick}>Log Out</button>
-      </>
-    )
-  } else {
   
   return (
     <>
@@ -72,6 +63,6 @@ function App() {
    </>
   );
 }
-}
+
 
 export default App;
