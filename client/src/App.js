@@ -32,8 +32,25 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+        if (r.ok) {
+            setUser(null);
+        }
+    });
+}
+
   // if (!user) return <LoginHomeScreen onLogin={setUser}/>
 
+  if (user) {
+    return (
+      <>
+        <h2>Welcome, {user.username}!</h2>
+        <button onClick={handleLogoutClick}>Log Out</button>
+      </>
+    )
+  } else {
+  
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
@@ -52,6 +69,7 @@ function App() {
     </UserContext.Provider>
    </>
   );
+}
 }
 
 export default App;

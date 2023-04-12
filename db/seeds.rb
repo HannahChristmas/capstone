@@ -8,7 +8,7 @@
 
 puts "🏈 Seeding activities..."
 
-user1 = User.create(username: 'hannahchristmas', bio: 'yo i like this stuff')
+user1 = User.create(username: 'hannahchristmas', bio: 'yo i like this stuff', password: 'sillybill')
 
 activity1 = Activity.create(title: 'Dinner Train', neighborhood: 'Golf Manor', cost: 95, address: '2172 E Seymour Ave, Cincinnati, OH 45237', phone_number: '(513) 791-7245', website: 'https://cincinnatidinnertrain.com/')
 activity2 = Activity.create(title: 'Music Hall Tour', neighborhood: 'OTR', cost: 15, address: '1241 Elm St, Cincinnati, OH 45202', phone_number: '(513) 744-3293', website: 'https://friendsofmusichall.org/music-hall-tours/')

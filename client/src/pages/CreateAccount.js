@@ -1,10 +1,41 @@
 import '../index.css';
+import { useState, useContext } from 'react'
+import { UserContext } from "../UserContext";
 
-function LoginScreen() {
+
+function CreateAccount() {
+    const { setUser } = useContext(UserContext)
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [errors, setErrors] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
+
 
     function handleSubmit(e){
         e.preventDefault();
         console.log("I CLICKED IT!")
+        setErrors([]);
+        setIsLoading(true);
+        fetch("/signup", {
+            method: "POST", 
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ 
+                username, 
+                password,
+                password_confirmation: passwordConfirmation
+            }),
+        }).then((r) => {
+            setIsLoading(false);
+            if (r.ok) {
+                r.json().then((user) => setUser(user));
+            } else {
+                r.json().then((err) => setErrors(err.errors))
+            }
+        });
     }
 
   return (
@@ -18,30 +49,34 @@ function LoginScreen() {
             <input
                 type="text"
                 id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
             />
-        </label><br></br>
+        </label><br/>
         <label>
-            email:
+            password:
             <input
-                type="text"
+                type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
             />
-        </label><br></br>
+        </label><br/>
         <label>
-            password: 
+            password confirmation: 
             <input
-                type="text"
-                id="username"
+                type="password"
+                id="password_confirmation"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
             />
-        </label><br></br>
+        </label><br/>
+        <button type="submit">{isLoading ? "Loading..." : "sign up"}</button>
         <label>
-            confirm password: 
-            <input
-                type="text"
-                id="username"
-            />
-        </label><br></br>
-        <button>save changes</button>
+            {errors.map((err) => (
+                <p key={err}>{err}</p>
+            ))}
+        </label>
     </form>
    </div>
    <div id="login-footer">
@@ -51,4 +86,4 @@ function LoginScreen() {
   );
 }
 
-export default LoginScreen;
+export default CreateAccount;
