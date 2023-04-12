@@ -1,29 +1,44 @@
+import {useState} from 'react'
 import {Link} from 'react-router-dom'
 import profile from '../profile.png'
 
 function LoginNav() {
 
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    console.log(isMenuOpen ? 'Open' : 'Closed');
+
     return (
         <>    
         <nav className="nav">
         <Link to='/' className="site-title">CINCY SOCIAL</Link>
-
-        {/* <a href="/" className="site-title">CINCY SOCIAL</a> */}
         <ul>
-            <li>
+            {/* <li>
                 <Link to='/login' className="login-nav">LOGIN</Link>
-                {/* <a href="/login" className="login-nav">LOGIN</a> */}
             </li>
             <li>
                 <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
-                {/* <a href="/create-account" className="login-nav">CREATE ACCOUNT</a> */}
             </li>
             <li>
                 <Link to='/logged-in' className="login-nav">LOGGED IN</Link>
-                {/* <a href="/logged-in" className="login-nav">LOGGED IN</a> */}
-            </li>
+            </li> */}
         </ul>
-        <img src={profile}></img>
+        {isMenuOpen ? (
+            <ul>
+                <li>
+                    <Link to='/login' className="login-nav">LOGIN</Link>
+                </li>
+                <li>
+                    <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
+                </li>
+                <li onClick={toggleMenu}>x</li>
+            </ul>
+        ) : (
+            <img src={profile} onClick={toggleMenu}></img>
+        )}
       </nav>
 
 <nav className="activity-nav">
