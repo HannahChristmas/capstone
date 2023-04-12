@@ -52,6 +52,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginHomeScreen/>}></Route>
             <Route path="/login" element={<LoginForm/>}></Route>
+            <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/logged-in" element={<AllActivities/>}></Route>
             <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>

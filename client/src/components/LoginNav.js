@@ -5,15 +5,14 @@ import { UserContext } from "../UserContext";
 
 
 function LoginNav() {
-    const { user, setUser } = useContext(UserContext)
+    const { user } = useContext(UserContext)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    console.log(isMenuOpen ? 'Menu is open in LoginNav.js' : 'Menu is closed in LoginNav.js');
-    console.log(user ? `Welcome, ${user.username}` : "No user logged in")
+    console.log(user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
 
     return (
         <>    
@@ -22,10 +21,11 @@ function LoginNav() {
         {isMenuOpen ? (
             <ul>
                 <li>
-                    
-                    <Link to='/login' className="login-nav">
-                        {user ? "LOGOUT" : "LOGIN"}
-                    </Link>
+                    {user ? (
+                        <Link to='/logout' className="login-nav">LOGOUT</Link>
+                    ) : (
+                        <Link to='/login' className='login-nav'>LOGIN</Link>
+                    )}
                 </li>
                 <li>
                     <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
@@ -37,7 +37,9 @@ function LoginNav() {
         )}
       </nav>
 <nav className="activity-nav">
-        <h1>Welcome, {user.username}!</h1>
+        <h1>Welcome, !</h1>
+        {/* <h1>Welcome, {user.username}!</h1> */}
+
 <ul>
     <li>
         <Link to='/activities' className="login-nav">ALL ACTIVITIES</Link>
