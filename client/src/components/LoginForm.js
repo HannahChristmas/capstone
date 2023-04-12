@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { UserContext } from "../UserContext";
 
 function LoginForm() {
     const { setUser } = useContext(UserContext)
+    const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -11,18 +13,21 @@ function LoginForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("I clicked Login in LoginForm.js")
         setIsLoading(true);
         setErrors([]);
+
         fetch("/login", {
             method: "POST", 
             headers: {
-            "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({ username, password }),
         }).then((r) => {
             if (r.ok) {
-                r.json().then((user) => setUser(user));
+                r.json().then((user) => {
+                    setUser(user);
+                    navigate("/activities");
+                });
                 console.log("user is logged in")
             } else {
                 r.json().then((err) => setErrors(err.errors))

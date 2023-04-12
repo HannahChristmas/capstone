@@ -2,10 +2,12 @@ import { useState, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import profile from '../profile.png'
 import { UserContext } from "../UserContext";
+import { useNavigate } from "react-router";
 
 
 function LoginNav() {
     const { user, setUser } = useContext(UserContext)
+    const navigate = useNavigate();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
@@ -16,6 +18,7 @@ function LoginNav() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
             if (r.ok) {
                 setUser(null);
+                navigate("/activities");
             } 
         });
     }
@@ -30,9 +33,14 @@ function LoginNav() {
             <ul>
                 <li>
                     {user ? (
-                        <button onClick={handleLogoutClick}>
-                        <Link to='/logout' className="login-nav">LOGOUT</Link>
-                        </button>
+                        <Link 
+                        to='/logout' 
+                        className="login-nav"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLogoutClick();
+                        }}
+                        >LOGOUT</Link>
                     ) : (
                         <Link to='/login' className='login-nav'>LOGIN</Link>
                     )}
