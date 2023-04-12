@@ -32,6 +32,12 @@ body {
   padding: 0 1rem;
 }
 
+.nav img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
 #login-form label{
   color: red;
   display: center;

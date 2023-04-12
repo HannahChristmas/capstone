@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import profile from '../profile.png'
 
 function LoginNav() {
 
@@ -22,6 +23,7 @@ function LoginNav() {
                 {/* <a href="/logged-in" className="login-nav">LOGGED IN</a> */}
             </li>
         </ul>
+        <img src={profile}></img>
       </nav>
 
 <nav className="activity-nav">
