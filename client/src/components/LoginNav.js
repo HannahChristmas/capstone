@@ -5,12 +5,20 @@ import { UserContext } from "../UserContext";
 
 
 function LoginNav() {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    function handleLogoutClick() {
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+            if (r.ok) {
+                setUser(null);
+            } 
+        });
+    }
 
     console.log(user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
 
@@ -22,7 +30,9 @@ function LoginNav() {
             <ul>
                 <li>
                     {user ? (
+                        <button onClick={handleLogoutClick}>
                         <Link to='/logout' className="login-nav">LOGOUT</Link>
+                        </button>
                     ) : (
                         <Link to='/login' className='login-nav'>LOGIN</Link>
                     )}
