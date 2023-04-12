@@ -32,6 +32,8 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
+  console.log(activities)
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
         if (r.ok) {

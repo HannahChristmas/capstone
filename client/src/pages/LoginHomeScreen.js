@@ -13,7 +13,7 @@ function LoginHomeScreen() {
         document it here.</p>
       </div>
       <div id="login-footer">
-        <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/>
+        {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}
       </div>
    </>
   );
