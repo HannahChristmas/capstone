@@ -9,8 +9,7 @@ function Interested({activities}) {
       <>
         <div className="all-activities">
           <h1>I'm Interested</h1>
-          <h2>HOME- from video</h2>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
+          {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         </div>
         <div id="login-footer">
           {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}

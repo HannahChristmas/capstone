@@ -8,6 +8,7 @@ import CreateAccount from './pages/CreateAccount.js'
 import AllActivities from './pages/AllActivities.js'
 import Interested from './pages/Interested.js'
 import Visited from './pages/Visited.js'
+import UserProfile from './pages/UserProfile';
 import { UserContext } from './UserContext';
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
             <Route path="/login" element={<LoginForm/>}></Route>
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
+            <Route path="/user-profile" element={<UserProfile/>}></Route>
             <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>
             <Route path="/interested" element={<Interested/>}></Route>
             <Route path="/visited" element={<Visited/>}></Route>

@@ -9,9 +9,7 @@ function Visited() {
      return (
        <>
          <div className="all-activities">
-           <h1>I'm Interested</h1>
-           <h2>HOME- from video</h2>
-           <pre>{JSON.stringify(user, null, 2)}</pre>
+           <h1>I've been there</h1>
          </div>
          <div id="login-footer">
            {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}

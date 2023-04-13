@@ -45,7 +45,7 @@ function LoginNav() {
             <ul>
                 {user ? (
                     <>
-                        <li><Link to='/activities'>view {user.username}</Link></li>
+                        <li><Link to='/user-profile'>view {user.username}</Link></li>
                         <li><Link to='/activities'>EDIT PROFILE</Link></li>
                         <li><Link 
                             to='/logout' 
