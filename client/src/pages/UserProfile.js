@@ -4,10 +4,10 @@ import { UserContext } from "../UserContext";
 function UserProfile () {
     const { user, setUser } = useContext(UserContext)
 
-    const [username, setUsername] = useState(user.username);
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [bio, setBio] = useState(user.bio);
+    const [bio, setBio] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -38,7 +38,6 @@ function UserProfile () {
     }
     return (
         <>
-            {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
             <h1>{user.username}</h1>
             <p>{user.bio}</p>
             <p>{user.id}</p>
@@ -62,7 +61,6 @@ function UserProfile () {
                     />
                 </label><br/>
                 <button type="submit">{isLoading ? "Loading..." : "save changes"}</button><br/>
-                {/* <button type="submit">{isLoading ? "Loading..." : "delete profile"}</button> */}
                 <label>
                     {errors.map((err) => (
                         <p key={err}>{err}</p>
