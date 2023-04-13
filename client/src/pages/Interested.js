@@ -3,7 +3,7 @@ import { UserContext } from '../UserContext';
 
 function Interested({activities}) {
   
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     if (user) {
     return (
       <>

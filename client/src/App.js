@@ -34,16 +34,6 @@ function App() {
 
   console.log("From fetch request at App.js:", activities)
 
-  function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-        if (r.ok) {
-            setUser(null);
-        }
-    });
-}
-
-  // if (!user) return <LoginHomeScreen onLogin={setUser}/>
-  
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>

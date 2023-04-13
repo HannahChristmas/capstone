@@ -26,6 +26,3 @@ function Visited() {
  }
 
 export default Visited;
-
-
-{/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
