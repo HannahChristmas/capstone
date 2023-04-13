@@ -7,13 +7,32 @@ function UserProfile () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [bio, setBio] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    function handleSubmit(e){
-        e.preventDefault();
-        console.log("Edit profile form clicked UserProfile.js")
-    }
+    function handlePostUpdateSubmit(e) {
+        e.preventDefault()
+        // fetch request to current user
+        fetch(`/me`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username,
+            password,
+            password_confirmation: passwordConfirmation,
+            bio
+          }),
+        })
+          .then((r) => r.json())
+          .then((updatedProfile) => {
+            // handleUpdatePost(updatedProfile)
+            console.log("I clicked update button UserProfile.js")
+          })
+        //   .then(() => setIsEditing(false))
+      }
 
     if (!user) {
         return <p>Profile loading...</p>
@@ -24,7 +43,7 @@ function UserProfile () {
             <h1>{user.username}</h1>
             <p>{user.bio}</p>
             <p>{user.id}</p>
-            <form onSubmit={handleSubmit} id="login-form">
+            <form onSubmit={handlePostUpdateSubmit} id="login-form">
                 <label>
                     username:
                     <input
@@ -53,12 +72,12 @@ function UserProfile () {
                     />
                 </label><br/>
                 <label>
-                    avatar url: 
+                    bio: 
                     <input
-                        type="password"
-                        id="password_confirmation"
-                        value={passwordConfirmation}
-                        onChange={(e) => setPasswordConfirmation(e.target.value)}
+                        type="text"
+                        id="bio"
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
                     />
                 </label><br/>
                 <button type="submit">{isLoading ? "Loading..." : "save changes"}</button><br/>
