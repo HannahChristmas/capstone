@@ -13,9 +13,10 @@ class UsersController < ApplicationController
     end
 
     def update 
-        # user = User.find_by(id: session[:user_id])
-        @current_user.update!(user_params)
-        render json: @current_user, status: 202
+        user = User.find_by(id: session[:user_id])
+        # @current_user.update!(user_params)
+        user.update!(user_params)
+        render json: user, status: 202
     end
 
     def show 
