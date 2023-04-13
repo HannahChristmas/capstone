@@ -29,7 +29,7 @@ function UserProfile () {
           .then((r) => r.json())
           .then((updatedProfile) => {
             // handleUpdatePost(updatedProfile)
-            console.log("I clicked update button UserProfile.js")
+            console.log(updatedProfile)
           })
         //   .then(() => setIsEditing(false))
       }
@@ -81,7 +81,7 @@ function UserProfile () {
                     />
                 </label><br/>
                 <button type="submit">{isLoading ? "Loading..." : "save changes"}</button><br/>
-                <button type="submit">{isLoading ? "Loading..." : "delete profile"}</button>
+                {/* <button type="submit">{isLoading ? "Loading..." : "delete profile"}</button> */}
                 <label>
                     {errors.map((err) => (
                         <p key={err}>{err}</p>
