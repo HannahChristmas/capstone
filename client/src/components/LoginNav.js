@@ -43,24 +43,27 @@ function LoginNav() {
         <div ref={menuRef} id="hey">
         {isMenuOpen ? (
             <ul>
-                <li>
-                    {user ? (
-                        <Link 
-                        to='/logout' 
-                        className="login-nav"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleLogoutClick();
-                        }}
-                        >LOGOUT</Link>
-                    ) : (
-                        <Link to='/login' className='login-nav'>LOGIN</Link>
-                    )}
-                </li>
-                <li>
-                    <Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link>
-                </li>
-                <li onClick={toggleMenu}>x</li>
+                {user ? (
+                    <>
+                        <li><Link to='/activities'>VIEW PROFILE</Link></li>
+                        <li><Link to='/activities'>EDIT PROFILE</Link></li>
+                        <li><Link 
+                            to='/logout' 
+                            className="login-nav"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleLogoutClick();
+                            }}
+                            >LOGOUT</Link>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li><Link to='/login' className='login-nav'>LOGIN</Link></li>
+                        <li><Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link></li>
+                    </>
+                )
+            }
             </ul>
         ) : (
             <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
