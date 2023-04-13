@@ -15,12 +15,12 @@ function Interested({activities}) {
         <div id="login-footer">
           {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}
         </div>
-   </>
-  );
-} else {
+      </>
+      );
+  } else {
   return (
-    <h2>Please log in or create account to save your interests</h2>
-  )
+    <h2>Please log in or create account to save your interests.</h2>
+    )
   }
 }
 
