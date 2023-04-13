@@ -32,7 +32,7 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
-  console.log(activities)
+  console.log("From fetch request at App.js:", activities)
 
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
@@ -54,7 +54,6 @@ function App() {
             <Route path="/login" element={<LoginForm/>}></Route>
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
-            <Route path="/logged-in" element={<AllActivities/>}></Route>
             <Route path="/activities" element={<AllActivities activities={activities}/>}></Route>
             <Route path="/interested" element={<Interested/>}></Route>
             <Route path="/visited" element={<Visited/>}></Route>

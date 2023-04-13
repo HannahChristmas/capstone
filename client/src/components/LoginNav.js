@@ -34,7 +34,7 @@ function LoginNav() {
         });
     }
 
-    console.log(user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
+    console.log("from LoginNav.js:", user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
 
     return (
         <>    
