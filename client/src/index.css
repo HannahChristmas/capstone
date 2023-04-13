@@ -8,6 +8,10 @@ body {
   font-family: 'Poppins', sans-serif;
   color: #125B50;
 }
+
+#hey {
+  border: solid black 2px;
+}
 /* 
 @media screen and (max-width: 720px) {
   .nav {
