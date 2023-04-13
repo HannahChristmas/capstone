@@ -2,12 +2,12 @@ import { useContext, useState } from 'react'
 import { UserContext } from "../UserContext";
 
 function UserProfile () {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(user.username);
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [bio, setBio] = useState("");
+    const [bio, setBio] = useState(user.bio);
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -28,8 +28,7 @@ function UserProfile () {
         })
           .then((r) => r.json())
           .then((updatedProfile) => {
-            // handleUpdatePost(updatedProfile)
-            console.log(updatedProfile)
+            setUser(updatedProfile)
           })
         //   .then(() => setIsEditing(false))
       }
@@ -51,24 +50,6 @@ function UserProfile () {
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label><br/>
-                <label>
-                    new password:
-                    <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </label><br/>
-                <label>
-                    confirm password: 
-                    <input
-                        type="password"
-                        id="password_confirmation"
-                        value={passwordConfirmation}
-                        onChange={(e) => setPasswordConfirmation(e.target.value)}
                     />
                 </label><br/>
                 <label>
