@@ -19,7 +19,7 @@ function Interested({activities}) {
   );
 } else {
   return (
-    <h2>No user logged in rn boys</h2>
+    <h2>Please log in or create account to save your interests</h2>
   )
   }
 }

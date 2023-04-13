@@ -45,7 +45,7 @@ function LoginNav() {
             <ul>
                 {user ? (
                     <>
-                        <li><Link to='/activities'>VIEW PROFILE</Link></li>
+                        <li><Link to='/activities'>view {user.username}</Link></li>
                         <li><Link to='/activities'>EDIT PROFILE</Link></li>
                         <li><Link 
                             to='/logout' 
@@ -71,7 +71,7 @@ function LoginNav() {
         </div>
       </nav>
 <nav className="activity-nav">
-        <h1>Welcome, !</h1>
+        {/* <h1>Welcome, !</h1> */}
         {/* <h1>Welcome, {user.username}!</h1> */}
 <ul>
     <li>
