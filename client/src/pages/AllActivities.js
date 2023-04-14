@@ -14,9 +14,6 @@ function AllActivities({activities}) {
 
   return (
     <>
-      <div>
-        <h1>All activities</h1>
-      </div>
       <div className="activities-page-container">
         <div className="activity-search-container"><h2>search</h2></div>
         <div className="activities-list-container">

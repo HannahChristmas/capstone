@@ -23,7 +23,7 @@ nav li:hover {
 }
 
 #footer-image {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   margin-bottom: 0px;
   position: absolute;
   bottom: 0px;
@@ -33,11 +33,11 @@ nav li:hover {
 
 .nav {
   background-color: #F1EEE9;
-  height: 8rem;
+  height: 7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: solid green 2px;
+  /* border: solid green 2px; */
   gap: 2rem;
   padding: 1rem;
 }
@@ -62,7 +62,7 @@ nav li:hover {
 
 .activity-nav {
   display: flex;
-  border: solid blue 2px;
+  /* border: solid blue 2px; */
   height: 2rem;
   align-items: center;
 }
@@ -80,38 +80,43 @@ nav li:hover {
   align-items: center;
   gap: 2rem;
   padding: 0 1rem;
-  border: solid 2px black;
+  /* border: solid 2px black; */
 }
 
 /* ACTIVITIES PAGE */
 
 .activities-page-container {
   display: flex;
-  border: 2px solid brown;
-}
-
-.activity-search-container {
-  border: 3px solid orange;
-  flex: .5;
+  /* border: 2px solid brown; */
+  margin-top: 20px;
+  align-items: stretch;
+  margin-bottom: 20px;
 }
 
 .activities-list-container {
   display: flex;
-  align-items: stretch;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* max-width: 1000px; */
   border: solid pink 2px;
-  margin: auto;
+  /* margin: 20px; */
+  margin-left: 20px;
+  margin-right: 20px;
+
+
+}
+
+.activity-search-container {
+  border: 3px solid orange;
+  flex: 1;
+  min-width: 100px;
 }
 
 .individual-activity {
   border: solid blue 2px;
-  min-height: 200px;
+  /* min-height: 200px; */
   width: 200px;
   align-items: center;
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin: 20px;
   padding-bottom: 20px;
 
 }
