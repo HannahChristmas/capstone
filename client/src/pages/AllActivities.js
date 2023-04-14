@@ -1,8 +1,5 @@
-import { useState } from "react";
 
-function AllActivities({activities, selectedActivity, setSelectedActivity}) {
-
-  // const [selectedActivity, setSelectedActivity] = useState(null);
+function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick}) {
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -37,7 +34,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity}) {
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button>I'm interested!</button><br/>
+          <button onClick={() => interestedClick(selectedActivity)}>I'm interested!</button><br/>
           <button>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>

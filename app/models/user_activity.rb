@@ -1,2 +1,3 @@
 class UserActivity < ApplicationRecord
+
 end

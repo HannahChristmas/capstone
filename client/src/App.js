@@ -34,6 +34,34 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
+  function interestedClick() {
+    console.log({selectedActivity}, "I am interested from App.js")
+  }
+
+  console.log({selectedActivity}, "selectedActivity from App.js")
+
+  // const handleInterestedButtonClick = () => {
+  //   fetch('/api/user_activities', {
+  //     method: 'POST',
+  //     body: JSON.stringify({
+  //       user_id: user.id,
+  //       activity_id: selectedActivity.id,
+  //       interested: true
+  //     }),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(response => {
+  //     if (response.ok) {
+  //       // handle success
+  //       console.log("nice")
+  //     } else {
+  //       // handle error
+  //       console.log("not nice")
+  //     }
+  //   });
+  // };
+
   console.log("From fetch request at App.js:", activities)
 
   return (
@@ -47,8 +75,8 @@ function App() {
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/user-profile" element={<UserProfile/>}></Route>
-            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity}/>}></Route>
-            <Route path="/interested" element={<Interested/>}></Route>
+            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}/>}></Route>
+            <Route path="/interested" element={<Interested interestedClick={interestedClick}/>} ></Route>
             <Route path="/visited" element={<Visited/>}></Route>
           </Routes>
         </main>
