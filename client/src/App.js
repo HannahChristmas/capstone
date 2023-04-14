@@ -37,6 +37,9 @@ function App() {
 
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
+    const button = document.getElementById('interested-button');
+    const buttonText = button.innerHTML;
+
     console.log({title}, "interested from App.js")
     // when the current user clicks this button, the interested boolean on the user_activites table needs to update
     fetch('/user_activities', {
@@ -53,7 +56,7 @@ function App() {
       if (response.ok) {
         // handle success
         console.log("interested nice")
-        
+        button.innerHTML = (buttonText === "I'm interested!") ? 'Not interested' : "I'm interested!";
       } else {
         // handle error
         console.log("interested no work not nice")

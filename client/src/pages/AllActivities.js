@@ -34,7 +34,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button onClick={() => interestedClick(selectedActivity)}>I'm interested!</button><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>I'm interested!</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
