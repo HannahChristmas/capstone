@@ -9,6 +9,7 @@ class UserActivitiesController < ApplicationController
 
         if user_activity 
             user_activity.update(interested: !user_activity.interested)
+            user_activity.delete_if_not_interested_or_visited
          else 
             user_activity = UserActivity.create(user_activity_params)
             user_activity.user = @current_user
