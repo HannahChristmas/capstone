@@ -37,7 +37,6 @@ function App() {
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
     console.log({title}, "interested from App.js")
-    const interested = true; // or false
 
     // when the current user clicks this button, the interested boolean on the user_activites table needs to update
     fetch('/user_activities', {
@@ -45,7 +44,7 @@ function App() {
       body: JSON.stringify({
         user_id: user.id,
         activity_id: selectedActivity.id,
-        interested: !interested
+        interested: true
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -53,14 +52,16 @@ function App() {
     }).then(response => {
       if (response.ok) {
         // handle success
-        console.log("nice")
+        console.log("interested nice")
         
       } else {
         // handle error
-        console.log("not nice")
+        console.log("interested no work not nice")
       }
     });
   }
+
+
 
   console.log({selectedActivity}, "selectedActivity from App.js")
 
