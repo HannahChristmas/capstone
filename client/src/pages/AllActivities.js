@@ -11,9 +11,7 @@ function AllActivities({activities}) {
             <h1>{activity.title}</h1>
             <h2>{activity.neighborhood}</h2>
             <h4>${activity.cost}</h4>
-            <p>{activity.address}</p>
-            <p>{activity.phone_number}</p>
-            <p>{activity.website}</p>
+            <button>Quick View</button>
           </div>
         ))}
       </div>
