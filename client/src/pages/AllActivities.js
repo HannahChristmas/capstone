@@ -1,5 +1,5 @@
 
-function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick}) {
+function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick}) {
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -35,7 +35,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
           <button onClick={() => interestedClick(selectedActivity)}>I'm interested!</button><br/>
-          <button>I've been!</button><br/><br/><br/>
+          <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
           <button onClick={() => handleXClick(selectedActivity)}>X</button>

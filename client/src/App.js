@@ -63,6 +63,31 @@ function App() {
   console.log({selectedActivity}, "selectedActivity from App.js")
   console.log("From fetch request at App.js:", activities)
 
+  function visitedClick() {
+    const {id, title, neighborhood} = selectedActivity
+    console.log({title}, "visited from App.js")
+    // when the current user clicks this button, the visited boolean on the user_activites table needs to update
+    fetch('/user_activities', {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        visited: true
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        // handle success
+        console.log("visited nice")
+      } else {
+        // handle error
+        console.log("visited no work not nice")
+      }
+    });
+  }
+
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
@@ -74,8 +99,8 @@ function App() {
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/user-profile" element={<UserProfile/>}></Route>
-            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}/>}></Route>
-            <Route path="/interested" element={<Interested interestedClick={interestedClick}/>} ></Route>
+            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} visitedClick={visitedClick}/>}></Route>
+            <Route path="/interested" element={<Interested interestedClick={interestedClick} />} ></Route>
             <Route path="/visited" element={<Visited/>}></Route>
           </Routes>
         </main>
