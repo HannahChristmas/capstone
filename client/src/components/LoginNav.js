@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import profile from '../profile.png'
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router";
@@ -75,13 +75,13 @@ function LoginNav() {
         {/* <h1>Welcome, {user.username}!</h1> */}
 <ul>
     <li>
-        <Link to='/activities' className="login-nav">ALL ACTIVITIES</Link>
+        <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
     </li>
     <li>
-        <Link to='/interested' className="login-nav">I'M INTERESTED</Link>
+        <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
     </li>
     <li>
-        <Link to='/visited' className="login-nav">I'VE BEEN THERE</Link>
+        <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
     </li>
 </ul>
 </nav>
