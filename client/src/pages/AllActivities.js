@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function AllActivities({activities}) {
+function AllActivities({activities, selectedActivity, setSelectedActivity}) {
 
-  const [selectedActivity, setSelectedActivity] = useState(null);
+  // const [selectedActivity, setSelectedActivity] = useState(null);
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
