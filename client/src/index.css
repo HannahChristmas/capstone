@@ -7,11 +7,39 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: #125B50;
+  text-align: center;
 }
 
-#hey {
-  border: solid black 2px;
+.activities-page-container {
+  display: flex;
+  border: 2px solid brown;
 }
+
+.activity-search-container {
+  border: 3px solid orange;
+  flex: .5;
+}
+
+.activities-list-container {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* max-width: 1000px; */
+  border: solid pink 2px;
+  margin: auto;
+}
+
+.individual-activity {
+  border: solid blue 2px;
+  min-height: 200px;
+  width: 200px;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
+
+}
+
 /* 
 @media screen and (max-width: 720px) {
   .nav {

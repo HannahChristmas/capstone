@@ -8,23 +8,27 @@ function AllActivities({activities}) {
     setSelectedActivity(activity);
   }
 
-  const handleXClick = (activity) => {
+  const handleXClick = () => {
     setSelectedActivity(null);
   }
 
   return (
     <>
-      <div className="all-activities">
+      <div>
         <h1>All activities</h1>
-        {activities.map((activity) => (
-          <div key={activity.id}>
-            <h1>{activity.title}</h1>
-            <h2>{activity.neighborhood}</h2>
-            <h4>${activity.cost}</h4>
-            <button onClick={() => handleViewClick(activity)}>Quick View</button>
-          </div>          
-        ))}
       </div>
+      <div className="activities-page-container">
+        <div className="activity-search-container"><h2>search</h2></div>
+        <div className="activities-list-container">
+          {activities.map((activity) => (
+            <div key={activity.id} className="individual-activity">
+              <h1>{activity.title}</h1>
+              <h2>{activity.neighborhood}</h2>
+              <h4>${activity.cost}</h4>
+              <button onClick={() => handleViewClick(activity)}>Quick View</button>
+            </div>          
+          ))}
+        </div>
 
       {selectedActivity && (
         <div className="popup-card">
@@ -32,6 +36,7 @@ function AllActivities({activities}) {
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
       )}
+      </div>
    </>
   );
 }

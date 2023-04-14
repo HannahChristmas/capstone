@@ -40,7 +40,7 @@ function LoginNav() {
         <>    
         <nav className="nav">
         <Link to='/' className="site-title">CINCY SOCIAL</Link>
-        <div ref={menuRef} id="hey">
+        <div ref={menuRef} id="avatar">
         {isMenuOpen ? (
             <ul>
                 {user ? (
