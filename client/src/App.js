@@ -35,7 +35,9 @@ function App() {
   }, [])
 
   function interestedClick() {
-    console.log({selectedActivity}, "I am interested from App.js")
+    const {id, title, neighborhood} = selectedActivity
+    console.log({title}, "interested from App.js")
+
   }
 
   console.log({selectedActivity}, "selectedActivity from App.js")
