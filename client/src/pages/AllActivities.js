@@ -11,7 +11,7 @@ function AllActivities({activities}) {
             <h1>{activity.title}</h1>
             <h2>{activity.neighborhood}</h2>
             <h4>${activity.cost}</h4>
-            <button>Quick View</button>
+            <button onClick={console.log("I clicked this bitch")}>Quick View</button>
           </div>
         ))}
       </div>
