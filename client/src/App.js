@@ -37,13 +37,15 @@ function App() {
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
     console.log({title}, "interested from App.js")
+    const interested = true; // or false
+
     // when the current user clicks this button, the interested boolean on the user_activites table needs to update
     fetch('/user_activities', {
       method: 'POST',
       body: JSON.stringify({
         user_id: user.id,
         activity_id: selectedActivity.id,
-        interested: true
+        interested: !interested
       }),
       headers: {
         'Content-Type': 'application/json'
