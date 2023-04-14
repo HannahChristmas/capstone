@@ -1,9 +1,16 @@
-// import ActivityNav from '../components/ActivityNav';
+import { useState } from "react";
+
 function AllActivities({activities}) {
 
-  const handleOnClick = () => {
-    console.log("I clicked this button")
-}
+  const [selectedActivity, setSelectedActivity] = useState(null);
+
+  const handleViewClick = (activity) => {
+    setSelectedActivity(activity);
+  }
+
+  const handleXClick = (activity) => {
+    setSelectedActivity(null);
+  }
 
   return (
     <>
@@ -14,10 +21,17 @@ function AllActivities({activities}) {
             <h1>{activity.title}</h1>
             <h2>{activity.neighborhood}</h2>
             <h4>${activity.cost}</h4>
-            <button onClick={handleOnClick}>Quick View</button>
+            <button onClick={() => handleViewClick(activity)}>Quick View</button>
           </div>          
         ))}
       </div>
+
+      {selectedActivity && (
+        <div className="popup-card">
+          <h2>{selectedActivity.title}</h2>
+          <button onClick={() => handleXClick(selectedActivity)}>X</button>
+        </div>
+      )}
    </>
   );
 }
