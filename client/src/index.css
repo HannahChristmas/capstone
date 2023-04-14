@@ -35,7 +35,7 @@ nav li:hover {
   background-color: #F1EEE9;
   height: 7rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   /* border: solid green 2px; */
   gap: 2rem;
@@ -56,6 +56,7 @@ nav li:hover {
 
 .site-title {
   font-size: 3rem;
+  /* border: solid 2px pink; */
 }
 
 /* NAVIGATION: Activity bar */
@@ -65,6 +66,7 @@ nav li:hover {
   /* border: solid blue 2px; */
   height: 2rem;
   align-items: center;
+  flex: 10;
 }
 
 .activity-nav .active {
@@ -88,7 +90,7 @@ nav li:hover {
 .activities-page-container {
   display: flex;
   /* border: 2px solid brown; */
-  margin-top: 20px;
+  /* margin-top: 10px; */
   align-items: stretch;
   margin-bottom: 20px;
 }
@@ -106,6 +108,8 @@ nav li:hover {
   border: 3px solid orange;
   flex: .9;
   min-width: 10rem;
+  margin-left: 20px;
+
 }
 
 .individual-activity {

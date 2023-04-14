@@ -39,6 +39,19 @@ function LoginNav() {
     return (
     <>    
         <nav className="nav">
+        <nav className="activity-nav">
+            <ul>
+                <li>
+                    <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
+                </li>
+            </ul>
+        </nav>
             <Link to='/' className="site-title">CINCY SOCIAL</Link>
             <div ref={menuRef} id="avatar">
                 {isMenuOpen ? (
@@ -69,20 +82,6 @@ function LoginNav() {
                     <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
                 )}
             </div>
-        </nav>
-
-        <nav className="activity-nav">
-            <ul>
-                <li>
-                    <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
-                </li>
-            </ul>
         </nav>
     </>
     )
