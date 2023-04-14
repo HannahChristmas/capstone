@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { UserContext } from "../UserContext";
 
 function UserProfile () {
@@ -10,6 +10,13 @@ function UserProfile () {
     const [bio, setBio] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        if (user) {
+            setUsername(user.username)
+            setBio(user.bio)
+        }
+      }, [user])
 
     function handlePostUpdateSubmit(e) {
         e.preventDefault()
@@ -36,7 +43,8 @@ function UserProfile () {
     if (!user) {
         return <p>Profile loading...</p>
     }
-    return (
+    
+    return ( 
         <>
             <h1>{user.username}</h1>
             <p>{user.bio}</p>
