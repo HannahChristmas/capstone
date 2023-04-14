@@ -18,12 +18,12 @@ class UserActivitiesController < ApplicationController
         render json: user_activity, status: 200
     end
 
-    def update
-        user_activity = UserActivity.find(params[:id])
-        user_activity.update(user_activity_params)
-        user_activity.delete_if_not_interested_or_visited
-        render json: user_activity, status: 200
-    end
+    # def update
+    #     user_activity = UserActivity.find(params[:id])
+    #     user_activity.update(user_activity_params)
+    #     user_activity.delete_if_not_interested_or_visited
+    #     render json: user_activity, status: 200
+    # end
 
     def destroy 
         user_activity = @current_user.user_activities.find(params[:id])
