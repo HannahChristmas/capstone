@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_14_215242) do
+ActiveRecord::Schema.define(version: 2023_04_14_221558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2023_04_14_215242) do
   create_table "user_activities", force: :cascade do |t|
     t.integer "user_id"
     t.integer "activity_id"
-    t.boolean "visited"
+    t.boolean "visited", default: false
     t.boolean "interested", default: false
     t.string "review_content"
     t.integer "rating"

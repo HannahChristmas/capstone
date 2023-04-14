@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
+  // const [userInterested, setUserInterested] = useState(false)
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -34,10 +35,17 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
+  // useEffect(() => {
+  //   if (user.user_activity) {
+  //     setUserInterested(user.user_activity.interested);
+  //   } else {
+  //     console.log("Nope")
+  //   }
+  // }, [user]);
+
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
     console.log({title}, "interested from App.js")
-
     // when the current user clicks this button, the interested boolean on the user_activites table needs to update
     fetch('/user_activities', {
       method: 'POST',
