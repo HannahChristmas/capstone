@@ -37,32 +37,52 @@ function App() {
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
     console.log({title}, "interested from App.js")
-
+    // when the current user clicks this button, the interested boolean on the user_activites table needs to update
+    fetch('/user_activities', {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        interested: true
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        // handle success
+        console.log("nice")
+        
+      } else {
+        // handle error
+        console.log("not nice")
+      }
+    });
   }
 
   console.log({selectedActivity}, "selectedActivity from App.js")
 
-  // const handleInterestedButtonClick = () => {
-  //   fetch('/api/user_activities', {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       user_id: user.id,
-  //       activity_id: selectedActivity.id,
-  //       interested: true
-  //     }),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }).then(response => {
-  //     if (response.ok) {
-  //       // handle success
-  //       console.log("nice")
-  //     } else {
-  //       // handle error
-  //       console.log("not nice")
-  //     }
-  //   });
-  // };
+  const handleInterestedButtonClick = () => {
+    fetch('/api/user_activities', {
+      method: 'POST',
+      body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        interested: true
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        // handle success
+        console.log("nice")
+      } else {
+        // handle error
+        console.log("not nice")
+      }
+    });
+  };
 
   console.log("From fetch request at App.js:", activities)
 
