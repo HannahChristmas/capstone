@@ -15,7 +15,13 @@ function AllActivities({activities}) {
   return (
     <>
       <div className="activities-page-container">
-        <div className="activity-search-container"><h2>search</h2></div>
+        <div className="activity-search-container">
+          <p>search by keyword...</p>
+          <p>location ↓</p>
+          <p>category ↓</p>
+          <p>add an activity</p>
+        </div>
+
         <div className="activities-list-container">
           {activities.map((activity) => (
             <div key={activity.id} className="individual-activity">
