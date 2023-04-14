@@ -37,55 +37,54 @@ function LoginNav() {
     console.log("from LoginNav.js:", user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
 
     return (
-        <>    
+    <>    
         <nav className="nav">
-        <Link to='/' className="site-title">CINCY SOCIAL</Link>
-        <div ref={menuRef} id="avatar">
-        {isMenuOpen ? (
-            <ul>
-                {user ? (
-                    <>
-                        <li><Link to='/user-profile'>view {user.username}</Link></li>
-                        <li><Link to='/activities'>EDIT PROFILE</Link></li>
-                        <li><Link 
-                            to='/logout' 
-                            className="login-nav"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handleLogoutClick();
-                            }}
-                            >LOGOUT</Link>
-                        </li>
-                    </>
+            <Link to='/' className="site-title">CINCY SOCIAL</Link>
+            <div ref={menuRef} id="avatar">
+                {isMenuOpen ? (
+                    <ul>
+                        {user ? (
+                            <>
+                                <li><Link to='/user-profile'>view {user.username}</Link></li>
+                                <li><Link to='/activities'>EDIT PROFILE</Link></li>
+                                <li><Link 
+                                    to='/logout' 
+                                    className="login-nav"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleLogoutClick();
+                                    }}
+                                    >LOGOUT</Link>
+                                </li>
+                            </>
+                        ) : (
+                            <>
+                                <li><Link to='/login' className='login-nav'>LOGIN</Link></li>
+                                <li><Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link></li>
+                            </>
+                        )
+                    }
+                    </ul>
                 ) : (
-                    <>
-                        <li><Link to='/login' className='login-nav'>LOGIN</Link></li>
-                        <li><Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link></li>
-                    </>
-                )
-            }
+                    <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
+                )}
+            </div>
+        </nav>
+
+        <nav className="activity-nav">
+            <ul>
+                <li>
+                    <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
+                </li>
             </ul>
-        ) : (
-            <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
-        )}
-        </div>
-      </nav>
-<nav className="activity-nav">
-        {/* <h1>Welcome, !</h1> */}
-        {/* <h1>Welcome, {user.username}!</h1> */}
-<ul>
-    <li>
-        <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
-    </li>
-    <li>
-        <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
-    </li>
-    <li>
-        <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
-    </li>
-</ul>
-</nav>
-</>
+        </nav>
+    </>
     )
 }
 
