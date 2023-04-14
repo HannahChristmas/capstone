@@ -4,9 +4,16 @@ class UserActivitiesController < ApplicationController
         render json: user_activities, status: 200
     end
 
-    def create 
-        user_activity = UserActivity.create(user_activity_params)
-        user_activity.user = @current_user
+    def create
+        user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
+
+        if user_activity 
+            user_activity.update(interested: !user_activity.interested)
+         else 
+            user_activity = UserActivity.create(user_activity_params)
+            user_activity.user = @current_user
+         end
+
         render json: user_activity, status: 200
     end
 
@@ -22,8 +29,6 @@ class UserActivitiesController < ApplicationController
         user_activity.destroy 
         head :no_content
     end
-
-   
 
     private 
 

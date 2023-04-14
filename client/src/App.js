@@ -35,14 +35,6 @@ function App() {
     .then(activities => setActivities(activities))
   }, [])
 
-  // useEffect(() => {
-  //   if (user.user_activity) {
-  //     setUserInterested(user.user_activity.interested);
-  //   } else {
-  //     console.log("Nope")
-  //   }
-  // }, [user]);
-
   function interestedClick() {
     const {id, title, neighborhood} = selectedActivity
     console.log({title}, "interested from App.js")
@@ -68,33 +60,7 @@ function App() {
       }
     });
   }
-
-
-
   console.log({selectedActivity}, "selectedActivity from App.js")
-
-  const handleInterestedButtonClick = () => {
-    fetch('/api/user_activities', {
-      method: 'POST',
-      body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        interested: true
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        // handle success
-        console.log("nice")
-      } else {
-        // handle error
-        console.log("not nice")
-      }
-    });
-  };
-
   console.log("From fetch request at App.js:", activities)
 
   return (
