@@ -14,6 +14,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
   console.log("from AppJs, selected + user_activities:" , selectedActivity?.user_activities[0]?.interested)
 
   let interestedVariable = selectedActivity?.user_activities[0]?.interested
+  console.log("this should be true", interestedVariable)
 
   return (
     <>
@@ -40,7 +41,10 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {selectedActivity.interested ? "It is true. I am interested. Click this to remove." : "At the moment, uninterested. Click to add to interests."}
+          <p>why not here {interestedVariable?.toString()}</p>
+          
+
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {interestedVariable?.toString()}
 </button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>
