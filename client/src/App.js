@@ -15,7 +15,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
-  // const [userInterested, setUserInterested] = useState(false)
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -36,9 +35,10 @@ function App() {
   }, [])
 
   function interestedClick() {
-    const {id, title, neighborhood} = selectedActivity
-    const button = document.getElementById('interested-button');
-    const buttonText = button.innerHTML;
+    const { title } = selectedActivity
+
+    const updatedInterest = { ...selectedActivity, interested: !selectedActivity.interested }
+    setSelectedActivity(updatedInterest)
 
     console.log({title}, "interested from App.js")
     // when the current user clicks this button, the interested boolean on the user_activites table needs to update
@@ -47,7 +47,7 @@ function App() {
       body: JSON.stringify({
         user_id: user.id,
         activity_id: selectedActivity.id,
-        interested: true
+        interested: updatedInterest.interested
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +56,6 @@ function App() {
       if (response.ok) {
         // handle success
         console.log("interested nice")
-        button.innerHTML = (buttonText === "I'm interested!") ? 'Not interested' : "I'm interested!";
       } else {
         // handle error
         console.log("interested no work not nice")

@@ -9,6 +9,12 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
     setSelectedActivity(null);
   }
 
+  console.log("from AppJs, the selected activity is:" , selectedActivity)
+  console.log("from AppJs, selected + user_activities:" , selectedActivity?.user_activities)
+  console.log("from AppJs, selected + user_activities:" , selectedActivity?.user_activities[0]?.interested)
+
+  let interestedVariable = selectedActivity?.user_activities[0]?.interested
+
   return (
     <>
       <div className="activities-page-container">
@@ -34,7 +40,8 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>I'm interested!</button><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {selectedActivity.interested ? "It is true. I am interested. Click this to remove." : "At the moment, uninterested. Click to add to interests."}
+</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
