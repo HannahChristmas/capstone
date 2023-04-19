@@ -15,7 +15,12 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
-  // const []
+  // const [interestedButtonText, setInterestedButtonText] = useState(selectedActivity.interested ? 'Remove from Interests' : 'Add to Interests');
+
+  // let interestedVariable = selectedActivity?.user_activities[0]?.interested
+  // console.log("this is the interested boolean", interestedVariable)
+
+
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -36,19 +41,16 @@ function App() {
   }, [])
 
   function interestedClick() {
-    const { title } = selectedActivity
 
-    const updatedInterest = { ...selectedActivity, interested: !selectedActivity.interested }
-    setSelectedActivity(updatedInterest)
-
-    console.log({title}, "interested from App.js")
-    // when the current user clicks this button, the interested boolean on the user_activites table needs to update
+    if(selectedActivity) {
+      const updatedInterest = { ...selectedActivity, interested: !selectedActivity.interested }
+    
     fetch('/user_activities', {
       method: 'POST',
       body: JSON.stringify({
         user_id: user.id,
-        activity_id: selectedActivity.id,
-        interested: updatedInterest.interested
+        activity_id: selectedActivity.id, 
+        interested: updatedInterest.interested,
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -56,40 +58,29 @@ function App() {
     }).then(response => {
       if (response.ok) {
         // handle success
-        console.log("interested nice")
+        setSelectedActivity(updatedInterest)
+        setActivities((prevActivities) => {
+          const newActivities = prevActivities.map((activity) => 
+            activity.id === updatedInterest.id ? updatedInterest : activity
+          );
+          console.log("Updated ALL ACTIVITIES: ", newActivities);
+          return newActivities;
+        });
+        console.log("Updated INTEREST: ", updatedInterest.interested)
+        const button = document.querySelector('#interested-button');
+        button.innerHTML = updatedInterest.interested? 'Remove from Interests' : 'Add to Interests';
+
       } else {
         // handle error
         console.log("interested no work not nice")
       }
     });
-  }
-  console.log({selectedActivity}, "selectedActivity from App.js")
-  console.log("From fetch request at App.js:", activities)
+  }}
 
-  function visitedClick() {
-    const {id, title, neighborhood} = selectedActivity
-    console.log({title}, "visited from App.js")
-    // when the current user clicks this button, the visited boolean on the user_activites table needs to update
-    fetch('/user_activities', {
-      method: 'POST',
-      body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        visited: true
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        // handle success
-        console.log("visited nice")
-      } else {
-        // handle error
-        console.log("visited no work not nice")
-      }
-    });
-  }
+  // const button = document.querySelector('#interested-button');
+  // if (selectedActivity && button) {
+  //   button.innerHTML = selectedActivity.interested ? 'true' : 'false';
+  // }
 
   return (
     <>
@@ -102,7 +93,7 @@ function App() {
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/user-profile" element={<UserProfile/>}></Route>
-            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} visitedClick={visitedClick}/>}></Route>
+            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}/>}></Route>
             <Route path="/interested" element={<Interested interestedClick={interestedClick} />} ></Route>
             <Route path="/visited" element={<Visited/>}></Route>
           </Routes>

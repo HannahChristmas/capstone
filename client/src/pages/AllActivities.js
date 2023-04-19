@@ -9,12 +9,12 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
     setSelectedActivity(null);
   }
 
-  console.log("from AppJs, the selected activity is:" , selectedActivity)
-  console.log("from AppJs, selected + user_activities:" , selectedActivity?.user_activities)
-  console.log("from AppJs, selected + user_activities:" , selectedActivity?.user_activities[0]?.interested)
+  console.log("from AllActivities, the selected activity is:" , selectedActivity)
+  // console.log("from AllActivities, selected + user_activities:" , selectedActivity?.user_activities)
+  // console.log("from AllActivities, selected + user_activities:" , selectedActivity?.user_activities[0]?.interested)
 
   let interestedVariable = selectedActivity?.user_activities[0]?.interested
-  console.log("this should be true", interestedVariable)
+  console.log("this is the interested boolean from AA", interestedVariable)
 
   return (
     <>
@@ -41,12 +41,13 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <p>why not here {interestedVariable?.toString()}</p>
+          {/* <p>why not here {interestedVariable?.toString()}</p> */}
           
+          {/* <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedVariable ? interestedVariable.toString() : 'Add to Interests'}</button><br/> */}
 
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {interestedVariable ? "Remove from Interests" : "Add to Interests"}
-</button><br/>
-          <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedVariable ? 'Remove from Interests' : 'Add to Interests'}</button><br/>
+
+          <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
