@@ -38,10 +38,6 @@ function UserProfile () {
             setErrors([])
           }
         })
-          // .then((r) => r.json())
-          // .then((updatedProfile) => {
-          //   setUser(updatedProfile)
-          // })
       }
 
     if (!user) {
