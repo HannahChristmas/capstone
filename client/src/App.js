@@ -13,18 +13,11 @@ import { UserContext } from './UserContext';
 
 function App() {
 
-
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
-  // let interestedVariable = selectedActivity?.user_activities[0]?.interested
   const [interestedVariable, setInterestedVariable] = useState(null);
   const [interestedButtonText, setInterestedButtonText] = useState(null);
-
-  // console.log("from top of app.js", interestedButtonText)
-  // console.log("from top for text", selectedActivity?.user_activities?.interested)
-  // let interestedVariable = selectedActivity?.user_activities[0]?.interested
-  // console.log("this is the interested boolean", interestedVariable.toString())
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -57,10 +50,9 @@ function App() {
 
 
   function interestedClick() {
-
     if(selectedActivity) {
       const updatedInterest = { ...selectedActivity, interested: !selectedActivity.interested }
-    
+
     fetch('/user_activities', {
       method: 'POST',
       body: JSON.stringify({
@@ -73,29 +65,19 @@ function App() {
       }
     }).then(response => {
       if (response.ok) {
-        // handle success
         setSelectedActivity(updatedInterest)
         setActivities((prevActivities) => {
           const newActivities = prevActivities.map((activity) => 
             activity.id === updatedInterest.id ? updatedInterest : activity
           );
-          console.log("Updated ALL ACTIVITIES: ", newActivities);
           return newActivities;
         });
-        console.log("Updated INTEREST: ", updatedInterest.interested)
         setInterestedButtonText(updatedInterest.interested ? 'Remove from Interests' : 'Add to Interests');
-
       } else {
-        // handle error
         console.log("interested no work not nice")
       }
     });
   }}
-
-  // const button = document.querySelector('#interested-button');
-  // if (selectedActivity && button) {
-  //   button.innerHTML = selectedActivity.interested ? 'true' : 'false';
-  // }
 
   return (
     <>
