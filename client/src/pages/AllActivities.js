@@ -44,7 +44,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           <p>why not here {interestedVariable?.toString()}</p>
           
 
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {interestedVariable?.toString()}
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>  {interestedVariable ? "Remove from Interests" : "Add to Interests"}
 </button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>I've been!</button><br/><br/><br/>
           <button>reviews</button><br/>

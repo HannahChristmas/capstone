@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
+  // const []
 
   useEffect(() => {
     fetch("/me").then((res) => {
