@@ -1,5 +1,5 @@
 
-function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick}) {
+function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick, interestedButtonText}) {
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -13,8 +13,8 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
   // console.log("from AllActivities, selected + user_activities:" , selectedActivity?.user_activities)
   // console.log("from AllActivities, selected + user_activities:" , selectedActivity?.user_activities[0]?.interested)
 
-  let interestedVariable = selectedActivity?.user_activities[0]?.interested
-  console.log("this is the interested boolean from AA", interestedVariable)
+  // let interestedVariable = selectedActivity?.user_activities[0]?.interested
+  // console.log("this is the interested boolean from AA", interestedVariable)
 
   return (
     <>
@@ -45,7 +45,10 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           
           {/* <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedVariable ? interestedVariable.toString() : 'Add to Interests'}</button><br/> */}
 
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedVariable ? 'Remove from Interests' : 'Add to Interests'}</button><br/>
+          {/* <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedVariable ? 'Remove from Interests' : 'Add to Interests'}</button><br/> */}
+
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedButtonText}</button><br/>
+
 
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>

@@ -12,15 +12,19 @@ import UserProfile from './pages/UserProfile';
 import { UserContext } from './UserContext';
 
 function App() {
+
+
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
-  // const [interestedButtonText, setInterestedButtonText] = useState(selectedActivity.interested ? 'Remove from Interests' : 'Add to Interests');
-
   // let interestedVariable = selectedActivity?.user_activities[0]?.interested
-  // console.log("this is the interested boolean", interestedVariable)
+  const [interestedVariable, setInterestedVariable] = useState(null);
+  const [interestedButtonText, setInterestedButtonText] = useState(null);
 
-
+  // console.log("from top of app.js", interestedButtonText)
+  // console.log("from top for text", selectedActivity?.user_activities?.interested)
+  // let interestedVariable = selectedActivity?.user_activities[0]?.interested
+  // console.log("this is the interested boolean", interestedVariable.toString())
 
   useEffect(() => {
     fetch("/me").then((res) => {
@@ -39,6 +43,18 @@ function App() {
     .then(r => r.json())
     .then(activities => setActivities(activities))
   }, [])
+
+  useEffect(() => {
+    if (selectedActivity) {
+      const interested = selectedActivity.user_activities[0]?.interested;
+      setInterestedVariable(interested);
+      setInterestedButtonText(interested ? 'Remove from Interests' : 'Add to Interests');
+    } else {
+      setInterestedVariable(null);
+      setInterestedButtonText(null);
+    }
+  }, [selectedActivity]);
+
 
   function interestedClick() {
 
@@ -67,8 +83,7 @@ function App() {
           return newActivities;
         });
         console.log("Updated INTEREST: ", updatedInterest.interested)
-        const button = document.querySelector('#interested-button');
-        button.innerHTML = updatedInterest.interested? 'Remove from Interests' : 'Add to Interests';
+        setInterestedButtonText(updatedInterest.interested ? 'Remove from Interests' : 'Add to Interests');
 
       } else {
         // handle error
@@ -93,7 +108,7 @@ function App() {
             <Route path="/logout" element={<LoginHomeScreen/>}></Route>
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/user-profile" element={<UserProfile/>}></Route>
-            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}/>}></Route>
+            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestedButtonText={interestedButtonText}/>}></Route>
             <Route path="/interested" element={<Interested interestedClick={interestedClick} />} ></Route>
             <Route path="/visited" element={<Visited/>}></Route>
           </Routes>
