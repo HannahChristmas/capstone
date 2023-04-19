@@ -42,7 +42,7 @@ function LoginNav() {
         <nav className="activity-nav">
             <ul>
                 <li>
-                    <NavLink to='/activities' className="login-nav"  activeClassName="active">ALL ACTIVITIES</NavLink>
+                    <NavLink to='/activities' className="login-nav">ALL ACTIVITIES</NavLink>
                 </li>
                 <li>
                     <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>

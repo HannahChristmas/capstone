@@ -5,8 +5,6 @@ function UserProfile () {
     const { user, setUser } = useContext(UserContext)
 
     const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [bio, setBio] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -28,16 +26,22 @@ function UserProfile () {
           },
           body: JSON.stringify({
             username,
-            password,
-            password_confirmation: passwordConfirmation,
             bio
           }),
         })
-          .then((r) => r.json())
-          .then((updatedProfile) => {
-            setUser(updatedProfile)
-          })
-        //   .then(() => setIsEditing(false))
+        .then((r) => {
+          setIsLoading(false);
+          if (!r.ok) {
+            r.json().then((err) => setErrors(err.errors))
+          } else {
+            r.json().then((updatedProfile) => setUser(updatedProfile));
+            setErrors([])
+          }
+        })
+          // .then((r) => r.json())
+          // .then((updatedProfile) => {
+          //   setUser(updatedProfile)
+          // })
       }
 
     if (!user) {
