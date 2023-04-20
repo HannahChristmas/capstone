@@ -35,7 +35,7 @@ function App() {
     fetch("/activities")
     .then(r => r.json())
     .then(activities => setActivities(activities))
-  }, [])
+  }, [activities])
 
   useEffect(() => {
     if (selectedActivity) {
