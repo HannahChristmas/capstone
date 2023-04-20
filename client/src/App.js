@@ -91,7 +91,7 @@ function App() {
             <Route path="/create-account" element={<CreateAccount/>}></Route>
             <Route path="/user-profile" element={<UserProfile/>}></Route>
             <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestedButtonText={interestedButtonText}/>}></Route>
-            <Route path="/interested" element={<Interested interestedClick={interestedClick} activities={activities}/>} ></Route>
+            <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities}/>} ></Route>
             <Route path="/visited" element={<Visited/>}></Route>
           </Routes>
         </main>
