@@ -6,12 +6,9 @@ class UserActivitiesController < ApplicationController
 
     def create
         user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
-
+        
         if user_activity 
-            interested = params.key?(:interested) ? !user_activity.interested : true
-            visited = params.key?(:visited) ? !user_activity.visited : true
-
-            user_activity.update(interested: interested, visited: visited)
+            user_activity.update!(user_activity_params)
             user_activity.delete_if_not_interested_or_visited
 
         else 
