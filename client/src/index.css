@@ -124,6 +124,10 @@ nav li:hover {
 
 }
 
+.popup-card {
+  width: 500px;
+}
+
 /* LOGIN PAGE */
 
 #login-form label{

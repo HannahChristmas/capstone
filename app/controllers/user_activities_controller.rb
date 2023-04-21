@@ -5,36 +5,28 @@ class UserActivitiesController < ApplicationController
     end
 
     def create
+        # byebug
         user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
 
         if user_activity 
-            if params[:interested]
-                user_activity.update(interested: !user_activity.interested)
-            elsif params[:visited]
-                user_activity.update(visited: !user_activity.visited)
-            end
+            # if params.key?(:interested)
+            #     user_activity.update(interested: !user_activity.interested)
+            # elsif params[:visited]
+            #     user_activity.update(visited: !user_activity.visited)
+            # end
+            interested = params.key?(:interested) ? !user_activity.interested : true
+            visited = params.key?(:visited) ? !user_activity.visited : true
 
+            user_activity.update(interested: interested, visited: visited)
             user_activity.delete_if_not_interested_or_visited
 
         else 
             user_activity = UserActivity.create(user_activity_params)
             user_activity.user = @current_user
-            # user_activity.update(interested: !user_activity.interested)
-        #     user_activity.delete_if_not_interested_or_visited
-        #  else 
-        #     user_activity = UserActivity.create(user_activity_params)
-        #     user_activity.user = @current_user
         end
 
         render json: user_activity, status: 200
     end
-
-    # def update
-    #     user_activity = UserActivity.find(params[:id])
-    #     user_activity.update(user_activity_params)
-    #     user_activity.delete_if_not_interested_or_visited
-    #     render json: user_activity, status: 200
-    # end
 
     def destroy 
         user_activity = @current_user.user_activities.find(params[:id])

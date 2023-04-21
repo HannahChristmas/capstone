@@ -3,6 +3,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
+    console.log("activity from handleViewClick AA: ", activity)
   }
 
   const handleXClick = () => {
@@ -34,7 +35,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedButtonText}</button><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>Hi. Please fucking figure this out.</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
