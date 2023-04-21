@@ -5,15 +5,9 @@ class UserActivitiesController < ApplicationController
     end
 
     def create
-        # byebug
         user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
 
         if user_activity 
-            # if params.key?(:interested)
-            #     user_activity.update(interested: !user_activity.interested)
-            # elsif params[:visited]
-            #     user_activity.update(visited: !user_activity.visited)
-            # end
             interested = params.key?(:interested) ? !user_activity.interested : true
             visited = params.key?(:visited) ? !user_activity.visited : true
 
