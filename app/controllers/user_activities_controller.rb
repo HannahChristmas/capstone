@@ -19,6 +19,12 @@ class UserActivitiesController < ApplicationController
         render json: user_activity, status: 200
     end
 
+    def update 
+        user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
+        user_activity.update!(user_activity_params)
+        render json: user_activity, status: 202
+    end 
+
     def destroy 
         user_activity = @current_user.user_activities.find(params[:id])
         user_activity.destroy 

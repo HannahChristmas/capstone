@@ -16,8 +16,15 @@ function App() {
     const [user, setUser] = useState(null);
     const [activities, setActivities] = useState([]);
     const [selectedActivity, setSelectedActivity] = useState(null);
-    const [interestedVariable, setInterestedVariable] = useState(null);
-    const [interestedButtonText, setInterestedButtonText] = useState(null);
+    // const [interestedVariable, setInterestedVariable] = useState(null);
+    // const [interestedButtonText, setInterestedButtonText] = useState(null);
+
+    const bigTimeInterest = (selectedActivity?.user_activities[0]?.interested ? selectedActivity.user_activities[0].interested : false)
+    console.log("bigTimeInterest Initial State: ", bigTimeInterest)
+
+    const [userInterested, setUserInterested] = useState(bigTimeInterest)
+
+    console.log("User Interested: ", userInterested)
 
 
 useEffect(() => {
@@ -38,58 +45,145 @@ useEffect(() => {
     .then(activities => setActivities(activities))
 }, [])
 
-    useEffect(() => {
-        if (selectedActivity) {
-        const interested = selectedActivity.user_activities[0]?.interested;
-        setInterestedVariable(interested);
-        setInterestedButtonText(interested ? 'Remove from Interests' : 'Add to Interests');
-    } else {
-        setInterestedVariable(null);
-        setInterestedButtonText(null);
-    }
-}, [selectedActivity]);
-
-
 function interestedClick() {
-    if (selectedActivity) {
-        let isUserInterested = false 
+  if(selectedActivity.user_activities?.length > 0) {
+    setUserInterested(userInterested => !userInterested)
+    console.log("UI after click", userInterested)
+    // first post request 
+    fetch(`/user_activities/${selectedActivity.id}`, { 
+      method: 'PATCH',
+      body: JSON.stringify({
+      user_id: user.id,
+      activity_id: selectedActivity.id,
+      interested: !userInterested, 
+      }),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  // .then(console.log("selectedActivityfromClick", selectedActivity))
+  .then(r => r.json())
+  // .then(setUserInterested(!userInterested))
 
-        selectedActivity?.user_activities.forEach(item => {
-            if (item.user_id == user.id) { 
-                item.interested = !item.interested
-                isUserInterested = item.interested
-                console.log("isUserInterested from intClick: ", isUserInterested)
-            } else {
-                console.log("No. selectedActivity.user_activities doesn't exist")
-            }
-        })
+  .then(data => {
+    selectedActivity.user_activities.push(data)
+    // console.log("PATCH data- a whole ass userActivity: ", data)
+  })
+  const updatedActivities = activities.map((activity) => {
+    if (selectedActivity.id === activity.id) {
+      return selectedActivity
+    } else {
+      return activity
+    }
+  })
+  setActivities(updatedActivities)
+  // console.log("updateAll from PATCH: ", updatedActivities)
 
-    fetch('/user_activities', { // nothing changes here really
-        method: 'POST',
-        body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        interested: isUserInterested, // accept this
-        }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-    }).then(response => {
-        if (response.ok) {
-    setSelectedActivity(selectedActivity)
-    setActivities((prevActivities) => {
-        const newActivities = prevActivities.map((activity) =>
-        activity.id === selectedActivity.id ? selectedActivity : activity
-        );
-        return newActivities;
-        });
-    setInterestedButtonText(isUserInterested ? 'Remove from Interests' : 'Add to Interests');
-        } else {
-        console.log("interested no work not nice")
-    }
-    });
-    }
-    }
+  } else {
+    fetch('/user_activities', { 
+      method: 'POST',
+      body: JSON.stringify({
+      user_id: user.id,
+      activity_id: selectedActivity.id,
+      interested: true, // except this
+      }),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  }).then(setUserInterested(true))
+  // Actually update the selectedActivity itself
+  .then(r => r.json())
+  .then(data => {
+    // console.log("data- a whole ass userActivity: ", data)
+    selectedActivity.user_activities.push(data)
+    console.log("posty post", selectedActivity)
+    const updatedActivities = activities.map((activity) => {
+      if (selectedActivity.id === activity.id) {
+        return selectedActivity
+      } else {
+        return activity
+      }
+    })
+    setActivities(updatedActivities)
+    console.log("POST please kill me and let this work: ", updatedActivities)
+  })
+  // .then(console.log("posty post", selectedActivity))
+  // setAllActivities to include this new bitch
+  // const updatedActivities = activities.map((activity) => {
+  //   if (selectedActivity.id === activity.id) {
+  //     return selectedActivity
+  //   } else {
+  //     return activity
+  //   }
+  // })
+  // setActivities(updatedActivities)
+  // console.log("POST please kill me and let this work: ", updatedActivities)
+  }
+}
+
+console.log("outside of whole ass function: ", userInterested)
+
+
+
+
+// This effect will only run when the selectedActivity changes.
+
+// useEffect(() => {
+//     if (selectedActivity) {
+//       const interested = selectedActivity.user_activities[0]?.interested;
+//         setInterestedVariable(interested);
+//         setInterestedButtonText(interested ? 'Remove from Interests' : 'Add to Interests');
+//     } else {
+//         setInterestedVariable(null);
+//         setInterestedButtonText(null);
+//     }
+// }, [selectedActivity]);
+
+// function interestedClick() {
+//     if (selectedActivity) {
+//       // 
+//         let isUserInterested = false
+        
+//         console.log('selectedActivty from IntClick: ', selectedActivity)
+//         console.log(isUserInterested)
+
+
+//         selectedActivity?.user_activities.forEach(item => {
+//             if (item.user_id === user.id) { 
+//                 item.interested = !item.interested
+//                 isUserInterested = item.interested
+//                 console.log("isUserInterested from intClick: ", isUserInterested)
+//             } else {
+//                 console.log("No. selectedActivity.user_activities doesn't exist")
+//             }
+//         })
+
+    // fetch('/user_activities', { // nothing changes here really
+    //     method: 'POST',
+    //     body: JSON.stringify({
+    //     user_id: user.id,
+    //     activity_id: selectedActivity.id,
+    //     interested: isUserInterested, // except this
+    //     }),
+    //     headers: {
+    //     'Content-Type': 'application/json'
+    //     }
+    // }).then(response => {
+//         if (response.ok) {
+//     setSelectedActivity(selectedActivity)
+//     setActivities((prevActivities) => {
+//         const newActivities = prevActivities.map((activity) =>
+//         activity.id === selectedActivity.id ? selectedActivity : activity
+//         );
+//         return newActivities;
+//         });
+//     setInterestedButtonText(isUserInterested ? 'Remove from Interests' : 'Add to Interests');
+//         } else {
+//         console.log("interested no work not nice")
+//     }
+//     });
+//     }
+//     }
 
     return (
         <>
@@ -102,7 +196,7 @@ function interestedClick() {
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestedButtonText={interestedButtonText} />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} />}></Route>
                     <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>

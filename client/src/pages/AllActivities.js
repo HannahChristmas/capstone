@@ -27,7 +27,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
               <h2>{activity.neighborhood}</h2>
               <h4>${activity.cost}</h4>
               <button onClick={() => handleViewClick(activity)}>Quick View</button>
-            </div>          
+            </div>           
           ))}
         </div>
 

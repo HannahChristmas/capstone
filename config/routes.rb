@@ -9,6 +9,13 @@ Rails.application.routes.draw do
   patch '/me', to: 'users#update'
   post "/login", to: "sessions#create"
   delete '/logout', to: 'sessions#destroy'
+  # patch '/user/activities/:id', to: 'activities#update'
+
+
+
+
+
+
 
   get 'favicon.ico', to: redirect('/assets/favicon.ico')
 
