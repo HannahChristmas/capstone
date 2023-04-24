@@ -13,30 +13,30 @@ import { UserContext } from './UserContext';
 
 function App() {
  
-  const [user, setUser] = useState(null);
-  const [activities, setActivities] = useState([]);
-  const [selectedActivity, setSelectedActivity] = useState(null);
-  const [interestedVariable, setInterestedVariable] = useState(null);
-  const [interestedButtonText, setInterestedButtonText] = useState(null);
+    const [user, setUser] = useState(null);
+    const [activities, setActivities] = useState([]);
+    const [selectedActivity, setSelectedActivity] = useState(null);
+    const [interestedVariable, setInterestedVariable] = useState(null);
+    const [interestedButtonText, setInterestedButtonText] = useState(null);
 
 
-  useEffect(() => {
-    fetch("/me").then((res) => {
-      if (res.ok) {
-        res.json().then((user) => {
-          if (user !== null) {
-            setUser(user)
-          }
-        });
-      }
-    });
-  }, []);
+useEffect(() => {
+    fetch("/me").then((res) => {
+        if (res.ok) {
+            res.json().then((user) => {
+        if (user !== null) {
+            setUser(user)
+        }
+        });
+    }
+    });
+}, []);
 
-  useEffect(() => {
-    fetch("/activities")
-      .then(r => r.json())
-      .then(activities => setActivities(activities))
-  }, [])
+useEffect(() => {
+    fetch("/activities")
+    .then(r => r.json())
+    .then(activities => setActivities(activities))
+}, [])
 
     useEffect(() => {
         if (selectedActivity) {
@@ -80,20 +80,20 @@ function interestedClick() {
             doesn't find something the isUserInterested is hard set to false... we need to make that loop get_or_add user interested
             so that new activities will have the new user_activity
           */
-          setSelectedActivity(selectedActivityCopy)
-          setActivities((prevActivities) => {
-            const newActivities = prevActivities.map((activity) =>
-              activity.id === selectedActivityCopy.id ? selectedActivityCopy : activity
-            );
-            return newActivities;
-          });
-          setInterestedButtonText(isUserInterested ? 'Remove from Interests' : 'Add to Interests');
-        } else {
-          console.log("interested no work not nice")
-        }
-      });
-    }
-  }
+    setSelectedActivity(selectedActivityCopy)
+    setActivities((prevActivities) => {
+        const newActivities = prevActivities.map((activity) =>
+        activity.id === selectedActivityCopy.id ? selectedActivityCopy : activity
+        );
+        return newActivities;
+        });
+    setInterestedButtonText(isUserInterested ? 'Remove from Interests' : 'Add to Interests');
+        } else {
+        console.log("interested no work not nice")
+    }
+    });
+    }
+    }
 
   return (
     <>
