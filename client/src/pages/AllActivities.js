@@ -1,5 +1,5 @@
 
-function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick, interestedButtonText}) {
+function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick, userInterested}) {
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -35,7 +35,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{interestedButtonText}</button><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{userInterested.toString()}</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>

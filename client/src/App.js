@@ -19,12 +19,12 @@ function App() {
     // const [interestedVariable, setInterestedVariable] = useState(null);
     // const [interestedButtonText, setInterestedButtonText] = useState(null);
 
-    const bigTimeInterest = (selectedActivity?.user_activities[0]?.interested ? selectedActivity.user_activities[0].interested : false)
-    console.log("bigTimeInterest Initial State: ", bigTimeInterest)
+    const initialUserInterest = (selectedActivity?.user_activities[0]?.interested ? selectedActivity.user_activities[0].interested : false)
+    console.log("initialUserInterest Initial State: ", initialUserInterest)
 
-    const [userInterested, setUserInterested] = useState(bigTimeInterest)
+    const [userInterested, setUserInterested] = useState(initialUserInterest)
 
-    console.log("User Interested: ", userInterested)
+    console.log("User Interested at top of page: ", userInterested)
 
 
 useEffect(() => {
@@ -67,16 +67,16 @@ function interestedClick() {
 
   .then(data => {
     selectedActivity.user_activities.push(data)
+    const updatedActivities = activities.map((activity) => {
+      if (selectedActivity.id === activity.id) {
+        return selectedActivity
+      } else {
+        return activity
+      }
     // console.log("PATCH data- a whole ass userActivity: ", data)
   })
-  const updatedActivities = activities.map((activity) => {
-    if (selectedActivity.id === activity.id) {
-      return selectedActivity
-    } else {
-      return activity
-    }
-  })
   setActivities(updatedActivities)
+  })
   // console.log("updateAll from PATCH: ", updatedActivities)
 
   } else {
@@ -91,10 +91,8 @@ function interestedClick() {
       'Content-Type': 'application/json'
       }
   }).then(setUserInterested(true))
-  // Actually update the selectedActivity itself
   .then(r => r.json())
   .then(data => {
-    // console.log("data- a whole ass userActivity: ", data)
     selectedActivity.user_activities.push(data)
     console.log("posty post", selectedActivity)
     const updatedActivities = activities.map((activity) => {
@@ -104,6 +102,7 @@ function interestedClick() {
         return activity
       }
     })
+    setUserInterested(true)
     setActivities(updatedActivities)
     console.log("POST please kill me and let this work: ", updatedActivities)
   })
@@ -196,7 +195,7 @@ console.log("outside of whole ass function: ", userInterested)
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} userInterested={userInterested} />}></Route>
                     <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
