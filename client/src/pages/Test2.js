@@ -94,25 +94,25 @@ function interestedClick() {
     }
     }
 
-  return (
-    <>
-      <UserContext.Provider value={{ user, setUser }}>
-        <LoginNav />
-        <main>
-          <Routes>
-            <Route path="/" element={<LoginHomeScreen />}></Route>
-            <Route path="/login" element={<LoginForm />}></Route>
-            <Route path="/logout" element={<LoginHomeScreen />}></Route>
-            <Route path="/create-account" element={<CreateAccount />}></Route>
-            <Route path="/user-profile" element={<UserProfile />}></Route>
-            <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestedButtonText={interestedButtonText} />}></Route>
-            <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
-            <Route path="/visited" element={<Visited />}></Route>
-          </Routes>
-        </main>
-      </UserContext.Provider>
-    </>
-  );
+    return (
+        <>
+        <UserContext.Provider value={{ user, setUser }}>
+            <LoginNav />
+            <main>
+                <Routes>
+                    <Route path="/" element={<LoginHomeScreen />}></Route>
+                    <Route path="/login" element={<LoginForm />}></Route>
+                    <Route path="/logout" element={<LoginHomeScreen />}></Route>
+                    <Route path="/create-account" element={<CreateAccount />}></Route>
+                    <Route path="/user-profile" element={<UserProfile />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestedButtonText={interestedButtonText} />}></Route>
+                    <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
+                    <Route path="/visited" element={<Visited />}></Route>
+                </Routes>
+            </main>
+        </UserContext.Provider>
+        </>
+    );
 }
 
 
