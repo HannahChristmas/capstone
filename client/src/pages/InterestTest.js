@@ -1,31 +1,42 @@
+
+
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
-function Interested({activities, setSelectedActivity}) {
-  const {user} = useContext(UserContext)
+function Interested({activities, userActivities, setUserActivities, interestedClick, selectedActivity, setSelectedActivity}) {
+  const { user } = useContext(UserContext)
+
 
   const handleViewClick = () => {
     console.log("Clicked it")
+    userActivities.map((activity) => {
+      console.log(activity.id)
+    })
+  }
+
+  const handleButtonClick = (activity) => {
+    console.log("activity from Interested.js: ", activity)
   }
 
   if (user) {
     return (
       <>
         <div className="all-activities">
-          <h1>I'm Interested</h1>
+          <h1 onClick={handleViewClick}>I'm Interested</h1>
         </div>
         <div className="interested-activities-container">
-          {activities.map((activity) => {
-            const userActivities = activity.user_activities.filter((userActivity) => {
-              return userActivity.username = user?.username && userActivity.interested === true;
-            });
-            return userActivities.map((userActivity) => (
-              <div key={activity.id} className="individual-activity">
-                <h4>{activity.title}</h4>
-                <h3>{userActivity.interested.toString()}</h3>
-                <button onClick={handleViewClick}>View</button>
+          {userActivities.map((singleActivity) => {
+            return (
+              <div className="individual-activity" key={singleActivity.id}>
+                <h2>{singleActivity.activity.title}</h2>
+                <h3>{singleActivity.activity.neighborhood}</h3>
+                <p>{singleActivity.activity.cost}</p>
+                <p>{singleActivity.activity.address}</p>
+                <button 
+                  onClick={() => handleButtonClick(singleActivity)}
+                >{singleActivity.interested ? "❤️" : "♡"}</button>
               </div>
-            ));
+            )
           })}
         </div>
       </>
@@ -38,3 +49,4 @@ function Interested({activities, setSelectedActivity}) {
 }
 
 export default Interested;
+

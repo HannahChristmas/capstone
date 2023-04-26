@@ -35,7 +35,7 @@ function App() {
       fetch("/activities")
       .then(r => r.json())
       .then(activities => setActivities(activities))
-  }, [setActivities])
+  }, [setActivities, setSelectedActivity])
 
   useEffect(() => {
     fetch("/user_activities")
@@ -107,7 +107,7 @@ function App() {
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
                     <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
-                    <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} userActivities={userActivities} setUserActivities={setUserActivities}/>} ></Route>
+                    <Route path="/interested" element={<Interested userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} userActivities={userActivities} setUserActivities={setUserActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
             </main>
