@@ -16,7 +16,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
   }
 
   const whoIsInterested = () => {
-    
+
   }
 
   return (
@@ -50,7 +50,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           <button>who's interested</button><br/>
           <p>interest:</p>
           {selectedActivity.users.map((userActivity => 
-            <h1>{userActivity.username}</h1>))}
+            <h1 key={userActivity.id}>{userActivity.username}</h1>))}
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
       )}
