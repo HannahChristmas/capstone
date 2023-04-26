@@ -38,7 +38,8 @@ function App() {
   }, [setActivities, setSelectedActivity])
 
   function interestedClick() {
-    if(selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id)) {
+    // If the selectedActivity.user_activities already has a user_id that matches user, toggle the user interest
+    if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
       fetch(`/user_activities/${selectedActivity.id}`, { 
         method: 'PATCH',
         body: JSON.stringify({
@@ -64,6 +65,7 @@ function App() {
       setActivities(updatedActivities)
       })
     } else {
+      // if selectedActivity.user_activities has no user_id that matches user, create it with value of true
       fetch('/user_activities', { 
         method: 'POST',
         body: JSON.stringify({
@@ -89,6 +91,17 @@ function App() {
       })
     }
   }
+
+  function visitedClick() {
+
+    if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
+      console.log("we want a visited patch request")
+    } else {
+      console.log("We want a visited post request")
+    }
+
+    console.log(`${user.username} clicked the ${selectedActivity.title} visited button!` )
+  }
     return (
         <>
         <UserContext.Provider value={{ user, setUser, userInterested }}>
@@ -100,7 +113,7 @@ function App() {
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} visitedClick={visitedClick} />}></Route>
                     <Route path="/interested" element={<Interested userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} userActivities={userActivities} setUserActivities={setUserActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
