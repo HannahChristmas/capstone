@@ -45,10 +45,13 @@ useEffect(() => {
     fetch("/activities")
     .then(r => r.json())
     .then(activities => setActivities(activities))
-}, [])
+}, [setActivities])
 
 function interestedClick() {
-  if(selectedActivity.user_activities?.length > 0) {
+
+
+  if(selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id)) 
+  {
     // setUserInterested(userInterested => !userInterested)
     // console.log("UI after click", userInterested)
     // first post request 
@@ -72,14 +75,15 @@ function interestedClick() {
     console.log("3) NOT? should be false from patch", selectedActivity)
     console.log("2) DATA", data)
     // selectedActivity.user_activities.push(data)
-    const interestData = {
-      id: data.id,
-      interest: data.interested
-    }
+    // const interestData = {
+    //   id: data.id,
+    //   interest: data.interested,
+    //   activity_id: data.activity_id
+    // }
 
-    console.log("interestData", interestData)
+    // console.log("interestData", interestData)
 
-    const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === interestData.id ? interestData : activity)
+    const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? selectedActivity : activity)
     // const updatedReviews = foundMovie.movies_with_reviews.map((review) => review.review_id === individualReview.review_id ? individualReview : review)
     selectedActivity.user_activities = updatedUserActivity
 
