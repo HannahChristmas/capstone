@@ -16,6 +16,8 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
 
+  const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
+
   useEffect(() => {
       fetch("/me").then((res) => {
           if (res.ok) {
@@ -88,7 +90,7 @@ function App() {
   }
     return (
         <>
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, userInterested }}>
             <LoginNav />
             <main>
                 <Routes>
