@@ -4,18 +4,24 @@ class UserActivitiesController < ApplicationController
         render json: user_activities, status: 200
     end
 
-    def create
-        user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
+    # def create
+    #     user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
         
-        if user_activity 
-            user_activity.update!(user_activity_params)
-            user_activity.delete_if_not_interested_or_visited
+    #     if user_activity 
+    #         user_activity.update!(user_activity_params)
+    #         user_activity.delete_if_not_interested_or_visited
 
-        else 
-            user_activity = UserActivity.create(user_activity_params)
-            user_activity.user = @current_user
-        end
+    #     else 
+    #         user_activity = UserActivity.create(user_activity_params)
+    #         user_activity.user = @current_user
+    #     end
 
+    #     render json: user_activity, status: 200
+    # end
+
+    def create
+        user_activity = UserActivity.create!(user_activity_params)
+        user_activity.user = @current_user
         render json: user_activity, status: 200
     end
 

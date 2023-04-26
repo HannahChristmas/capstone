@@ -52,7 +52,7 @@ function interestedClick() {
     // setUserInterested(userInterested => !userInterested)
     // console.log("UI after click", userInterested)
     // first post request 
-    console.log("selectedActivity from IC:", selectedActivity)
+    console.log("1) selectedActivity from IC:", selectedActivity)
     fetch(`/user_activities/${selectedActivity.id}`, { 
       method: 'PATCH',
       body: JSON.stringify({
@@ -69,9 +69,20 @@ function interestedClick() {
   // .then(setUserInterested(!userInterested))
 
   .then(data => {
-    console.log("should be false from patch", selectedActivity)
+    console.log("3) NOT? should be false from patch", selectedActivity)
+    console.log("2) DATA", data)
+    // selectedActivity.user_activities.push(data)
+    const interestData = {
+      id: data.id,
+      interest: data.interested
+    }
 
-    selectedActivity.user_activities.push(data)
+    console.log("interestData", interestData)
+
+    const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === interestData.id ? interestData : activity)
+    // const updatedReviews = foundMovie.movies_with_reviews.map((review) => review.review_id === individualReview.review_id ? individualReview : review)
+    selectedActivity.user_activities = updatedUserActivity
+
     const updatedActivities = activities.map((activity) => {
       if (selectedActivity.id === activity.id) {
         return selectedActivity
@@ -81,7 +92,7 @@ function interestedClick() {
     // console.log("PATCH data- a whole ass userActivity: ", data)
   })
   setActivities(updatedActivities)
-  console.log("updateAll from PATCH: ", updatedActivities)
+  console.log("4) updateAll from PATCH: ", updatedActivities)
 
   })
   // console.log("updateAll from PATCH: ", updatedActivities)
@@ -104,7 +115,7 @@ function interestedClick() {
     // setInterestButton(userInterested.toString())
 
     selectedActivity.user_activities.push(data)
-    console.log("posty post", selectedActivity)
+    console.log("1) posty post", selectedActivity)
     const updatedActivities = activities.map((activity) => {
       if (selectedActivity.id === activity.id) {
         return selectedActivity
@@ -117,7 +128,7 @@ function interestedClick() {
     // setInterestButton("YA WOOOOO!")
     // console.log("UI inside POST", userInterested)
     setActivities(updatedActivities)
-    console.log("POST please kill me and let this work: ", updatedActivities)
+    console.log("2) POST please kill me and let this work: ", updatedActivities)
   })
   // .then(console.log("posty post", selectedActivity))
   // setAllActivities to include this new bitch
