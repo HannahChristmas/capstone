@@ -9,11 +9,13 @@ function Interested({activities, setSelectedActivity, interestedClick}) {
       <>
         <div className="all-activities">
           <h1>I'm Interested</h1>
+          <h2>{user.username}</h2>
         </div>
         <div className="interested-activities-container">
           {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
-              return userActivity.username = user?.username && userActivity.interested === true;
+              // filter only returns what you don't take out
+              return userActivity.user_id === user?.id && userActivity.interested === true;
             });
             return userActivities.map((userActivity) => (
               <div key={activity.id} className="individual-activity">
