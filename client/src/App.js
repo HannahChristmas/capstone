@@ -49,8 +49,8 @@ useEffect(() => {
 
 function interestedClick() {
   if(selectedActivity.user_activities?.length > 0) {
-    // setUserInterested(userInterested => !userInterested)
-    // console.log("UI after click", userInterested)
+    setUserInterested(userInterested => !userInterested)
+    console.log("UI after click", userInterested)
     // first post request 
     fetch(`/user_activities/${selectedActivity.id}`, { 
       method: 'PATCH',
