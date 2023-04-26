@@ -8,10 +8,15 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
+    console.log(activity)
   }
 
   const handleXClick = () => {
     setSelectedActivity(null);
+  }
+
+  const whoIsInterested = () => {
+    
   }
 
   return (
@@ -43,6 +48,9 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
+          <p>interest:</p>
+          {selectedActivity.users.map((userActivity => 
+            <h1>{userActivity.username}</h1>))}
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
       )}
