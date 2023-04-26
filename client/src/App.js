@@ -19,14 +19,14 @@ function App() {
     // const [interestedVariable, setInterestedVariable] = useState(null);
     // const [interestedButtonText, setInterestedButtonText] = useState(null);
 
-    const initialUserInterest = (selectedActivity?.user_activities[0]?.interested ? selectedActivity.user_activities[0].interested : false)
-    console.log("initialUserInterest Initial State: ", initialUserInterest)
+    // const initialUserInterest = (selectedActivity?.user_activities[0]?.interested ? selectedActivity.user_activities[0].interested : false)
+    // console.log("initialUserInterest Initial State: ", initialUserInterest)
 
-    const [userInterested, setUserInterested] = useState(initialUserInterest)
+    // const [userInterested, setUserInterested] = useState(initialUserInterest)
     // const [interestButton, setInterestButton] = useState(initialUserInterest.toString())
 
 
-    console.log("User Interested at top of page: ", userInterested)
+    // console.log("User Interested at top of page: ", userInterested)
 
 
 useEffect(() => {
@@ -49,15 +49,16 @@ useEffect(() => {
 
 function interestedClick() {
   if(selectedActivity.user_activities?.length > 0) {
-    setUserInterested(userInterested => !userInterested)
-    console.log("UI after click", userInterested)
+    // setUserInterested(userInterested => !userInterested)
+    // console.log("UI after click", userInterested)
     // first post request 
+    console.log("selectedActivity from IC:", selectedActivity)
     fetch(`/user_activities/${selectedActivity.id}`, { 
       method: 'PATCH',
       body: JSON.stringify({
       user_id: user.id,
       activity_id: selectedActivity.id,
-      interested: !userInterested, 
+      interested: false, 
       }),
       headers: {
       'Content-Type': 'application/json'
@@ -68,6 +69,8 @@ function interestedClick() {
   // .then(setUserInterested(!userInterested))
 
   .then(data => {
+    console.log("should be false from patch", selectedActivity)
+
     selectedActivity.user_activities.push(data)
     const updatedActivities = activities.map((activity) => {
       if (selectedActivity.id === activity.id) {
@@ -78,6 +81,8 @@ function interestedClick() {
     // console.log("PATCH data- a whole ass userActivity: ", data)
   })
   setActivities(updatedActivities)
+  console.log("updateAll from PATCH: ", updatedActivities)
+
   })
   // console.log("updateAll from PATCH: ", updatedActivities)
 
@@ -128,7 +133,7 @@ function interestedClick() {
   }
 }
 
-console.log("outside of whole ass function: ", userInterested)
+// console.log("outside of whole ass function: ", userInterested)
 
 
 
@@ -203,7 +208,7 @@ console.log("outside of whole ass function: ", userInterested)
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
                     <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
