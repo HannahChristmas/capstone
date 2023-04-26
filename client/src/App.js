@@ -14,6 +14,7 @@ import { UserContext } from './UserContext';
 function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
+  const [userActivities, setUserActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
 
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
@@ -35,6 +36,12 @@ function App() {
       .then(r => r.json())
       .then(activities => setActivities(activities))
   }, [setActivities])
+
+  useEffect(() => {
+    fetch("/user_activities")
+    .then(r => r.json())
+    .then(userActivities => setUserActivities(userActivities))
+}, [setUserActivities])
 
   function interestedClick() {
     if(selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id)) {
@@ -100,7 +107,7 @@ function App() {
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
                     <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
-                    <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
+                    <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} userActivities={userActivities} setUserActivities={setUserActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
             </main>

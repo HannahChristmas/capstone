@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
-function Interested({activities, userActivities, setUserActivities}) {
-  const { user } = useContext(UserContext)
-
+function Interested({activities, setSelectedActivity}) {
+  const {user} = useContext(UserContext)
 
   const handleViewClick = () => {
     console.log("Clicked it")
-    console.log(userActivities)
   }
 
   if (user) {
@@ -17,7 +15,7 @@ function Interested({activities, userActivities, setUserActivities}) {
           <h1>I'm Interested</h1>
         </div>
         <div className="interested-activities-container">
-          {/* {activities.map((activity) => {
+          {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
               return userActivity.username = user?.username && userActivity.interested === true;
             });
@@ -28,7 +26,7 @@ function Interested({activities, userActivities, setUserActivities}) {
                 <button onClick={handleViewClick}>View</button>
               </div>
             ));
-          })} */}
+          })}
         </div>
       </>
     ) ;
