@@ -1,23 +1,24 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 
 function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick }) {
 
   const { userInterested } = useContext(UserContext)
+  const [showInterestedUsers, setShowInterestedUsers] = useState(false);
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
-    console.log(activity)
+    setShowInterestedUsers(false);
   }
 
   const handleXClick = () => {
     setSelectedActivity(null);
   }
 
-  const whoIsInterested = () => {
-
-  }
+  const displayInterestedUsers = () => {
+    setShowInterestedUsers(!showInterestedUsers);
+  };
 
   return (
     <>
@@ -47,9 +48,8 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
           <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
-          <button>who's interested</button><br/>
-          <p>interest:</p>
-          {selectedActivity.users.map((userActivity => 
+          <button onClick={displayInterestedUsers}>who's interested</button><br/>
+          {showInterestedUsers && selectedActivity.users.map((userActivity => 
             <h1 key={userActivity.id}>{userActivity.username}</h1>))}
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
