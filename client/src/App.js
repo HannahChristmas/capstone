@@ -17,7 +17,7 @@ function App() {
   const [userActivities, setUserActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
 
-  const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
+  const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
 
   useEffect(() => {
       fetch("/me").then((res) => {
@@ -39,7 +39,7 @@ function App() {
 
   function interestedClick() {
     // If the selectedActivity.user_activities already has a user_id that matches user, toggle the user interest
-    if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
+    if(selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)) {
       fetch(`/user_activities/${selectedActivity.id}`, { 
         method: 'PATCH',
         body: JSON.stringify({

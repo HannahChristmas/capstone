@@ -23,6 +23,7 @@ function Interested({activities, setSelectedActivity, interestedClick}) {
                 <h3>{activity.neighborhood}</h3>
                 <p>${activity.cost}</p>
                 <button onClick={() => {
+                  //THIS DOESN't WORK
                   setSelectedActivity(activity)
                   interestedClick(activity)
                   }
