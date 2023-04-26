@@ -2,10 +2,9 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
-function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick, userInterested, interestButton}) {
+function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick }) {
 
   const {user} = useContext(UserContext)
-
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -15,22 +14,17 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
   const handleXClick = () => {
     setSelectedActivity(null);
   }
-
-  // We want to ask selectedActivity to look through user_activities and see if a user_activity object has a user_id that matches user.id 
+  // function askSelectedActivity() {
+  //   // double bang operator turns things that are truthy into true and falsey into false (undefined turns into false)
+  //   return !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id);
+  // }
 
   function askSelectedActivity() {
     // double bang operator turns things that are truthy into true and falsey into false (undefined turns into false)
-    return !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id);
+    const userActivitiesExistsAndInterested = !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
+
+    return userActivitiesExistsAndInterested
   }
-
-  // function askSelectedActivity() {
-    // double bang operator turns things that are truthy into true and falsey into false (undefined turns into false)
-    // console.log("the logged in user has info in the user_activities array: ", !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id))
-  //   const userActivitiesExistsAndInterested = !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
-  //   console.log("Exists & interested? ", userActivitiesExistsAndInterested)
-
-  //   return userActivitiesExistsAndInterested
-  // }
 
   return (
     <>
@@ -57,7 +51,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{askSelectedActivity() ? "YA WOO" : "booo false"}</button><br/>
+          <button id="interested-button" onClick={() => interestedClick(selectedActivity)}>{askSelectedActivity() ? "❤️" : "♡"}</button><br/>
           <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button>who's interested</button><br/>
