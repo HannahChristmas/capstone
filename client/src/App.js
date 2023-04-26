@@ -49,8 +49,8 @@ useEffect(() => {
 
 function interestedClick() {
   if(selectedActivity.user_activities?.length > 0) {
-    setUserInterested(userInterested => !userInterested)
-    console.log("UI after click", userInterested)
+    // setUserInterested(userInterested => !userInterested)
+    // console.log("UI after click", userInterested)
     // first post request 
     fetch(`/user_activities/${selectedActivity.id}`, { 
       method: 'PATCH',
@@ -107,11 +107,10 @@ function interestedClick() {
         return activity
       }
     })
-    setUserInterested(true)
+    // setUserInterested(true)
     // don't be fancy just be explicit
     // setInterestButton("YA WOOOOO!")
-    console.log("UI inside POST", userInterested)
-
+    // console.log("UI inside POST", userInterested)
     setActivities(updatedActivities)
     console.log("POST please kill me and let this work: ", updatedActivities)
   })
