@@ -37,12 +37,6 @@ function App() {
       .then(activities => setActivities(activities))
   }, [setActivities, setSelectedActivity])
 
-  useEffect(() => {
-    fetch("/user_activities")
-    .then(r => r.json())
-    .then(userActivities => setUserActivities(userActivities))
-}, [setUserActivities])
-
   function interestedClick() {
     if(selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id)) {
       fetch(`/user_activities/${selectedActivity.id}`, { 

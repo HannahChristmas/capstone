@@ -18,12 +18,13 @@ function Interested({activities, setSelectedActivity, interestedClick}) {
             return userActivities.map((userActivity) => (
               <div key={activity.id} className="individual-activity">
                 <h4>{activity.title}</h4>
-                <h3>{userActivity.interested.toString()}</h3>
+                <h3>{activity.neighborhood}</h3>
+                <p>${activity.cost}</p>
                 <button onClick={() => {
                   setSelectedActivity(activity)
                   interestedClick(activity)
                   }
-                  }>View</button>
+                  }>{userActivity.interested ? "❤️" : "♡"}</button>
               </div>
             ));
           })}
