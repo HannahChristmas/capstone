@@ -23,6 +23,15 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
     return !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id);
   }
 
+  // function askSelectedActivity() {
+    // double bang operator turns things that are truthy into true and falsey into false (undefined turns into false)
+    // console.log("the logged in user has info in the user_activities array: ", !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id))
+  //   const userActivitiesExistsAndInterested = !!selectedActivity.user_activities.find((userActivity) => userActivity.user_id === user.id && userActivity.interested === true);
+  //   console.log("Exists & interested? ", userActivitiesExistsAndInterested)
+
+  //   return userActivitiesExistsAndInterested
+  // }
+
   return (
     <>
       <div className="activities-page-container">

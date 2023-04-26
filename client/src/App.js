@@ -23,7 +23,7 @@ function App() {
     console.log("initialUserInterest Initial State: ", initialUserInterest)
 
     const [userInterested, setUserInterested] = useState(initialUserInterest)
-    const [interestButton, setInterestButton] = useState(initialUserInterest.toString())
+    // const [interestButton, setInterestButton] = useState(initialUserInterest.toString())
 
 
     console.log("User Interested at top of page: ", userInterested)
@@ -204,7 +204,7 @@ console.log("outside of whole ass function: ", userInterested)
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestButton={interestButton} />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick}  />}></Route>
                     <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
