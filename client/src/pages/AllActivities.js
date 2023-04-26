@@ -10,6 +10,7 @@ function AllActivities({activities, selectedActivity, setSelectedActivity, inter
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
     setShowInterestedUsers(false);
+    console.log("selectedActivity from view click: ", activity)
   }
 
   const handleXClick = () => {
