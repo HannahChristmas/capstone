@@ -23,6 +23,8 @@ function App() {
     console.log("initialUserInterest Initial State: ", initialUserInterest)
 
     const [userInterested, setUserInterested] = useState(initialUserInterest)
+    const [interestButton, setInterestButton] = useState(initialUserInterest.toString())
+
 
     console.log("User Interested at top of page: ", userInterested)
 
@@ -90,9 +92,12 @@ function interestedClick() {
       headers: {
       'Content-Type': 'application/json'
       }
-  }).then(setUserInterested(true))
-  .then(r => r.json())
+  }).then(r => r.json())
   .then(data => {
+    // setUserInterested(true)
+    // console.log("UI inside POST", userInterested)
+    // setInterestButton(userInterested.toString())
+
     selectedActivity.user_activities.push(data)
     console.log("posty post", selectedActivity)
     const updatedActivities = activities.map((activity) => {
@@ -103,6 +108,10 @@ function interestedClick() {
       }
     })
     setUserInterested(true)
+    // don't be fancy just be explicit
+    // setInterestButton("YA WOOOOO!")
+    console.log("UI inside POST", userInterested)
+
     setActivities(updatedActivities)
     console.log("POST please kill me and let this work: ", updatedActivities)
   })
@@ -195,7 +204,7 @@ console.log("outside of whole ass function: ", userInterested)
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} userInterested={userInterested} />}></Route>
+                    <Route path="/activities" element={<AllActivities activities={activities} userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} interestButton={interestButton} />}></Route>
                     <Route path="/interested" element={<Interested setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} />} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
