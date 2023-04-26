@@ -2,23 +2,18 @@ import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 function Interested({activities, setSelectedActivity}) {
+  const {user} = useContext(UserContext)
 
   const handleViewClick = () => {
     console.log("Clicked it")
   }
-    const {user} = useContext(UserContext)
 
-    if (!user) {
-      return <p>Profile loading...</p>
-    }
-
-    if (user) {
+  if (user) {
     return (
       <>
         <div className="all-activities">
           <h1>I'm Interested</h1>
         </div>
-
         <div className="interested-activities-container">
           {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
@@ -34,8 +29,11 @@ function Interested({activities, setSelectedActivity}) {
           })}
         </div>
       </>
-      );
-  
+    ) ;
+  } else {
+    return (
+      <h2>Please log in or create account to see the places you've visited.</h2>
+    )
   }
 }
 

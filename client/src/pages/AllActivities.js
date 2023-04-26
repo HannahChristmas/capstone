@@ -4,7 +4,7 @@ import { UserContext } from '../UserContext';
 
 function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick }) {
 
-  const { userInterested} = useContext(UserContext)
+  const { userInterested } = useContext(UserContext)
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
