@@ -6,6 +6,11 @@ class UserActivitiesController < ApplicationController
         render json: user_activities, status: 200
     end
 
+    def show 
+        user_activity = UserActivity.find_by(id: params[:id])
+        render json: user_activity, status: 200
+    end
+
     def create
         user_activity = UserActivity.create!(user_activity_params)
         user_activity.user = @current_user
