@@ -1,8 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 
-function Interested({activities, setSelectedActivity, interestedClick}) {
+function Interested({activities, selectedActivity, setSelectedActivity, interestedClick}) {
+  const [showInterestButton, setShowInterestButton] = useState(false);
+
+  console.log("1) SA from Interested: ", selectedActivity)
+
   const {user} = useContext(UserContext)
+
+  function viewClick(activity) {
+    setSelectedActivity(activity)
+    setShowInterestButton(!showInterestButton)
+    console.log(activity)
+  }
+
 
   if (user) {
     return (
@@ -22,16 +33,17 @@ function Interested({activities, setSelectedActivity, interestedClick}) {
                 <h4>{activity.title}</h4>
                 <h3>{activity.neighborhood}</h3>
                 <p>${activity.cost}</p>
-                <button onClick={() => {
-                  //THIS DOESN't WORK
-                  setSelectedActivity(activity)
-                  interestedClick(activity)
-                  }
-                  }>{userActivity.interested ? "❤️" : "♡"}</button>
+                <button onClick={() => viewClick(activity)}>View</button><br></br>
+                  {selectedActivity?.id === activity.id && showInterestButton? (
+                    <button onClick={() => {interestedClick(activity)}}>
+                      {userActivity.interested ? "❤️" : "♡"}
+                      </button>
+                  ) : console.log("nada")}
               </div>
             ));
           })}
         </div>
+        
       </>
     ) ;
   } else {
@@ -40,5 +52,6 @@ function Interested({activities, setSelectedActivity, interestedClick}) {
     )
   }
 }
+
 
 export default Interested;

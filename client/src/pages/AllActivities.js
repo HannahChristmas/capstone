@@ -2,24 +2,11 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 
-function AllActivities({activities, selectedActivity, setSelectedActivity, interestedClick, visitedClick }) {
+function AllActivities({activities, selectedActivity, showInterestedUsers, setSelectedActivity, displayInterestedUsers, interestedClick, visitedClick, handleXClick, handleViewClick }) {
+
+  console.log("1) SA from AA: ", selectedActivity)
 
   const { userInterested } = useContext(UserContext)
-  const [showInterestedUsers, setShowInterestedUsers] = useState(false);
-
-  const handleViewClick = (activity) => {
-    setSelectedActivity(activity);
-    setShowInterestedUsers(false);
-    console.log("selectedActivity from view click: ", activity)
-  }
-
-  const handleXClick = () => {
-    setSelectedActivity(null);
-  }
-
-  const displayInterestedUsers = () => {
-    setShowInterestedUsers(!showInterestedUsers);
-  };
 
   return (
     <>

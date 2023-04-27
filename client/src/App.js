@@ -1,6 +1,6 @@
 import './index.css';
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import LoginHomeScreen from './pages/LoginHomeScreen.js'
 import LoginNav from './components/LoginNav';
 import LoginForm from './components/LoginForm';
@@ -16,6 +16,12 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [userActivities, setUserActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
+  const [showInterestedUsers, setShowInterestedUsers] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setSelectedActivity(null); // set state to null every time the location changes
+  }, [location]);
 
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
 
@@ -36,6 +42,20 @@ function App() {
       .then(r => r.json())
       .then(activities => setActivities(activities))
   }, [setActivities, setSelectedActivity])
+
+  const handleViewClick = (activity) => {
+    setSelectedActivity(activity);
+    setShowInterestedUsers(false);
+    console.log("selectedActivity from view click: ", activity)
+  }
+
+  const handleXClick = () => {
+    setSelectedActivity(null);
+  }
+
+  const displayInterestedUsers = () => {
+    setShowInterestedUsers(!showInterestedUsers);
+  };
 
   function interestedClick() {
     // If the selectedActivity.user_activities already has a user_id that matches user, toggle the user interest
@@ -113,8 +133,29 @@ function App() {
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities activities={activities} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} visitedClick={visitedClick} />}></Route>
-                    <Route path="/interested" element={<Interested userInterested={userInterested} selectedActivity={selectedActivity} setSelectedActivity={setSelectedActivity} interestedClick={interestedClick} activities={activities} userActivities={userActivities} setUserActivities={setUserActivities}/>} ></Route>
+                    <Route path="/activities" element={<AllActivities 
+                      activities={activities} 
+                      selectedActivity={selectedActivity} 
+                      setSelectedActivity={setSelectedActivity}
+                      handleViewClick={handleViewClick} 
+                      handleXClick={handleXClick}
+                      interestedClick={interestedClick}
+                      showInterestedUsers={showInterestedUsers}
+                      displayInterestedUsers={displayInterestedUsers} 
+                      visitedClick={visitedClick} />}></Route>
+                    <Route path="/interested" element={<Interested 
+                      userInterested={userInterested} 
+                      selectedActivity={selectedActivity} 
+                      handleViewClick={handleViewClick}
+                      handleXClick={handleXClick}
+                      displayInterestedUsers={displayInterestedUsers} 
+                      showInterestedUsers={showInterestedUsers}
+                      setSelectedActivity={setSelectedActivity} 
+                      interestedClick={interestedClick} 
+                      activities={activities} 
+                      userActivities={userActivities}
+                      selectedActivity={selectedActivity}
+                      setUserActivities={setUserActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
             </main>
