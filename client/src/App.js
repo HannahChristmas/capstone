@@ -58,7 +58,7 @@ function App() {
   };
 
   function interestedClick() {
-    // If the selectedActivity.user_activities already has a user_id that matches user, toggle the user interest
+    // If the selectedActivity.user_activities already has a user_id that matches user, && userActivity.user toggle the user interest
     if(selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)) {
       fetch(`/user_activities/${selectedActivity.id}`, { 
         method: 'PATCH',
@@ -82,10 +82,12 @@ function App() {
             return activity
           }
         })
+        console.log("SA from PATCH: ", selectedActivity)
       setActivities(updatedActivities)
       })
-    } else {
-      // if selectedActivity.user_activities has no user_id that matches user, create it with value of true
+    // } else if (selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id && selectedActivity.interested === true)) {
+      // selectedActivity.user_activities has no user_id that matches user, create it with value of true
+      } else {
       fetch('/user_activities', { 
         method: 'POST',
         body: JSON.stringify({
@@ -144,7 +146,6 @@ function App() {
                       displayInterestedUsers={displayInterestedUsers} 
                       visitedClick={visitedClick} />}></Route>
                     <Route path="/interested" element={<Interested 
-                      // userInterested={userInterested} 
                       selectedActivity={selectedActivity} 
                       handleViewClick={handleViewClick}
                       handleXClick={handleXClick}
