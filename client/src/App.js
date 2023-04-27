@@ -9,7 +9,7 @@ import AllActivities from './pages/AllActivities.js'
 import Interested from './pages/Interested.js'
 import Visited from './pages/Visited.js'
 import UserProfile from './pages/UserProfile';
-import { UserContext } from './UserContext';
+import { UserContext } from './UserContext'; 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -144,7 +144,7 @@ function App() {
                       displayInterestedUsers={displayInterestedUsers} 
                       visitedClick={visitedClick} />}></Route>
                     <Route path="/interested" element={<Interested 
-                      userInterested={userInterested} 
+                      // userInterested={userInterested} 
                       selectedActivity={selectedActivity} 
                       handleViewClick={handleViewClick}
                       handleXClick={handleXClick}
@@ -154,7 +154,6 @@ function App() {
                       interestedClick={interestedClick} 
                       activities={activities} 
                       userActivities={userActivities}
-                      selectedActivity={selectedActivity}
                       setUserActivities={setUserActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited />}></Route>
                 </Routes>
