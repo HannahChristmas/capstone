@@ -19,11 +19,19 @@ function LoginNav() {
 
     useEffect(() => {
         document.addEventListener('mousedown', (event) => {
-            if (!menuRef.current.contains(event.target)) {
+            if (menuRef.current && menuRef.current.contains(event.target)) {
                 setIsMenuOpen(false);
             }
         });
-    });
+    }, [menuRef]);
+
+    // useEffect(() => {
+    //     document.addEventListener('mousedown', (event) => {
+    //         if (!menuRef.current.contains(event.target)) {
+    //             setIsMenuOpen(false);
+    //         }
+    //     });
+    // });
 
     function handleLogoutClick() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
