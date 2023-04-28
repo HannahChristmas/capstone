@@ -203,7 +203,17 @@ function App() {
                       activities={activities} 
                       userActivities={userActivities}
                       setUserActivities={setUserActivities}/>} ></Route>
-                    <Route path="/visited" element={<Visited />}></Route>
+                    <Route path="/visited" element={<Visited 
+                      selectedActivity={selectedActivity} 
+                      handleViewClick={handleViewClick}
+                      handleXClick={handleXClick}
+                      displayInterestedUsers={displayInterestedUsers} 
+                      showInterestedUsers={showInterestedUsers}
+                      setSelectedActivity={setSelectedActivity} 
+                      interestedClick={interestedClick} 
+                      activities={activities} 
+                      userActivities={userActivities}
+                      setUserActivities={setUserActivities}/>}></Route>
                 </Routes>
             </main>
         </UserContext.Provider>

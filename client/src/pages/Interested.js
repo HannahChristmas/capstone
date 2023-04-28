@@ -10,7 +10,7 @@ function Interested({activities, selectedActivity, setSelectedActivity, interest
 
   function viewClick(activity) {
     setSelectedActivity(activity)
-    setShowInterestButton(!showInterestButton)
+    setShowInterestButton(true)
     console.log(activity)
   }
 
