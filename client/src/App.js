@@ -58,16 +58,12 @@ function App() {
   };
 
   function interestedClick() {
-    // If the selectedActivity.user_activities already has a user_id that matches user, && userActivity.user toggle the user interest
     const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
     if(userActivity) {
       fetch(`/user_activities/${userActivity.id}`, { 
         method: 'PATCH',
         body: JSON.stringify({
-        // user_id: user.id,
-        // activity_id: selectedActivity.id,
         interested: !userActivity.interested
-        // interested: selectedActivity?.interested !== undefined ? !selectedActivity.interested : false,
       }),
         headers: {
         'Content-Type': 'application/json'
@@ -75,29 +71,17 @@ function App() {
       })
       .then(r => r.json())
       .then(data => {
-        console.log("data", data)
-
-        console.log("first", userActivity.interested)
-        // console.log("userActivity", userActivity)
-
         const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
         selectedActivity.user_activities = updatedUserActivity
-
         const updatedActivities = activities.map((activity) => {
           if (selectedActivity.id === activity.id) {
             return selectedActivity
           } else {
             return activity
           }
-          
         })
-
-        console.log("SA from PATCH: ", selectedActivity)
       setActivities(updatedActivities)
-      console.log(selectedActivity.interested)
       })
-    // } else if (selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id && selectedActivity.interested === true)) {
-      // selectedActivity.user_activities has no user_id that matches user, create it with value of true
       } else {
       fetch('/user_activities', { 
         method: 'POST',
