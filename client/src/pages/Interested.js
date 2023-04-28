@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
+import { ActivitiesContext } from '../ActivitiesContext';
 
-function Interested({activities, selectedActivity, setSelectedActivity, interestedClick}) {
+
+function Interested() {
   const {user} = useContext(UserContext)
+  const { activities, selectedActivity, setSelectedActivity, interestedClick } = useContext(ActivitiesContext)
+
   const [showInterestButton, setShowInterestButton] = useState(false);
 
   function viewClick(activity) {

@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
+import { ActivitiesContext } from '../ActivitiesContext';
 
-function Visited({activities, selectedActivity, setSelectedActivity, interestedClick}) {
+
+function Visited() {
   const [showVisitButton, setVisitButton] = useState(false);
 
   const {user} = useContext(UserContext)
+  const { activities, selectedActivity, setSelectedActivity, visitedClick } = useContext(ActivitiesContext)
+
 
   function viewClick(activity) {
     setSelectedActivity(activity)
@@ -31,7 +35,7 @@ function Visited({activities, selectedActivity, setSelectedActivity, interestedC
                 <p>${activity.cost}</p>
                 <button onClick={() => viewClick(activity)}>View</button><br></br>
                   {selectedActivity?.id === activity.id && showVisitButton? (
-                    <button onClick={() => {interestedClick(activity)}}>
+                    <button onClick={() => {visitedClick(activity)}}>
                       {userActivity.visited ? "I've been!" : "JK I haven't been"}
                       </button>
                   ) : null}

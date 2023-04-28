@@ -1,9 +1,12 @@
 
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
+import { ActivitiesContext } from '../ActivitiesContext';
 
-function AllActivities({activities, selectedActivity, showInterestedUsers, setSelectedActivity, displayInterestedUsers, interestedClick, visitedClick, handleXClick, handleViewClick }) {
+
+function AllActivities({  showInterestedUsers   }) {
   const { userInterested, userVisited } = useContext(UserContext)
+  const { activities, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
 
   return (
     <>

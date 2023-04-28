@@ -10,11 +10,12 @@ import Interested from './pages/Interested.js'
 import Visited from './pages/Visited.js'
 import UserProfile from './pages/UserProfile';
 import { UserContext } from './UserContext'; 
+import { ActivitiesContext } from './ActivitiesContext'; 
+
 
 function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
-  const [userActivities, setUserActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [showInterestedUsers, setShowInterestedUsers] = useState(false);
   const location = useLocation();
@@ -163,6 +164,16 @@ function App() {
     return (
         <>
         <UserContext.Provider value={{ user, setUser, userInterested, userVisited }}>
+        <ActivitiesContext.Provider value={{
+          activities,
+          selectedActivity,
+          setSelectedActivity,
+          handleViewClick,
+          handleXClick,
+          interestedClick,
+          visitedClick,
+          displayInterestedUsers,
+         }}>
             <LoginNav />
             <main>
                 <Routes>
@@ -171,40 +182,13 @@ function App() {
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities 
-                      activities={activities} 
-                      selectedActivity={selectedActivity} 
-                      setSelectedActivity={setSelectedActivity}
-                      handleViewClick={handleViewClick} 
-                      handleXClick={handleXClick}
-                      interestedClick={interestedClick}
-                      showInterestedUsers={showInterestedUsers}
-                      displayInterestedUsers={displayInterestedUsers} 
-                      visitedClick={visitedClick} />}></Route>
-                    <Route path="/interested" element={<Interested 
-                      selectedActivity={selectedActivity} 
-                      handleViewClick={handleViewClick}
-                      handleXClick={handleXClick}
-                      displayInterestedUsers={displayInterestedUsers} 
-                      showInterestedUsers={showInterestedUsers}
-                      setSelectedActivity={setSelectedActivity} 
-                      interestedClick={interestedClick} 
-                      activities={activities} 
-                      userActivities={userActivities}
-                      setUserActivities={setUserActivities}/>} ></Route>
-                    <Route path="/visited" element={<Visited 
-                      selectedActivity={selectedActivity} 
-                      handleViewClick={handleViewClick}
-                      handleXClick={handleXClick}
-                      displayInterestedUsers={displayInterestedUsers} 
-                      showInterestedUsers={showInterestedUsers}
-                      setSelectedActivity={setSelectedActivity} 
-                      interestedClick={interestedClick} 
-                      activities={activities} 
-                      userActivities={userActivities}
-                      setUserActivities={setUserActivities}/>}></Route>
+                    <Route path="/activities" element={<AllActivities
+                      showInterestedUsers={showInterestedUsers}/>}></Route>
+                    <Route path="/interested" element={<Interested/>} ></Route>
+                    <Route path="/visited" element={<Visited/>}></Route>
                 </Routes>
             </main>
+          </ActivitiesContext.Provider>
         </UserContext.Provider>
         </>
     );
