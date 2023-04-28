@@ -47,7 +47,6 @@ function App() {
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
     setShowInterestedUsers(false);
-    console.log("selectedActivity from view click: ", activity)
   }
 
   const handleXClick = () => {
@@ -109,16 +108,6 @@ function App() {
       })
     }
   }
-
-  // function visitedClick() {
-
-  //   if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
-  //     console.log("we want a visited patch request")
-  //   } else {
-  //     console.log("We want a visited post request")
-  //   }
-  //   console.log(`${user.username} clicked the ${selectedActivity.title} visited button!` )
-  // }
 
   function visitedClick() {
     const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)

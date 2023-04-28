@@ -1,11 +1,8 @@
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 function AllActivities({activities, selectedActivity, showInterestedUsers, setSelectedActivity, displayInterestedUsers, interestedClick, visitedClick, handleXClick, handleViewClick }) {
-
-  console.log("1) SA from AA: ", selectedActivity)
-
   const { userInterested, userVisited } = useContext(UserContext)
 
   return (

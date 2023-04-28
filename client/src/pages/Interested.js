@@ -2,18 +2,13 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 
 function Interested({activities, selectedActivity, setSelectedActivity, interestedClick}) {
-  const [showInterestButton, setShowInterestButton] = useState(false);
-
-  console.log("1) SA from Interested: ", selectedActivity)
-
   const {user} = useContext(UserContext)
+  const [showInterestButton, setShowInterestButton] = useState(false);
 
   function viewClick(activity) {
     setSelectedActivity(activity)
     setShowInterestButton(true)
-    console.log(activity)
   }
-
 
   if (user) {
     return (
@@ -38,7 +33,7 @@ function Interested({activities, selectedActivity, setSelectedActivity, interest
                     <button onClick={() => {interestedClick(activity)}}>
                       {userActivity.interested ? "❤️" : "♡"}
                       </button>
-                  ) : console.log("nada")}
+                  ) : null}
               </div>
             ));
           })}

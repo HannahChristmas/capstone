@@ -9,9 +9,7 @@ function Visited({activities, selectedActivity, setSelectedActivity, interestedC
   function viewClick(activity) {
     setSelectedActivity(activity)
     setVisitButton(true)
-    console.log(activity)
   }
-
 
   if (user) {
     return (
@@ -36,7 +34,7 @@ function Visited({activities, selectedActivity, setSelectedActivity, interestedC
                     <button onClick={() => {interestedClick(activity)}}>
                       {userActivity.visited ? "I've been!" : "JK I haven't been"}
                       </button>
-                  ) : console.log("nada")}
+                  ) : null}
               </div>
             ));
           })}
