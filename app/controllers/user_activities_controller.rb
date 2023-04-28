@@ -1,5 +1,5 @@
 class UserActivitiesController < ApplicationController
-    skip_before_action :authorize, only: [:destroy] 
+    skip_before_action :authorize, only: [:destroy, :update] 
 
     def index 
         user_activities = @current_user.user_activities
@@ -18,7 +18,7 @@ class UserActivitiesController < ApplicationController
     end
 
     def update 
-        user_activity = UserActivity.find_by(user_id: @current_user.id, activity_id: params[:activity_id]) 
+        user_activity = UserActivity.find_by(id: params[:id]) 
         user_activity.update!(user_activity_params)
         user_activity.delete_if_not_interested_or_visited
 
