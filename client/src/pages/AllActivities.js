@@ -6,7 +6,7 @@ function AllActivities({activities, selectedActivity, showInterestedUsers, setSe
 
   console.log("1) SA from AA: ", selectedActivity)
 
-  const { userInterested } = useContext(UserContext)
+  const { userInterested, userVisited } = useContext(UserContext)
 
   return (
     <>
@@ -34,7 +34,7 @@ function AllActivities({activities, selectedActivity, showInterestedUsers, setSe
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
           <button onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
-          <button onClick={() => visitedClick(selectedActivity)}>Visited</button><br/><br/><br/>
+          <button onClick={() => visitedClick(selectedActivity)}>{userVisited ? "YAYA" : "Nono"}</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button onClick={displayInterestedUsers}>who's interested</button><br/>
           {showInterestedUsers && selectedActivity.users.map((userActivity => 

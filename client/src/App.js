@@ -24,6 +24,7 @@ function App() {
   }, [location]);
 
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
+  const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
   useEffect(() => {
       fetch("/me").then((res) => {
@@ -109,19 +110,70 @@ function App() {
     }
   }
 
+  // function visitedClick() {
+
+  //   if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
+  //     console.log("we want a visited patch request")
+  //   } else {
+  //     console.log("We want a visited post request")
+  //   }
+  //   console.log(`${user.username} clicked the ${selectedActivity.title} visited button!` )
+  // }
+
   function visitedClick() {
-
-    if(selectedActivity.user_activities.find((userActivity) => userActivity?.user_id === user.id)) {
-      console.log("we want a visited patch request")
-    } else {
-      console.log("We want a visited post request")
+    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+    if(userActivity) {
+      fetch(`/user_activities/${userActivity.id}`, { 
+        method: 'PATCH',
+        body: JSON.stringify({
+        visited: !userActivity.visited
+      }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+        selectedActivity.user_activities = updatedUserActivity
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
+      } else {
+      fetch('/user_activities', { 
+        method: 'POST',
+        body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        visited: true,
+        }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        selectedActivity.user_activities.push(data)
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
     }
-
-    console.log(`${user.username} clicked the ${selectedActivity.title} visited button!` )
   }
     return (
         <>
-        <UserContext.Provider value={{ user, setUser, userInterested }}>
+        <UserContext.Provider value={{ user, setUser, userInterested, userVisited }}>
             <LoginNav />
             <main>
                 <Routes>
