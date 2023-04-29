@@ -1,17 +1,16 @@
 import './index.css';
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import LoginHomeScreen from './pages/LoginHomeScreen.js'
+import LoginHomeScreen from './pages/LoginHomeScreen.js';
 import LoginNav from './components/LoginNav';
 import LoginForm from './components/LoginForm';
-import CreateAccount from './pages/CreateAccount.js'
-import AllActivities from './pages/AllActivities.js'
-import Interested from './pages/Interested.js'
-import Visited from './pages/Visited.js'
+import CreateAccount from './pages/CreateAccount.js';
+import AllActivities from './pages/AllActivities.js';
+import Interested from './pages/Interested.js';
+import Visited from './pages/Visited.js';
 import UserProfile from './pages/UserProfile';
 import { UserContext } from './UserContext'; 
 import { ActivitiesContext } from './ActivitiesContext'; 
-
 
 function App() {
   const [user, setUser] = useState(null);
