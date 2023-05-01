@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
+import SortBar from '../components/SortBar';
+import SearchBar from '../components/SearchBar';
 
 
 function Interested() {
@@ -17,11 +19,10 @@ function Interested() {
   if (user) {
     return (
       <>
-        <div className="all-activities">
-          <h1>I'm Interested</h1>
-          <h2>{user.username}</h2>
-        </div>
-        <div className="interested-activities-container">
+        <SortBar></SortBar>
+        <div className="activities-page-container">
+          <SearchBar></SearchBar>
+        <div className="activities-list-container">
           {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
               // filter only returns what you don't take out
@@ -42,7 +43,7 @@ function Interested() {
             ));
           })}
         </div>
-        
+        </div>
       </>
     ) ;
   } else {

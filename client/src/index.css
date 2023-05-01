@@ -91,7 +91,7 @@ nav li:hover {
 
 .activities-page-container {
   display: flex;
-  /* border: 2px solid brown; */
+  border: 2px solid brown;
   /* margin-top: 10px; */
   align-items: stretch;
   margin-bottom: 20px;
@@ -112,6 +112,10 @@ nav li:hover {
   min-width: 10rem;
   margin-left: 20px;
 
+}
+
+.sort-bar {
+  border: 3px solid grey;
 }
 
 .individual-activity {

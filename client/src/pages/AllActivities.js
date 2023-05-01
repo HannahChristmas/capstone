@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SearchBar from '../components/SearchBar';
-
+import SortBar from '../components/SortBar';
 
 function AllActivities({  showInterestedUsers   }) {
   const { userInterested, userVisited } = useContext(UserContext)
@@ -11,15 +11,9 @@ function AllActivities({  showInterestedUsers   }) {
 
   return (
     <>
-    <SearchBar activities={activities} setActivities={setActivities}></SearchBar>
+      <SortBar></SortBar>
       <div className="activities-page-container">
-        <div className="activity-search-container">
-          <p>search by keyword...</p>
-          <p>location ↓</p>
-          <p>category ↓</p>
-          <p>add an activity</p>
-        </div>
-
+      <SearchBar></SearchBar>
         <div className="activities-list-container">
           {activities.map((activity) => (
             <div key={activity.id} className="individual-activity">

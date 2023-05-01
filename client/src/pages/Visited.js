@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
-
+import SortBar from '../components/SortBar';
+import SearchBar from '../components/SearchBar';
 
 function Visited() {
   const [showVisitButton, setVisitButton] = useState(false);
@@ -18,10 +19,9 @@ function Visited() {
   if (user) {
     return (
       <>
-        <div className="all-activities">
-          <h1>I've Been Here</h1>
-          <h2>{user.username}</h2>
-        </div>
+        <SortBar></SortBar>
+        <div className="activities-page-container">
+        <SearchBar></SearchBar>
         <div className="interested-activities-container">
           {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
@@ -43,7 +43,7 @@ function Visited() {
             ));
           })}
         </div>
-        
+        </div>
       </>
     ) ;
   } else {
