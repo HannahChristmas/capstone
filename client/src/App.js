@@ -41,8 +41,31 @@ function App() {
   useEffect(() => {
       fetch("/activities")
       .then(r => r.json())
-      .then(activities => setActivities(activities))
+      .then(activities => {
+        const sortedActivities = activities.sort((a, b) => a.title.localeCompare(b.title))
+        setActivities(sortedActivities)
+      })
   }, [setActivities, setSelectedActivity])
+
+  const sortByName = () => {
+    const sortedActivities = [...activities].sort((a, b) => {
+      const nameA = a.title.toUpperCase(); 
+      const nameB = b.title.toUpperCase(); 
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    setActivities(sortedActivities);
+  }
+
+  const sortByCost = () => {
+    setActivities([...activities].sort((a, b) => a.cost - b.cost));
+  };
+
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
@@ -172,6 +195,8 @@ function App() {
           interestedClick,
           visitedClick,
           displayInterestedUsers,
+          sortByName,
+          sortByCost,
          }}>
             <LoginNav />
             <main>

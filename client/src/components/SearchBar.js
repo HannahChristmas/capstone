@@ -4,7 +4,7 @@ function SearchBar({}) {
     return (
     <>
     <div className="activity-search-container">
-        <h1>This is the search bar component</h1>
+        <h4>This is the search bar component</h4>
             <p>search by keyword...</p>
             <p>location ↓</p>
             <p>category ↓</p>
