@@ -9,7 +9,7 @@ function SortBar({}) {
     <>
     <div className="sort-bar">
         <p>This is the sort bar component</p>
-        <button onClick={sortByName}>Sorty By Name</button>
+        <button onClick={sortByName}>Sort Alphabetically</button>
         <button onClick={sortByCost}>Sort By Cost</button>
     </div>
     </>

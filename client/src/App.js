@@ -66,7 +66,6 @@ function App() {
     setActivities([...activities].sort((a, b) => a.cost - b.cost));
   };
 
-
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
     setShowInterestedUsers(false);
