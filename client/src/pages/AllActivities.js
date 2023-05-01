@@ -2,14 +2,16 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
+import SearchBar from '../components/SearchBar';
 
 
 function AllActivities({  showInterestedUsers   }) {
   const { userInterested, userVisited } = useContext(UserContext)
-  const { activities, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+  const { activities, setActivities, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
 
   return (
     <>
+    <SearchBar activities={activities} setActivities={setActivities}></SearchBar>
       <div className="activities-page-container">
         <div className="activity-search-container">
           <p>search by keyword...</p>
