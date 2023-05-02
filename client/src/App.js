@@ -79,6 +79,16 @@ function App() {
   const handleViewClick = (activity) => {
     setSelectedActivity(activity);
     setShowInterestedUsers(false);
+    console.log("activity:", activity)
+    console.log("selectedActivity inside", selectedActivity)
+  }
+  console.log("selectedActivity outside", selectedActivity)
+
+// If the selectedActivity inside equals null, set 
+
+  const funnyBoy = (activity) => {
+    (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+    setShowInterestedUsers(false);
   }
 
   const handleXClick = () => {
@@ -207,6 +217,7 @@ function App() {
           sortByName,
           sortByCost,
           showInterestedUsers,
+          funnyBoy,
          }}>
             <LoginNav />
             <main>
