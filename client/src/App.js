@@ -26,6 +26,15 @@ function App() {
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
+  const userInterestedActivities = activities.filter(activity => {
+    const matchingUserActivity = activity.user_activities.find(userActivity => {
+      return userActivity.user_id === user.id && userActivity.interested === true;
+    });
+    return matchingUserActivity !== undefined;
+  });
+  
+
+
   useEffect(() => {
       fetch("/me").then((res) => {
           if (res.ok) {
@@ -45,7 +54,8 @@ function App() {
         const sortedActivities = activities.sort((a, b) => a.title.localeCompare(b.title))
         setActivities(sortedActivities)
       })
-  }, [setActivities, setSelectedActivity])
+  }, [setActivities])
+// DO I NEED SETSELECTEDACTIVITY IN THE DEPENDENCY ARRAY?!?!?
 
   const sortByName = () => {
     const sortedActivities = [...activities].sort((a, b) => {
@@ -207,7 +217,7 @@ function App() {
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
                     <Route path="/activities" element={<AllActivities/>}></Route>
-                    <Route path="/interested" element={<Interested/>} ></Route>
+                    <Route path="/interested" element={<Interested userInterestedActivities={userInterestedActivities}/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
                 </Routes>
             </main>

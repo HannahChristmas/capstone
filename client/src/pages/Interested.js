@@ -3,9 +3,10 @@ import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SortBar from '../components/SortBar';
 import SearchBar from '../components/SearchBar';
+import ActivityCard from './ActivityCard';
 
 
-function Interested() {
+function Interested( {userInterestedActivities} ) {
   const {user} = useContext(UserContext)
   const { activities, selectedActivity, setSelectedActivity, interestedClick } = useContext(ActivitiesContext)
 
@@ -16,6 +17,7 @@ function Interested() {
     setShowInterestButton(true)
   }
 
+
   if (user) {
     return (
       <>
@@ -23,7 +25,10 @@ function Interested() {
         <div className="activities-page-container">
           <SearchBar></SearchBar>
         <div className="activities-list-container">
-          {activities.map((activity) => {
+        {userInterestedActivities.map((activity) => (
+            <ActivityCard key={activity.id} activity={activity}></ActivityCard>
+          ))}
+          {/* {activities.map((activity) => {
             const userActivities = activity.user_activities.filter((userActivity) => {
               // filter only returns what you don't take out
               return userActivity.user_id === user?.id && userActivity.interested === true;
@@ -41,7 +46,7 @@ function Interested() {
                   ) : null}
               </div>
             ));
-          })}
+          })} */}
         </div>
         </div>
       </>

@@ -24,7 +24,10 @@ function AllActivities({  showInterestedUsers   }) {
               <button onClick={() => handleViewClick(activity)}>Quick View</button>
             </div>           
           ))} */}
-          <ActivityCard></ActivityCard>
+          {activities.map((activity) => (
+            <ActivityCard key={activity.id} activity={activity}></ActivityCard>
+          ))}
+          {/* <ActivityCard></ActivityCard> */}
         </div>
 
       {/* {selectedActivity && (
