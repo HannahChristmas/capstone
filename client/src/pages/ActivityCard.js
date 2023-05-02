@@ -3,10 +3,13 @@ import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 
 function ActivityCard({activity}) {
-  const { user, userInterested, userVisited } = useContext(UserContext)
+  const { user } = useContext(UserContext)
   const { activities, setActivities, selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
 
   const [showInterestedUsers, setShowInterestedUsers] = useState(false);
+
+  const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
+  const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
 
   const handleViewClick = (activity) => {

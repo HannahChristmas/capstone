@@ -22,10 +22,6 @@ function App() {
     setSelectedActivity(null); // set state to null every time the location changes
   }, [location]);
 
-  const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
-  const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
-
-
   useEffect(() => {
       fetch("/me").then((res) => {
           if (res.ok) {
@@ -68,7 +64,7 @@ function App() {
   };
     return (
         <>
-        <UserContext.Provider value={{ user, setUser, userInterested, userVisited }}>
+        <UserContext.Provider value={{ user, setUser }}>
         <ActivitiesContext.Provider value={{
           activities,
           setActivities,
