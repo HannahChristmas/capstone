@@ -27,7 +27,7 @@ function AllActivities({  showInterestedUsers   }) {
           <ActivityCard></ActivityCard>
         </div>
 
-      {selectedActivity && (
+      {/* {selectedActivity && (
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
@@ -39,7 +39,7 @@ function AllActivities({  showInterestedUsers   }) {
             <h1 key={userActivity.id}>{userActivity.username}</h1>))}
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
-      )}
+      )} */}
       </div>
    </>
   );

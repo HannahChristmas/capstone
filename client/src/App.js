@@ -196,6 +196,7 @@ function App() {
           displayInterestedUsers,
           sortByName,
           sortByCost,
+          showInterestedUsers,
          }}>
             <LoginNav />
             <main>
@@ -205,8 +206,7 @@ function App() {
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities
-                      showInterestedUsers={showInterestedUsers}/>}></Route>
+                    <Route path="/activities" element={<AllActivities/>}></Route>
                     <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
                 </Routes>
