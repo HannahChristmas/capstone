@@ -46,7 +46,7 @@ function ActivityCard({activity}) {
             </div>           
           ))} */}
 
-        {selectedActivity && (
+        {selectedActivity?.id === activity?.id && (
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>

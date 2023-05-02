@@ -32,8 +32,6 @@ function App() {
     });
     return matchingUserActivity !== undefined;
   });
-  
-
 
   useEffect(() => {
       fetch("/me").then((res) => {
