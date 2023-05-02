@@ -130,6 +130,8 @@ nav li:hover {
 
 .popup-card {
   width: 500px;
+  border: solid rgb(20, 191, 126) 2px;
+
 }
 
 /* LOGIN PAGE */
