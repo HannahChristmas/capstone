@@ -76,17 +76,17 @@ function App() {
     setActivities([...activities].sort((a, b) => a.cost - b.cost));
   };
 
-  const handleViewClick = (activity) => {
-    setSelectedActivity(activity);
-    setShowInterestedUsers(false);
-    console.log("activity:", activity)
-    console.log("selectedActivity inside", selectedActivity)
-  }
-  console.log("selectedActivity outside", selectedActivity)
+  // const handleViewClick = (activity) => {
+  //   setSelectedActivity(activity);
+  //   setShowInterestedUsers(false);
+  //   console.log("activity:", activity)
+  //   console.log("selectedActivity inside", selectedActivity)
+  // }
+  // console.log("selectedActivity outside", selectedActivity)
 
 // If the selectedActivity inside equals null, set 
 
-  const funnyBoy = (activity) => {
+  const handleViewClick = (activity) => {
     (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
     setShowInterestedUsers(false);
   }
@@ -217,7 +217,6 @@ function App() {
           sortByName,
           sortByCost,
           showInterestedUsers,
-          funnyBoy,
          }}>
             <LoginNav />
             <main>

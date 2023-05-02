@@ -5,7 +5,7 @@ import PopupCard from './PopupCard';
 
 function ActivityCard({activity}) {
   const { userInterested, userVisited } = useContext(UserContext)
-  const { showInterestedUsers, selectedActivity, funnyBoy, setSelectedActivity, setShowInterestedUsers, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+  const { showInterestedUsers, selectedActivity, setSelectedActivity, setShowInterestedUsers, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
   // const [toggle, setToggle] = useState({});
 
   // function toggleFunction(activity) {
@@ -27,7 +27,7 @@ function ActivityCard({activity}) {
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood}</h2>
           <h4>${activity.cost}</h4>
-          <button onClick={() => funnyBoy(activity)}>Quick View</button>
+          <button onClick={() => handleViewClick(activity)}>Quick View</button>
         </div>  
 {/* 
         <div key={activity.id} className="individual-activity">
