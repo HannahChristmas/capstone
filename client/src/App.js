@@ -26,12 +26,12 @@ function App() {
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
-  const userInterestedActivities = activities.filter(activity => {
-    const matchingUserActivity = activity.user_activities.find(userActivity => {
-      return userActivity.user_id === user.id && userActivity.interested === true;
-    });
-    return matchingUserActivity !== undefined;
-  });
+  // const userInterestedActivities = activities.filter(activity => {
+  //   const matchingUserActivity = activity.user_activities.find(userActivity => {
+  //     return userActivity.user_id === user.id && userActivity.interested === true;
+  //   });
+  //   return matchingUserActivity !== undefined;
+  // });
 
   useEffect(() => {
       fetch("/me").then((res) => {
@@ -73,16 +73,6 @@ function App() {
   const sortByCost = () => {
     setActivities([...activities].sort((a, b) => a.cost - b.cost));
   };
-
-  // const handleViewClick = (activity) => {
-  //   setSelectedActivity(activity);
-  //   setShowInterestedUsers(false);
-  //   console.log("activity:", activity)
-  //   console.log("selectedActivity inside", selectedActivity)
-  // }
-  // console.log("selectedActivity outside", selectedActivity)
-
-// If the selectedActivity inside equals null, set 
 
   const handleViewClick = (activity) => {
     (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
@@ -225,7 +215,7 @@ function App() {
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/user-profile" element={<UserProfile />}></Route>
                     <Route path="/activities" element={<AllActivities/>}></Route>
-                    <Route path="/interested" element={<Interested userInterestedActivities={userInterestedActivities}/>} ></Route>
+                    <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
                 </Routes>
             </main>

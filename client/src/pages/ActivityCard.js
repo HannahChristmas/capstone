@@ -5,46 +5,15 @@ import { ActivitiesContext } from '../ActivitiesContext';
 function ActivityCard({activity}) {
   const { userInterested, userVisited } = useContext(UserContext)
   const { showInterestedUsers, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
-  // const [toggle, setToggle] = useState({});
-
-  // function toggleFunction(activity) {
-  //   const currentActivity = selectedActivity === activity ? null : activity;
-  //   setToggle({
-  //     ...toggle,
-  //     [activity.id]: currentActivity !== null,
-  //   });
-  //   setSelectedActivity(currentActivity);
-  // }
-
-  // console.log("selectedActivity outside func", selectedActivity)
-
 
     return (
       <>
-      {/* //THIS ONE!!!!!!! */}
         <div key={activity.id} className="individual-activity">
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood}</h2>
           <h4>${activity.cost}</h4>
           <button onClick={() => handleViewClick(activity)}>Quick View</button>
         </div>  
-{/* 
-        <div key={activity.id} className="individual-activity">
-          <h1>{activity.title}</h1>
-          <h2>{activity.neighborhood}</h2>
-          <h4>${activity.cost}</h4>
-          <button onClick={() => toggleFunction(activity)}>Quick View</button>
-            {toggle[activity.id] ? <PopupCard key={activity.id} activity={activity}></PopupCard> : null}
-        </div>  */}
-
-        {/* {activities.map((activity) => (
-            <div key={activity.id} className="individual-activity">
-              <h1>{activity.title}</h1>
-              <h2>{activity.neighborhood}</h2>
-              <h4>${activity.cost}</h4>
-              <button onClick={() => handleViewClick(activity)}>Quick View</button>
-            </div>           
-          ))} */}
 
         {selectedActivity?.id === activity?.id && (
         <div className="popup-card">
