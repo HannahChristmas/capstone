@@ -7,6 +7,8 @@ function ActivityCard({activity}) {
   const { activities, setActivities, selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
 
   const [showInterestedUsers, setShowInterestedUsers] = useState(false);
+  const [showVisitedUsers, setShowVisitedUsers] = useState(false);
+
 
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
@@ -14,6 +16,10 @@ function ActivityCard({activity}) {
   const interestedUsers = activity.user_activities.filter(activity => activity.interested)
     .map(activity => activity.user_id)
     .map(userId => activity.users.find(user => user.id === userId).username);
+
+  const visitedUsers = activity.user_activities.filter(activity => activity.visited)
+  .map(activity => activity.user_id)
+  .map(userId => activity.users.find(user => user.id === userId).username);
 
 
   const handleViewClick = (activity) => {
@@ -27,6 +33,10 @@ function ActivityCard({activity}) {
 
   const displayInterestedUsers = () => {
     setShowInterestedUsers(!showInterestedUsers);
+  }
+
+  const displayVisitedUsers = () => {
+    setShowVisitedUsers(!showVisitedUsers);
   }
 
   function interestedClick() {
@@ -154,6 +164,15 @@ function ActivityCard({activity}) {
               (interestedUsers.length === 0 ?
                 <p>no users have added this to their interests yet.</p> :
                 interestedUsers.map((item, index) => 
+                  <h1 key={index}>{item}</h1>
+                )
+              )
+            }
+          <button onClick={displayVisitedUsers}>who's visited</button><br/>
+            {showVisitedUsers && 
+              (visitedUsers.length === 0 ?
+                <p>no users have visited yet.</p> :
+                visitedUsers.map((item, index) => 
                   <h1 key={index}>{item}</h1>
                 )
               )
