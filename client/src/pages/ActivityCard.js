@@ -11,6 +11,10 @@ function ActivityCard({activity}) {
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
+  const interestedUsers = activity.user_activities.filter(activity => activity.interested)
+    .map(activity => activity.user_id)
+    .map(userId => activity.users.find(user => user.id === userId).username);
+
 
   const handleViewClick = (activity) => {
     (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
@@ -23,6 +27,7 @@ function ActivityCard({activity}) {
 
   const displayInterestedUsers = () => {
     setShowInterestedUsers(!showInterestedUsers);
+    console.log(interestedUsers)
   }
 
   function interestedClick() {
