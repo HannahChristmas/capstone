@@ -16,7 +16,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
-  const [showInterestedUsers, setShowInterestedUsers] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -26,12 +25,6 @@ function App() {
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
-  // const userInterestedActivities = activities.filter(activity => {
-  //   const matchingUserActivity = activity.user_activities.find(userActivity => {
-  //     return userActivity.user_id === user.id && userActivity.interested === true;
-  //   });
-  //   return matchingUserActivity !== undefined;
-  // });
 
   useEffect(() => {
       fetch("/me").then((res) => {
@@ -74,137 +67,138 @@ function App() {
     setActivities([...activities].sort((a, b) => a.cost - b.cost));
   };
 
-  const handleViewClick = (activity) => {
-    (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
-    setShowInterestedUsers(false);
-  }
+  // const handleViewClick = (activity) => {
+  //   (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+  //   setShowInterestedUsers(false);
+  // }
 
-  const handleXClick = () => {
-    setSelectedActivity(null);
-  }
+  // const handleXClick = () => {
+  //   setSelectedActivity(null);
+  // }
 
-  const displayInterestedUsers = () => {
-    setShowInterestedUsers(!showInterestedUsers);
-  };
+  // const displayInterestedUsers = () => {
+  //   setShowInterestedUsers(!showInterestedUsers);
+  // };
 
-  function interestedClick() {
-    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
-    if(userActivity) {
-      fetch(`/user_activities/${userActivity.id}`, { 
-        method: 'PATCH',
-        body: JSON.stringify({
-        interested: !userActivity.interested
-      }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-      })
-      .then(r => r.json())
-      .then(data => {
-        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
-        selectedActivity.user_activities = updatedUserActivity
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
-      })
-      } else {
-      fetch('/user_activities', { 
-        method: 'POST',
-        body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        interested: true,
-        }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-      })
-      .then(r => r.json())
-      .then(data => {
-        selectedActivity.user_activities.push(data)
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
-      })
-    }
-  }
+  // function interestedClick() {
+  //   const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+  //   if(userActivity) {
+  //     fetch(`/user_activities/${userActivity.id}`, { 
+  //       method: 'PATCH',
+  //       body: JSON.stringify({
+  //       interested: !userActivity.interested
+  //     }),
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then(data => {
+  //       const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+  //       selectedActivity.user_activities = updatedUserActivity
+  //       const updatedActivities = activities.map((activity) => {
+  //         if (selectedActivity.id === activity.id) {
+  //           return selectedActivity
+  //         } else {
+  //           return activity
+  //         }
+  //       })
+  //     setActivities(updatedActivities)
+  //     })
+  //     } else {
+  //     fetch('/user_activities', { 
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //       user_id: user.id,
+  //       activity_id: selectedActivity.id,
+  //       interested: true,
+  //       }),
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then(data => {
+  //       selectedActivity.user_activities.push(data)
+  //       const updatedActivities = activities.map((activity) => {
+  //         if (selectedActivity.id === activity.id) {
+  //           return selectedActivity
+  //         } else {
+  //           return activity
+  //         }
+  //       })
+  //     setActivities(updatedActivities)
+  //     })
+  //   }
+  // }
 
-  function visitedClick() {
-    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
-    if(userActivity) {
-      fetch(`/user_activities/${userActivity.id}`, { 
-        method: 'PATCH',
-        body: JSON.stringify({
-        visited: !userActivity.visited
-      }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-      })
-      .then(r => r.json())
-      .then(data => {
-        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
-        selectedActivity.user_activities = updatedUserActivity
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
-      })
-      } else {
-      fetch('/user_activities', { 
-        method: 'POST',
-        body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        visited: true,
-        }),
-        headers: {
-        'Content-Type': 'application/json'
-        }
-      })
-      .then(r => r.json())
-      .then(data => {
-        selectedActivity.user_activities.push(data)
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
-      })
-    }
-  }
+  // function visitedClick() {
+  //   const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+  //   if(userActivity) {
+  //     fetch(`/user_activities/${userActivity.id}`, { 
+  //       method: 'PATCH',
+  //       body: JSON.stringify({
+  //       visited: !userActivity.visited
+  //     }),
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then(data => {
+  //       const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+  //       selectedActivity.user_activities = updatedUserActivity
+  //       const updatedActivities = activities.map((activity) => {
+  //         if (selectedActivity.id === activity.id) {
+  //           return selectedActivity
+  //         } else {
+  //           return activity
+  //         }
+  //       })
+  //     setActivities(updatedActivities)
+  //     })
+  //     } else {
+  //     fetch('/user_activities', { 
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //       user_id: user.id,
+  //       activity_id: selectedActivity.id,
+  //       visited: true,
+  //       }),
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //       }
+  //     })
+  //     .then(r => r.json())
+  //     .then(data => {
+  //       selectedActivity.user_activities.push(data)
+  //       const updatedActivities = activities.map((activity) => {
+  //         if (selectedActivity.id === activity.id) {
+  //           return selectedActivity
+  //         } else {
+  //           return activity
+  //         }
+  //       })
+  //     setActivities(updatedActivities)
+  //     })
+  //   }
+  // }
     return (
         <>
         <UserContext.Provider value={{ user, setUser, userInterested, userVisited }}>
         <ActivitiesContext.Provider value={{
           activities,
+          setActivities,
           selectedActivity,
           setSelectedActivity,
-          handleViewClick,
-          handleXClick,
-          interestedClick,
-          visitedClick,
-          displayInterestedUsers,
+          // handleViewClick,
+          // handleXClick,
+          // interestedClick,
+          // visitedClick,
+          // displayInterestedUsers,
           sortByName,
           sortByCost,
-          showInterestedUsers,
+          // showInterestedUsers,
          }}>
             <LoginNav />
             <main>

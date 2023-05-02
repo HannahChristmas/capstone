@@ -1,10 +1,130 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 
 function ActivityCard({activity}) {
-  const { userInterested, userVisited } = useContext(UserContext)
-  const { showInterestedUsers, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+  const { user, userInterested, userVisited } = useContext(UserContext)
+  const { activities, setActivities, selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
+
+  const [showInterestedUsers, setShowInterestedUsers] = useState(false);
+
+
+  const handleViewClick = (activity) => {
+    (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+    setShowInterestedUsers(false);
+  }
+
+  const handleXClick = () => {
+    setSelectedActivity(null);
+  }
+
+  const displayInterestedUsers = () => {
+    setShowInterestedUsers(!showInterestedUsers);
+  }
+
+  function interestedClick() {
+    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+    if(userActivity) {
+      fetch(`/user_activities/${userActivity.id}`, { 
+        method: 'PATCH',
+        body: JSON.stringify({
+        interested: !userActivity.interested
+      }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+        selectedActivity.user_activities = updatedUserActivity
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
+      } else {
+      fetch('/user_activities', { 
+        method: 'POST',
+        body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        interested: true,
+        }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        selectedActivity.user_activities.push(data)
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
+    }
+  }
+
+  function visitedClick() {
+    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+    if(userActivity) {
+      fetch(`/user_activities/${userActivity.id}`, { 
+        method: 'PATCH',
+        body: JSON.stringify({
+        visited: !userActivity.visited
+      }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+        selectedActivity.user_activities = updatedUserActivity
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
+      } else {
+      fetch('/user_activities', { 
+        method: 'POST',
+        body: JSON.stringify({
+        user_id: user.id,
+        activity_id: selectedActivity.id,
+        visited: true,
+        }),
+        headers: {
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(r => r.json())
+      .then(data => {
+        selectedActivity.user_activities.push(data)
+        const updatedActivities = activities.map((activity) => {
+          if (selectedActivity.id === activity.id) {
+            return selectedActivity
+          } else {
+            return activity
+          }
+        })
+      setActivities(updatedActivities)
+      })
+    }
+  }
 
     return (
       <>
