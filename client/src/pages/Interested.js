@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
-import { ActivitiesContext } from '../ActivitiesContext';
+// import { ActivitiesContext } from '../ActivitiesContext';
 import SortBar from '../components/SortBar';
 import SearchBar from '../components/SearchBar';
 import ActivityCard from './ActivityCard';
@@ -8,14 +8,14 @@ import ActivityCard from './ActivityCard';
 
 function Interested( {userInterestedActivities} ) {
   const {user} = useContext(UserContext)
-  const { activities, selectedActivity, setSelectedActivity, interestedClick } = useContext(ActivitiesContext)
+  // const { setSelectedActivity } = useContext(ActivitiesContext)
 
-  const [showInterestButton, setShowInterestButton] = useState(false);
+  // const [showInterestButton, setShowInterestButton] = useState(false);
 
-  function viewClick(activity) {
-    setSelectedActivity(activity)
-    setShowInterestButton(true)
-  }
+  // function viewClick(activity) {
+  //   setSelectedActivity(activity)
+  //   setShowInterestButton(true)
+  // }
 
 
   if (user) {

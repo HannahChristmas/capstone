@@ -1,14 +1,12 @@
 
 import React, { useContext } from 'react';
-import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SearchBar from '../components/SearchBar';
 import SortBar from '../components/SortBar';
 import ActivityCard from './ActivityCard';
 
-function AllActivities({  showInterestedUsers   }) {
-  const { userInterested, userVisited } = useContext(UserContext)
-  const { activities, setActivities, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+function AllActivities() {
+  const { activities } = useContext(ActivitiesContext)
 
   return (
     <>

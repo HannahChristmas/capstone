@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
-import PopupCard from './PopupCard';
 
 function ActivityCard({activity}) {
   const { userInterested, userVisited } = useContext(UserContext)
-  const { showInterestedUsers, selectedActivity, setSelectedActivity, setShowInterestedUsers, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+  const { showInterestedUsers, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
   // const [toggle, setToggle] = useState({});
 
   // function toggleFunction(activity) {

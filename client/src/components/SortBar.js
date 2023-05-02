@@ -2,7 +2,7 @@ import { ActivitiesContext } from '../ActivitiesContext';
 import React, { useContext } from 'react';
 
 
-function SortBar({}) {
+function SortBar() {
     const { sortByName, sortByCost } = useContext(ActivitiesContext)
  
     return (

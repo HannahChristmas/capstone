@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 
-function SearchBar({}) {
-    const { activities, setActivities } = useContext(ActivitiesContext)
+function SearchBar() {
+    const { activities } = useContext(ActivitiesContext)
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearchChange = (e) => {
