@@ -64,7 +64,7 @@ function UserProfile () {
                     <input
                         type="text"
                         id="bio"
-                        value={bio}
+                        value={bio ? bio : "Enter bio here"}
                         onChange={(e) => setBio(e.target.value)}
                     />
                 </label><br/>
