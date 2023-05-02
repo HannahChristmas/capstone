@@ -4,6 +4,7 @@ import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SearchBar from '../components/SearchBar';
 import SortBar from '../components/SortBar';
+import ActivityCard from './ActivityCard';
 
 function AllActivities({  showInterestedUsers   }) {
   const { userInterested, userVisited } = useContext(UserContext)
@@ -15,14 +16,15 @@ function AllActivities({  showInterestedUsers   }) {
       <div className="activities-page-container">
       <SearchBar></SearchBar>
         <div className="activities-list-container">
-          {activities.map((activity) => (
+          {/* {activities.map((activity) => (
             <div key={activity.id} className="individual-activity">
               <h1>{activity.title}</h1>
               <h2>{activity.neighborhood}</h2>
               <h4>${activity.cost}</h4>
               <button onClick={() => handleViewClick(activity)}>Quick View</button>
             </div>           
-          ))}
+          ))} */}
+          <ActivityCard></ActivityCard>
         </div>
 
       {selectedActivity && (
