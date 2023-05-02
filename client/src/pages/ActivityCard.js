@@ -27,7 +27,6 @@ function ActivityCard({activity}) {
 
   const displayInterestedUsers = () => {
     setShowInterestedUsers(!showInterestedUsers);
-    console.log(interestedUsers)
   }
 
   function interestedClick() {
@@ -151,8 +150,14 @@ function ActivityCard({activity}) {
           <button onClick={() => visitedClick(selectedActivity)}>{userVisited ? "YAYA" : "Nono"}</button><br/><br/><br/>
           <button>reviews</button><br/>
           <button onClick={displayInterestedUsers}>who's interested</button><br/>
-          {showInterestedUsers && selectedActivity.users.map((userActivity => 
-            <h1 key={userActivity.id}>{userActivity.username}</h1>))}
+            {showInterestedUsers && 
+              (interestedUsers.length === 0 ?
+                <p>no users have added this to their interests yet.</p> :
+                interestedUsers.map((item, index) => 
+                  <h1 key={index}>{item}</h1>
+                )
+              )
+            }
           <button onClick={() => handleXClick(selectedActivity)}>X</button>
         </div>
         )}  
