@@ -1,8 +1,10 @@
-function ActivityCard({activities}) {
+import React, { useContext } from 'react';
+import { ActivitiesContext } from '../ActivitiesContext';
 
-    const handleOnClick = () => {
-        console.log("I clicked this button")
-    }
+function ActivityCard() {
+
+  const { activities, setActivities, selectedActivity, interestedClick, visitedClick, handleViewClick, handleXClick, displayInterestedUsers } = useContext(ActivitiesContext)
+
 
     return (
       <>
@@ -12,7 +14,7 @@ function ActivityCard({activities}) {
             <h1>{activity.title}</h1>
             <h2>{activity.neighborhood}</h2>
             <h4>${activity.cost}</h4>
-            <button onClick={handleOnClick}>Quick View</button>
+            <button>Quick View</button>
           </div>
           
         ))}
