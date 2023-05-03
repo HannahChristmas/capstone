@@ -239,7 +239,7 @@ function visitedClick() {
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <a href={activity.website} target="_blank" rel="noreferrer" i>website</a><br></br>
+          <a href={activity.website} target="_blank" rel="noreferrer">website</a><br></br>
 
           { user ? (
             <>
