@@ -17,6 +17,11 @@ function SearchBar() {
       }
     }
 
+    function handleReset(){
+      setFilterNeighborhood("Neighborhood")
+      setFilterCost("Cost")
+    }
+
     return (
     <>
     <div className="activity-search-container">
@@ -41,7 +46,8 @@ function SearchBar() {
             <option value="9">9</option>        
             <option value="15">15</option>
             <option value="95">95</option>
-        </select>
+        </select><br></br>
+        <button onClick={handleReset}>Reset</button>
         </div>
           
     </div>
