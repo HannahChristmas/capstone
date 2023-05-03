@@ -239,6 +239,8 @@ function visitedClick() {
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
+          <a href={activity.website} target="_blank">website</a><br></br>
+
           { user ? (
             <>
               <button onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
