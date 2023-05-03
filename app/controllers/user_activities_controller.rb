@@ -20,9 +20,9 @@ class UserActivitiesController < ApplicationController
     def update 
         user_activity = UserActivity.find_by(id: params[:id]) 
         user_activity.update!(user_activity_params)
-        user_activity.delete_if_not_interested_or_visited
+        deleted_user_activity_id = user_activity.delete_if_not_interested_or_visited
 
-        render json: user_activity, status: 202
+        render json: { user_activity: user_activity, deleted_user_activity_id: deleted_user_activity_id }, status: 202
     end 
 
     def destroy 

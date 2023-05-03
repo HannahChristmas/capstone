@@ -21,7 +21,7 @@ function ActivityCard({activity}) {
       return user ? user.username : null;
     })
     .filter(username => username !== null)
-    
+
   const visitedUsers = activity.user_activities.filter(activity => activity.visited)
   .map(activity => activity.user_id)
   .map(userId => activity.users.find(user => user.id === userId).username);
@@ -45,7 +45,9 @@ function ActivityCard({activity}) {
   }
 
   function interestedClick() {
-    const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
+    const userActivity = selectedActivity?.user_activities?.find((userActivity) => userActivity?.user_id === user.id)
+    // for a post request, userActivity starts as undefined. By the end of the post request, userActivity changes.
+    // for a patch request, userActivity starts as id, user_id, activity_id, visited, interested
     if(userActivity) {
       fetch(`/user_activities/${userActivity.id}`, { 
         method: 'PATCH',
@@ -57,45 +59,113 @@ function ActivityCard({activity}) {
         }
       })
       .then(r => r.json())
+        
       .then(data => {
-        const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
-        selectedActivity.user_activities = updatedUserActivity
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
-      })
-      } else {
-      fetch('/user_activities', { 
-        method: 'POST',
-        body: JSON.stringify({
-        user_id: user.id,
-        activity_id: selectedActivity.id,
-        interested: true,
-        }),
-        headers: {
-        'Content-Type': 'application/json'
+        // data is an array containing id, user_id, activity_id, visited, interested. 
+          // Interested has been effectively toggled to false
+        const deletedUserActivityId = data.deleted_user_activity_id?.id;
+
+        if (deletedUserActivityId) {
+          const updatedUserActivities = selectedActivity.user_activities.filter(userActivity => userActivity.id !== deletedUserActivityId);
+          const updatedSelectedActivity = {...selectedActivity, user_activities: updatedUserActivities}
+
+          setSelectedActivity(updatedSelectedActivity)
+
+          const updatedActivities = activities.map((activity) => 
+            selectedActivity.id === activity.id ? updatedSelectedActivity : activity);
+          setActivities(updatedActivities);
+          // debugger;
+
+        } else {
+          const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+          selectedActivity.user_activities = updatedUserActivity
+          setSelectedActivity(selectedActivity.updatedUserActivity)
+
+          const updatedSelectedActivity = {...selectedActivity, user_activities: updatedUserActivity}
+          const updatedActivities = activities.map((activity) => 
+          selectedActivity.id === activity.id ? updatedSelectedActivity : activity);
+
+          console.log("UA from PATCH before SA: ", updatedActivities)
+          setActivities(updatedActivities)
+          console.log("UA from PATCH after SA: ", updatedActivities)
+          // debugger;
         }
       })
-      .then(r => r.json())
-      .then(data => {
-        selectedActivity.user_activities.push(data)
-        const updatedActivities = activities.map((activity) => {
-          if (selectedActivity.id === activity.id) {
-            return selectedActivity
-          } else {
-            return activity
-          }
-        })
-      setActivities(updatedActivities)
+    } else {
+    fetch('/user_activities', { 
+      method: 'POST',
+      body: JSON.stringify({
+      user_id: user.id,
+      activity_id: selectedActivity.id,
+      interested: true,
+      }),
+      headers: {
+      'Content-Type': 'application/json'
+      }
+    })
+    .then(r => r.json())
+    .then(data => {
+      selectedActivity.user_activities.push(data)
+      const updatedActivities = activities.map((activity) => {
+        if (selectedActivity.id === activity.id) {
+          return selectedActivity
+        } else {
+          return activity
+        }
       })
-    }
+    console.log("UA from Post before SA: ", updatedActivities)
+    setActivities(updatedActivities)
+    console.log("UA from Post after SA: ", updatedActivities)
+    })
   }
+}
+console.log("from outside of everything in AC: ", activities)
 
+
+        // const deletedUserActivityId = data.deleted_user_activity_id.id;
+        // if (deletedUserActivityId) {
+        //   const updatedActivities = activities.filter(activity => {
+        //     return activity.user_activities.every(userActivity => userActivity.id !== deletedUserActivityId)
+        //   });
+        //   setActivities(updatedActivities);
+
+        //   debugger;
+        // } else {
+        //   console.log("spooky")        
+        // }
+        // (1) ******* */
+        // const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
+        //delete this line below??
+        // (2) ******* */
+
+        // selectedActivity.user_activities = updatedUserActivity
+        // updatedUserActivity is an array containing id, user_id, activity_id, visited, interested
+          // Interested has been effectively toggled to false
+
+        // (3) ******* */
+        // setSelectedActivity(selectedActivity.updatedUserActivity)
+        // debugger;
+
+        // (4) ******* */ until debugger
+        // const updatedSelectedActivity = {...selectedActivity, user_activities: updatedUserActivity}
+        // const updatedActivities = activities.map((activity) => 
+        //   selectedActivity.id === activity.id ? updatedSelectedActivity : activity);
+        // // debugger;
+
+      // set the selectedActivity to the new data and then update??
+
+      //toggled to false, but array still exists.
+
+      // (5) ******* */
+      // console.log("UA from PATCH before SA: ", updatedActivities)
+      // setActivities(updatedActivities)
+      //toggled to false, but array still exists.
+
+      // (6) ******* */
+
+      // console.log("UA from PATCH after SA: ", updatedActivities)
+      // so when is the data deleted?
+    
   function visitedClick() {
     const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
     if(userActivity) {
