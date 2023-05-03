@@ -15,7 +15,6 @@ import { ActivitiesContext } from './ActivitiesContext';
 
 function App() {
   const [user, setUser] = useState(null);
-  // const [publicProfile, setPublicProfile] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,15 +51,6 @@ function App() {
       })
   }, [setActivities])
 // DO I NEED SETSELECTEDACTIVITY IN THE DEPENDENCY ARRAY?!?!?
-
-// useEffect(() => {
-//   fetch(`/users/:id`)
-//   .then(r => r.json())
-//   .then(data => {
-//     setPublicProfile(selectedUser)
-//     console.log(data)
-//   })
-// }, [setPublicProfile])
 
   const sortByName = () => {
     const sortedActivities = [...activities].sort((a, b) => {
