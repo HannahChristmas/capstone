@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 
 function SearchBar() {
-    const { handleSearchChange, searchQuery, setFilterNeighborhood, setFilterCost } = useContext(ActivitiesContext)
+    const { handleSearchChange, searchQuery, setSearchQuery, setFilterNeighborhood, setFilterCost } = useContext(ActivitiesContext)
 
     function handleNeighborhoodFilter(e){
       setFilterNeighborhood(e.target.value)
@@ -20,6 +20,7 @@ function SearchBar() {
     function handleReset(){
       setFilterNeighborhood("Neighborhood")
       setFilterCost("Cost")
+      setSearchQuery("")
     }
 
     return (

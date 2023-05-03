@@ -96,6 +96,7 @@ function App() {
           filteredByAllCriteria,
           handleSearchChange,
           searchQuery,
+          setSearchQuery,
           setFilterNeighborhood,
           setFilterCost,
           setActivities,
