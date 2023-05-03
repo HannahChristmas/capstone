@@ -17,6 +17,8 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filterNeighborhood, setFilterNeighborhood] = useState("Neighborhood")
+   const [filterCost, setFilterCost] = useState("Cost")
 
   const location = useLocation();
 
@@ -77,16 +79,25 @@ function App() {
       neighborhood.toLowerCase().includes(lowerCaseQuery) ||
       website.toLowerCase().includes(lowerCaseQuery)
     );
-});
+  });
+
+  const filteredByAllCriteria = searchList.filter(activity => {
+    if((filterNeighborhood === "Neighborhood" || activity.neighborhood === filterNeighborhood) 
+    && (filterCost === "Cost" || activity.cost === filterCost)) { 
+      return true
+        }
+      })
 
     return (
         <>
         <UserContext.Provider value={{ user, setUser }}>
         <ActivitiesContext.Provider value={{
           activities,
-          searchList,
+          filteredByAllCriteria,
           handleSearchChange,
           searchQuery,
+          setFilterNeighborhood,
+          setFilterCost,
           setActivities,
           selectedActivity,
           setSelectedActivity,
