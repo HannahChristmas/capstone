@@ -69,7 +69,7 @@ function App() {
     setSearchQuery(e.target.value);
 };
 
-  const filteredActivities = activities.filter(activity => {
+  const searchList = activities.filter(activity => {
     const { title, neighborhood, website } = activity;
     const lowerCaseQuery = searchQuery.toLowerCase();
     return (
@@ -84,7 +84,7 @@ function App() {
         <UserContext.Provider value={{ user, setUser }}>
         <ActivitiesContext.Provider value={{
           activities,
-          filteredActivities,
+          searchList,
           handleSearchChange,
           searchQuery,
           setActivities,

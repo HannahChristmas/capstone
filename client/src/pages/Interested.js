@@ -7,9 +7,9 @@ import ActivityCard from './ActivityCard';
 
 function Interested() {
   const {user} = useContext(UserContext)
-  const { filteredActivities } = useContext(ActivitiesContext)
+  const { searchList } = useContext(ActivitiesContext)
 
-  const userInterestedActivities = filteredActivities.filter(activity => {
+  const userInterestedActivities = searchList.filter(activity => {
     const matchingUserActivity = activity.user_activities.find(userActivity => {
       return userActivity.user_id === user.id && userActivity.interested === true;
     });

@@ -6,7 +6,7 @@ import SortBar from '../components/SortBar';
 import ActivityCard from './ActivityCard';
 
 function AllActivities() {
-  const { filteredActivities } = useContext(ActivitiesContext)
+  const { searchList } = useContext(ActivitiesContext)
 
   return (
     <>
@@ -14,7 +14,7 @@ function AllActivities() {
       <div className="activities-page-container">
       <SearchBar></SearchBar>
         <div className="activities-list-container">
-          {filteredActivities.map((activity) => (
+          {searchList.map((activity) => (
             <ActivityCard key={activity.id} activity={activity}></ActivityCard>
           ))}
         </div>
