@@ -97,6 +97,7 @@ nav li:hover {
   margin-bottom: 20px;
 }
 
+/* Parent of PopUp & .individual-activity */
 .activities-list-container {
   display: flex;
   flex-wrap: wrap;
@@ -104,14 +105,13 @@ nav li:hover {
   border: solid pink 2px;
   margin-left: 20px;
   margin-right: 20px;
+  position: relative;
 }
 
 .activity-search-container {
   border: 3px solid orange;
-  flex: .9;
-  min-width: 10rem;
+  width: 12rem;
   margin-left: 20px;
-
 }
 
 .sort-bar {
@@ -131,7 +131,11 @@ nav li:hover {
 .popup-card {
   width: 500px;
   border: solid rgb(17, 173, 114) 2px;
-
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: orange;
 }
 
 /* LOGIN PAGE */
