@@ -18,7 +18,7 @@ function ActivityCard({activity}) {
     .map(activity => activity.user_id)
     .map(userId => {
       const user = activity.users.find(user => user.id === userId);
-      return user ? user.username : null;
+      return user ? user : null;
     })
     .filter(username => username !== null)
 
@@ -254,8 +254,11 @@ function visitedClick() {
             {showInterestedUsers && 
               (interestedUsers.length === 0 ?
                 <p>no users have added this to their interests yet.</p> :
-                interestedUsers.map((item, index) => 
-                  <h1 key={index}>{item}</h1>
+                interestedUsers.map((user) => 
+                <a href={`/users/${user.id}`} key={user.id}>
+                  <h1>{user.username}</h1>
+                </a>
+                  // <h1 key={user.id}>{user.username}</h1>
                 )
               )
             }

@@ -9,11 +9,13 @@ import AllActivities from './pages/AllActivities.js';
 import Interested from './pages/Interested.js';
 import Visited from './pages/Visited.js';
 import UserProfile from './pages/UserProfile';
+import PublicProfile from './pages/PublicProfile';
 import { UserContext } from './UserContext'; 
 import { ActivitiesContext } from './ActivitiesContext'; 
 
 function App() {
   const [user, setUser] = useState(null);
+  const [publicProfile, setPublicProfile] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -50,6 +52,14 @@ function App() {
       })
   }, [setActivities])
 // DO I NEED SETSELECTEDACTIVITY IN THE DEPENDENCY ARRAY?!?!?
+
+useEffect(() => {
+  fetch(`/users/:id`)
+  .then(r => r.json())
+  .then(selectedUser => {
+    setPublicProfile(selectedUser)
+  })
+}, [setPublicProfile])
 
   const sortByName = () => {
     const sortedActivities = [...activities].sort((a, b) => {
@@ -120,6 +130,7 @@ function App() {
                     <Route path="/activities" element={<AllActivities/>}></Route>
                     <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
+                    <Route path="/users/:id" element={<PublicProfile publicProfile={publicProfile}/>}></Route>
                 </Routes>
             </main>
           </ActivitiesContext.Provider>

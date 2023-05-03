@@ -20,7 +20,13 @@ class UsersController < ApplicationController
     end
 
     def show 
-        render json: @current_user
+        user = User.find_by(id: params[:id])
+        render json: user
+    end
+
+    def login 
+        user = @current_user
+        render json: user
     end
 
     def destroy 
