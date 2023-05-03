@@ -239,8 +239,14 @@ function visitedClick() {
         <div className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
-          <button onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
-          <button onClick={() => visitedClick(selectedActivity)}>{userVisited ? "YAYA" : "Nono"}</button><br/><br/><br/>
+          { user ? (
+            <>
+              <button onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
+              <button onClick={() => visitedClick(selectedActivity)}>{userVisited ? "YAYA" : "Nono"}</button><br/><br/><br/>
+            </>
+          ) : (
+            <p>You must log in to update your interests and places you've visited.</p>
+          )}
           <button>reviews</button><br/>
           <button onClick={displayInterestedUsers}>who's interested</button><br/>
             {showInterestedUsers && 
