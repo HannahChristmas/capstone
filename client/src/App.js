@@ -18,12 +18,15 @@ function App() {
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterNeighborhood, setFilterNeighborhood] = useState("Neighborhood")
-   const [filterCost, setFilterCost] = useState("Cost")
+  const [filterCost, setFilterCost] = useState("Cost")
 
   const location = useLocation();
 
   useEffect(() => {
     setSelectedActivity(null); // set state to null every time the location changes
+    setSearchQuery('')
+    setFilterCost('Cost')
+    setFilterNeighborhood('Neighborhood');
   }, [location]);
 
   useEffect(() => {
