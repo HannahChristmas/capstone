@@ -77,11 +77,14 @@ function ActivityCard({activity}) {
           // debugger;
 
         } else {
-          const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
-          selectedActivity.user_activities = updatedUserActivity
-          setSelectedActivity(selectedActivity.updatedUserActivity)
-
+          // Inside of selected activity, selectedActivities.user_activities 
+          const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.user_activity.id? data.user_activity : activity)
+          // const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.user_activity.activity_id ? data : activity)
+          
           const updatedSelectedActivity = {...selectedActivity, user_activities: updatedUserActivity}
+          setSelectedActivity(updatedSelectedActivity)
+
+          // const updatedSelectedActivity = {...selectedActivity, user_activities: updatedUserActivity}
           const updatedActivities = activities.map((activity) => 
           selectedActivity.id === activity.id ? updatedSelectedActivity : activity);
 
