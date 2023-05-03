@@ -85,7 +85,8 @@ function App() {
     if((filterNeighborhood === "Neighborhood" || activity.neighborhood === filterNeighborhood) 
     && (filterCost === "Cost" || activity.cost === filterCost)) { 
       return true
-        }
+      }
+      return false;
       })
 
     return (

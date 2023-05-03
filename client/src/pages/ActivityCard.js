@@ -54,6 +54,7 @@ function ActivityCard({activity}) {
   }
 
   function interestedClick() {
+
     const userActivity = selectedActivity?.user_activities?.find((userActivity) => userActivity?.user_id === user.id)
     if(userActivity) {
       fetch(`/user_activities/${userActivity.id}`, { 
