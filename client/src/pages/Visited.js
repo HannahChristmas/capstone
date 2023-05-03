@@ -7,9 +7,9 @@ import ActivityCard from './ActivityCard';
 
 function Visited() {
   const { user } = useContext(UserContext)
-  const { activities } = useContext(ActivitiesContext)
+  const { filteredActivities } = useContext(ActivitiesContext)
 
-  const userVisitedActivities = activities.filter(activity => {
+  const userVisitedActivities = filteredActivities.filter(activity => {
     const matchingUserActivity = activity.user_activities.find(userActivity => {
       return userActivity.user_id === user.id && userActivity.visited === true;
     });

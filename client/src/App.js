@@ -16,6 +16,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+
   const location = useLocation();
 
   useEffect(() => {
@@ -62,11 +64,29 @@ function App() {
   const sortByCost = () => {
     setActivities([...activities].sort((a, b) => a.cost - b.cost));
   };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+};
+
+  const filteredActivities = activities.filter(activity => {
+    const { title, neighborhood, website } = activity;
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    return (
+      title.toLowerCase().includes(lowerCaseQuery) ||
+      neighborhood.toLowerCase().includes(lowerCaseQuery) ||
+      website.toLowerCase().includes(lowerCaseQuery)
+    );
+});
+
     return (
         <>
         <UserContext.Provider value={{ user, setUser }}>
         <ActivitiesContext.Provider value={{
           activities,
+          filteredActivities,
+          handleSearchChange,
+          searchQuery,
           setActivities,
           selectedActivity,
           setSelectedActivity,
