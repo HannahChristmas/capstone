@@ -11,6 +11,15 @@ function UserProfile () {
     const [interests, setInterests] = useState([]);
     const [selectedInterests, setSelectedInterests] = useState([]);
 
+    const heLikes = user?.user_interests?.map((item) => {
+      return (
+        // interest.id
+        item.interest?.name
+      )
+    })
+
+    console.log("heLikes:", heLikes)
+
     useEffect(() => {
         if (user) {
             setUsername(user.username)
@@ -38,8 +47,16 @@ function UserProfile () {
           }
       })
         .then(r => r.json())
-        .then(data => setSelectedInterests([...selectedInterests, data]))
+        .then(data => {
+          console.log(data)
+          setSelectedInterests([...selectedInterests, data])
+          console.log("SI Before:", selectedInterests)
+        })
+        console.log("SI After: ", selectedInterests)
+        
     }
+    console.log("SI After after: ", selectedInterests)
+
 
     function handlePostUpdateSubmit(e) {
         e.preventDefault()
