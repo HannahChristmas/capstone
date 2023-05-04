@@ -1,3 +1,3 @@
 class UserInterestSerializer < ActiveModel::Serializer
-  attributes :id, :userinterest, :user_id, :activity_id
+  attributes :id, :user_id, :interest_id
 end

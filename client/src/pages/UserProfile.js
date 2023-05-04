@@ -8,6 +8,8 @@ function UserProfile () {
     const [bio, setBio] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [interests, setInterests] = useState([]);
+    const [selectedInterests, setSelectedInterests] = useState([]);
 
     useEffect(() => {
         if (user) {
@@ -15,6 +17,29 @@ function UserProfile () {
             setBio(user.bio)
         }
       }, [user])
+
+    useEffect(() => {
+      fetch("/interests")
+      .then(r => r.json())
+      .then(interests => {
+        setInterests(interests)
+      })
+      }, [setInterests])
+
+    const handleInterestClick = (interestId) => {
+      fetch("/user_interests", {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: user.id,
+          interest_id: interestId
+        }), 
+          headers: {
+          'Content-Type': 'application/json'
+          }
+      })
+        .then(r => r.json())
+        .then(data => setSelectedInterests([...selectedInterests, data]))
+    }
 
     function handlePostUpdateSubmit(e) {
         e.preventDefault()
@@ -40,15 +65,17 @@ function UserProfile () {
         })
       }
 
+
+
     if (!user) {
         return <p>Profile loading...</p>
     }
     
     return ( 
         <>
-            <h1>{user.username}</h1>
-            <p>{user.bio}</p>
-            <p>{user.id}</p>
+          <h1>{user.username}</h1>
+          <p>{user.bio}</p>
+          <p>{user.id}</p>
             <form onSubmit={handlePostUpdateSubmit} id="login-form">
                 <label>
                     username:
@@ -75,6 +102,18 @@ function UserProfile () {
                     ))}
                 </label>
             </form>
+            <div>
+              <h1>Select your interests:</h1>
+                {interests.map(interest => (
+                  <div key={interest.id} onClick={() => handleInterestClick(interest.id)}>
+                  <p>{interest.name}</p>
+                  </div>
+                ))}
+              <h2>Your selected interests:</h2>
+                {selectedInterests.map(interest => (
+                <p key={interest.id}>{interest.name}</p>
+                ))}
+            </div>
         </>
     )
 }
