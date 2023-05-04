@@ -139,11 +139,18 @@ function UserProfile () {
             </div>
             <div id="add-interests-container">
               <h1>Select your interests:</h1>
-                {interests.map(interest => (
-                  <div key={interest.id} >
-                  <p>{interest.name}</p><button onClick={() => handleInterestClick(interest.id)}>yep</button>
+              {interests.map((interest) => {
+                const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
+                if (isInterestSelected) {
+                  return null;
+                }
+                return (
+                  <div key={interest.id}>
+                    <p>{interest.name}</p>
+                    <button onClick={() => handleInterestClick(interest.id)}>yep</button>
                   </div>
-                ))}
+                );
+              })}
             </div>
             <div id="your-interests-container">
               <h2>Your interests:</h2>

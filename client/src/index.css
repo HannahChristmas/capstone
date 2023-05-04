@@ -91,6 +91,7 @@ nav li:hover {
 
 #main-profile-container {
   border: 2px solid brown;
+  display: flex;
 }
 
 #edit-profile-container {
