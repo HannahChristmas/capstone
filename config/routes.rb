@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # patch '/user/activities/:id', to: 'activities#update'
 
 
-
+  get '/my_interests', to: 'users#my_interests'
 
 
 

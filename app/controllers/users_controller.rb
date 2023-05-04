@@ -35,6 +35,11 @@ class UsersController < ApplicationController
         head :no_content
     end
 
+    def my_interests
+        my_interests = @current_user.interests
+        render json: my_interests
+    end
+
     private 
 
     def user_params 
