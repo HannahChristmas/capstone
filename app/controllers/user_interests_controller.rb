@@ -1,5 +1,5 @@
 class UserInterestsController < ApplicationController
-    skip_before_action :authorize, only: [:create] 
+    skip_before_action :authorize, only: [:create, :destroy] 
 
     def index 
         user_interests = UserInterest.all 
@@ -15,6 +15,12 @@ class UserInterestsController < ApplicationController
         user_interest = UserInterest.create!(user_interest_params)
         # user_interest.user = @current_user
         render json: user_interest, status: 200
+    end
+
+    def destroy 
+        user_interest = UserInterest.find(params[:id])
+        user_interest.destroy 
+        head :no_content
     end
 
     private 
