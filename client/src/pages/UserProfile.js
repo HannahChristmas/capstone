@@ -105,51 +105,57 @@ function UserProfile () {
     
     return ( 
         <>
-          <h1>{user.username}</h1>
-          <p>{user.bio}</p>
-          <p>{user.id}</p>
-            <form onSubmit={handlePostUpdateSubmit} id="login-form">
-                <label>
-                    username:
-                    <input
-                        type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                </label><br/>
-                <label>
-                    bio: 
-                    <input
-                        type="text"
-                        id="bio"
-                        value={bio ? bio : "Enter bio here"}
-                        onChange={(e) => setBio(e.target.value)}
-                    />
-                </label><br/>
-                <button type="submit">{isLoading ? "Loading..." : "save changes"}</button><br/>
-                <label>
-                    {errors.map((err) => (
-                        <p key={err}>{err}</p>
-                    ))}
-                </label>
-            </form>
-            <div>
+        <div id="main-profile-container">
+          <div id="edit-profile-container">
+            <h1>{user.username}</h1>
+            <p>{user.bio}</p>
+            <p>{user.id}</p>
+              <form onSubmit={handlePostUpdateSubmit} id="login-form">
+                  <label>
+                      username:
+                      <input
+                          type="text"
+                          id="username"
+                          value={username}
+                          onChange={(e) => setUsername(e.target.value)}
+                      />
+                  </label><br/>
+                  <label>
+                      bio: 
+                      <input
+                          type="text"
+                          id="bio"
+                          value={bio ? bio : "Enter bio here"}
+                          onChange={(e) => setBio(e.target.value)}
+                      />
+                  </label><br/>
+                  <button type="submit">{isLoading ? "Loading..." : "save changes"}</button><br/>
+                  <label>
+                      {errors.map((err) => (
+                          <p key={err}>{err}</p>
+                      ))}
+                  </label>
+              </form>
+            </div>
+            <div id="add-interests-container">
               <h1>Select your interests:</h1>
                 {interests.map(interest => (
                   <div key={interest.id} >
                   <p>{interest.name}</p><button onClick={() => handleInterestClick(interest.id)}>yep</button>
                   </div>
                 ))}
+            </div>
+            <div id="your-interests-container">
               <h2>Your interests:</h2>
                 <div>
-                   {filteredUserInterests?.map((interest) => (
+                    {filteredUserInterests?.map((interest) => (
                     <div key={interest.id}>
                     <p>{interest.interest.name} - {interest.id}</p><button onClick={() => handleInterestDelete(interest.id)}>X</button>
                     </div>
-                   ))}
-                </div>      
+                    ))}
+                </div>     
             </div>
+          </div>
         </>
     )
 }

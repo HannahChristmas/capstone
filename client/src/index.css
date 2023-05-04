@@ -87,6 +87,24 @@ nav li:hover {
   /* border: solid 2px black; */
 }
 
+/* EDIT PROFILE PAGE */
+
+#main-profile-container {
+  border: 2px solid brown;
+}
+
+#edit-profile-container {
+  border: 2px solid pink;
+}
+
+#add-interests-container {
+  border: 2px solid blue;
+}
+
+#your-interests-container{
+  border: 2px solid green;
+}
+
 /* ACTIVITIES PAGE */
 
 .activities-page-container {
