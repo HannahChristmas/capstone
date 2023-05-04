@@ -9,21 +9,16 @@ function UserProfile () {
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [interests, setInterests] = useState([]);
-    const [selectedInterests, setSelectedInterests] = useState([]);
+    const [userInterests, setUserInterests] = useState([]);
 
-    const heLikes = user?.user_interests?.map((item) => {
-      return (
-        // interest.id
-        item.interest?.name
-      )
-    })
-
-    console.log("heLikes:", heLikes)
+    const filteredUserInterests = userInterests?.filter((interest) => 
+      interest.user?.id === user?.id)
 
     useEffect(() => {
         if (user) {
             setUsername(user.username)
             setBio(user.bio)
+            // setUserInterests(user.interests)
         }
       }, [user])
 
@@ -34,6 +29,15 @@ function UserProfile () {
         setInterests(interests)
       })
       }, [setInterests])
+
+    useEffect(() => {
+      fetch("/user_interests")
+      .then(r => r.json())
+      .then(interests => {
+        setUserInterests(interests)
+      })
+      }, [setUserInterests])
+
 
     const handleInterestClick = (interestId) => {
       fetch("/user_interests", {
@@ -48,14 +52,25 @@ function UserProfile () {
       })
         .then(r => r.json())
         .then(data => {
-          console.log(data)
-          setSelectedInterests([...selectedInterests, data])
-          console.log("SI Before:", selectedInterests)
-        })
-        console.log("SI After: ", selectedInterests)
-        
+          setUserInterests([...userInterests, data])
+        })        
     }
-    console.log("SI After after: ", selectedInterests)
+
+    // console.log("UI after post request: ", userInterests)
+
+    const handleInterestDelete = (interestId) => {
+      fetch(`/user_interests/${interestId}`, {
+        method: 'DELETE',
+      })
+      .then(response => {
+        if (response.ok) {
+          setUserInterests(userInterests.filter(interest => interest.id !== interestId));
+        } else {
+          throw new Error('Failed to delete interest');
+        }
+      })
+      .catch(error => console.error(error));    
+    }
 
 
     function handlePostUpdateSubmit(e) {
@@ -122,14 +137,18 @@ function UserProfile () {
             <div>
               <h1>Select your interests:</h1>
                 {interests.map(interest => (
-                  <div key={interest.id} onClick={() => handleInterestClick(interest.id)}>
-                  <p>{interest.name}</p>
+                  <div key={interest.id} >
+                  <p>{interest.name}</p><button onClick={() => handleInterestClick(interest.id)}>yep</button>
                   </div>
                 ))}
-              <h2>Your selected interests:</h2>
-                {selectedInterests.map(interest => (
-                <p key={interest.id}>{interest.name}</p>
-                ))}
+              <h2>Your interests:</h2>
+                <div>
+                   {filteredUserInterests?.map((interest) => (
+                    <div key={interest.id}>
+                    <p>{interest.interest.name} - {interest.id}</p><button onClick={() => handleInterestDelete(interest.id)}>X</button>
+                    </div>
+                   ))}
+                </div>      
             </div>
         </>
     )
