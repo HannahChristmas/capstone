@@ -138,26 +138,29 @@ function UserProfile () {
               </form>
             </div>
             <div id="add-interests-container">
-              <h1>Select your interests:</h1>
+              <div id="heading-container">
+              <h4>Select your interests:</h4>
+              </div>
               {interests.map((interest) => {
                 const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
                 if (isInterestSelected) {
                   return null;
                 }
                 return (
-                  <div key={interest.id}>
-                    <p>{interest.name}</p>
-                    <button onClick={() => handleInterestClick(interest.id)}>yep</button>
+                  <div id="individual-interest-all" key={interest.id}>
+                    <button onClick={() => handleInterestClick(interest.id)}>{interest.name}</button>
                   </div>
                 );
               })}
             </div>
             <div id="your-interests-container">
-              <h2>Your interests:</h2>
+              <div id="heading-container">
+                <h4>Your interests:</h4>
+              </div>
                 <div>
                     {filteredUserInterests?.map((interest) => (
-                    <div key={interest.id}>
-                    <p>{interest.interest.name} - {interest.id}</p><button onClick={() => handleInterestDelete(interest.id)}>X</button>
+                    <div id="individual-interest-all" key={interest.id}>
+                    <p>{interest.interest.name}</p><button id="delete-interest-button"onClick={() => handleInterestDelete(interest.id)}>X</button>
                     </div>
                     ))}
                 </div>     

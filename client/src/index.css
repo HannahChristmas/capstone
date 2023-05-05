@@ -100,9 +100,53 @@ nav li:hover {
 
 #add-interests-container {
   border: 2px solid blue;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 30rem;
+  height: 20rem;
+
 }
 
-#your-interests-container{
+#heading-container {
+  border: 2px solid purple;
+  margin-right: 10px;
+  /* display: flex;
+  flex-wrap: wrap; */
+
+}
+
+#individual-interest-all {
+  border: 2px solid yellow;
+  /* flex-basis: 25%; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center; 
+  margin: 5px;
+
+  height: auto;
+  width: auto;
+}
+
+#delete-interest-button {
+ margin-left: 4px;
+}
+
+
+#your-interests-container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 30rem;
+  height: 30rem;
+
   border: 2px solid green;
 }
 
