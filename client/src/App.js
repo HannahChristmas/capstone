@@ -10,6 +10,7 @@ import Interested from './pages/Interested.js';
 import Visited from './pages/Visited.js';
 import UserProfile from './pages/UserProfile';
 import PublicProfile from './pages/PublicProfile';
+import EditProfile from './pages/EditProfile';
 import { UserContext } from './UserContext'; 
 import { ActivitiesContext } from './ActivitiesContext'; 
 
@@ -117,7 +118,8 @@ function App() {
                     <Route path="/login" element={<LoginForm />}></Route>
                     <Route path="/logout" element={<LoginHomeScreen />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
-                    <Route path="/user-profile" element={<UserProfile />}></Route>
+                    {/* <Route path="/user-profile" element={<UserProfile />}></Route> */}
+                    <Route path="/edit-profile" element={<EditProfile />}></Route>
                     <Route path="/activities" element={<AllActivities/>}></Route>
                     <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>

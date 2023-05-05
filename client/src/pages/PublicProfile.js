@@ -51,7 +51,7 @@ function PublicProfile(){
                 <h1>User Interests:</h1>
                 {publicProfile?.user_interests.map(userInterest => {
                     const interest = publicProfile?.interests.find(interest => interest.id === userInterest.interest_id);
-                    if (!interest) return null; // ignore invalid user interests
+                    if (!interest) return <p>nope</p> // ignore invalid user interests
                     return <p key={interest.id}>{interest.name}</p>;
                 })}
             </div>   

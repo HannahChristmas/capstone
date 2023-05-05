@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react'
 import { UserContext } from "../UserContext";
 
-function UserProfile () {
+function EditProfile () {
     const { user, setUser } = useContext(UserContext)
 
     const [username, setUsername] = useState("");
@@ -105,8 +105,6 @@ function UserProfile () {
     
     return ( 
         <>
-        <h1>VIEW VIEW VIEW VIEW</h1>
-
         <div id="main-profile-container">
           <div id="edit-profile-container">
             <h1>{user.username}</h1>
@@ -172,4 +170,4 @@ function UserProfile () {
     )
 }
 
-export default UserProfile;
+export default EditProfile;
