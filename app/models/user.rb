@@ -1,5 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
+    
+    has_one_attached :image
+
 
     has_many :user_activities
     has_many :user_interests

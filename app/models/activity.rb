@@ -1,4 +1,6 @@
 class Activity < ApplicationRecord
+    has_one_attached :image
+
     has_many :user_activities
     
     # has_many :interested_users, -> { where(user_activities: { interested: true }) }, through: :user_activities, source: :activity

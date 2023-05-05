@@ -17,6 +17,25 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
+
+# ****ACTIVE STORAGE GEMS****
+
+# adds necessary dependencies for S3 to run
+gem 'aws-sdk-s3', '~> 1.119'
+
+# loads environment variables from .env to ENV in development
+gem 'dotenv-rails', '~> 2.8'
+
+# (optional) for if you are using additional gems, such as ImageMagick, to process images differently than uploaded (such as resizing)
+gem 'image_processing', '>= 1.2'
+
+# allows for processing of images as JSON data
+gem 'jsonapi-serializer', '~> 2.2'
+
+# allows for edition of of environment-specific values to the config file 
+gem 'figaro'
+
+
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
