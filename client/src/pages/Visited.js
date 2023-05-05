@@ -11,7 +11,7 @@ function Visited() {
 
   const userVisitedActivities = filteredByAllCriteria.filter(activity => {
     const matchingUserActivity = activity.user_activities.find(userActivity => {
-      return userActivity.user_id === user.id && userActivity.visited === true;
+      return userActivity.user_id === user?.id && userActivity.visited === true;
     });
     return matchingUserActivity !== undefined;
   });

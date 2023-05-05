@@ -15,6 +15,7 @@ import { ActivitiesContext } from './ActivitiesContext';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -95,7 +96,7 @@ function App() {
 
     return (
         <>
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, selectedImage, setSelectedImage }}>
         <ActivitiesContext.Provider value={{
           activities,
           filteredByAllCriteria,

@@ -4,12 +4,12 @@ import { UserContext } from "../UserContext";
 
 
 function CreateAccount() {
-    const { setUser } = useContext(UserContext)
+    const { setUser, selectedImage, setSelectedImage } = useContext(UserContext)
     const imageUpload = useRef()
-
+ 
 
     const [username, setUsername] = useState("");
-    const [selectedImage, setSelectedImage] = useState(null);
+    // const [selectedImage, setSelectedImage] = useState(null);
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([]);
@@ -27,11 +27,9 @@ function CreateAccount() {
         formData.append('password', password)
         formData.append('password_confirmation', passwordConfirmation)
         console.log(formData)
+        
         fetch("/signup", {
             method: "POST", 
-            // headers: {
-            // "Content-Type": "application/json",
-            // },
             body: formData
         })
             .then((r) => {

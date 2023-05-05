@@ -27,7 +27,7 @@ function LoginNav() {
 
     useEffect(() => {
         document.addEventListener('mousedown', (event) => {
-            if (!menuRef.current.contains(event.target)) {
+            if (menuRef && menuRef.current && !menuRef.current.contains(event.target)) {
                 setIsMenuOpen(false);
             }
         });

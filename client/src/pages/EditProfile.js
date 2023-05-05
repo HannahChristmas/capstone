@@ -1,8 +1,9 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useRef } from 'react'
 import { UserContext } from "../UserContext";
 
 function EditProfile () {
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser, selectedImage, setSelectedImage } = useContext(UserContext)
+    const imageUpload = useRef()
 
     const [username, setUsername] = useState("");
     const [bio, setBio] = useState("");
@@ -108,16 +109,16 @@ function EditProfile () {
 
     function handlePostUpdateSubmit(e) {
         e.preventDefault()
-        // fetch request to current user
+
+        const formData = new FormData();
+        formData.append('image', selectedImage)
+        formData.append('username', username)
+        formData.append('bio', bio)
+        console.log(formData)
+
         fetch(`/me`, {
           method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            bio
-          }),
+          body: formData
         })
         .then((r) => {
           setIsLoading(false);
@@ -143,6 +144,14 @@ function EditProfile () {
             <h1>{user.username}</h1>
             <p>{user.bio}</p>
               <form onSubmit={handlePostUpdateSubmit} id="login-form">
+              <label>
+                    image:
+                    <input type="file"
+                        onChange={e => setSelectedImage(e.target.files[0])}
+                        ref={imageUpload}
+                        accept="image/png, image/jpeg"
+                    />
+                </label>
                   <label>
                       username:
                       <input

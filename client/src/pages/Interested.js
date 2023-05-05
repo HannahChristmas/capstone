@@ -5,7 +5,7 @@ import SortBar from '../components/SortBar';
 import SearchBar from '../components/SearchBar';
 import ActivityCard from './ActivityCard';
 
-function Interested() {
+function Interested() { 
   const {user} = useContext(UserContext)
   const { filteredByAllCriteria } = useContext(ActivitiesContext)
 
