@@ -39,8 +39,11 @@ function EditProfile () {
       });
     
     const filteredByAllCriteria = searchList.filter(interest => {
-    if(filterCategory === "Category" || interest.category === filterCategory) 
-        return true
+    if(filterCategory === "Category" || interest.category === filterCategory) {
+            return true
+        } else {
+            return false
+        }
         })
 
 
