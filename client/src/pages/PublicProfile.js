@@ -14,7 +14,7 @@ function PublicProfile(){
         fetch(`/users/${id}`)
         .then(r => r.json())
         .then(data => {
-            console.log("data: ", data);
+            // console.log("data: ", data);
             setPublicProfile(data)
             })
     }, [id]);
@@ -22,8 +22,7 @@ function PublicProfile(){
     return (
         <>
             <h1>{name}'s profile</h1>
-            <p>user's picture</p>
-            <img src={publicProfile?.image}></img>
+            <img id="profile-picture" src={publicProfile?.image} alt="profile-pic"></img>
             <p>{publicProfile?.bio}</p>
             <h4>activities {name} wants to check out:</h4>
                 {publicInterested?.length === 0 ? (

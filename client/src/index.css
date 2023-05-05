@@ -150,6 +150,14 @@ nav li:hover {
   border: 2px solid green;
 }
 
+/* PROFILE PAGE  */
+
+#profile-picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}
+
 /* ACTIVITIES PAGE */
 
 .activities-page-container {
