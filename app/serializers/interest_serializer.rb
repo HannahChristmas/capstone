@@ -1,5 +1,5 @@
 class InterestSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :category
 
   has_many :user_interests
 
