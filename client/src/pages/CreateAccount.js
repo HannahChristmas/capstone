@@ -1,12 +1,15 @@
 import '../index.css';
-import { useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 import { UserContext } from "../UserContext";
 
 
 function CreateAccount() {
     const { setUser } = useContext(UserContext)
+    const imageUpload = useRef()
+
 
     const [username, setUsername] = useState("");
+    const [selectedImage, setSelectedImage] = useState(null);
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([]);
@@ -15,27 +18,30 @@ function CreateAccount() {
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log("I CLICKED IT!")
         setErrors([]);
         setIsLoading(true);
+
+        const formData = new FormData();
+        formData.append('image', selectedImage)
+        formData.append('username', username)
+        formData.append('password', password)
+        formData.append('password_confirmation', passwordConfirmation)
+        console.log(formData)
         fetch("/signup", {
             method: "POST", 
-            headers: {
-            "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ 
-                username, 
-                password,
-                password_confirmation: passwordConfirmation
-            }),
-        }).then((r) => {
-            setIsLoading(false);
-            if (r.ok) {
-                r.json().then((user) => setUser(user));
-            } else {
-                r.json().then((err) => setErrors(err.errors))
-            }
-        });
+            // headers: {
+            // "Content-Type": "application/json",
+            // },
+            body: formData
+        })
+            .then((r) => {
+                setIsLoading(false);
+                if (r.ok) {
+                    r.json().then((user) => setUser(user));
+                } else {
+                    r.json().then((err) => setErrors(err.errors))
+                }
+            });
     }
 
   return (
@@ -44,6 +50,14 @@ function CreateAccount() {
 
     <h1>create an account</h1>
     <form onSubmit={handleSubmit} id="login-form">
+        <label>
+            image:
+            <input type="file"
+              onChange={e => setSelectedImage(e.target.files[0])}
+              ref={imageUpload}
+              accept="image/png, image/jpeg"
+            />
+        </label>
         <label>
             username:
             <input

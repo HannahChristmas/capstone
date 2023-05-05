@@ -23,6 +23,7 @@ function PublicProfile(){
         <>
             <h1>{name}'s profile</h1>
             <p>user's picture</p>
+            <img src={publicProfile?.image}></img>
             <p>{publicProfile?.bio}</p>
             <h4>activities {name} wants to check out:</h4>
                 {publicInterested?.length === 0 ? (

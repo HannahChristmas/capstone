@@ -87,7 +87,7 @@ function LoginNav() {
                     }
                     </ul>
                 ) : (
-                    <img src={profile} onClick={toggleMenu} alt="default-profile"></img>
+                    <img src={user && user.image ? user.image : profile} onClick={toggleMenu} alt="default-profile"></img>
                 )}
             </div>
         </nav>
