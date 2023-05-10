@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import { Stack } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -211,6 +212,31 @@ function EditProfile () {
                   value={searchInterest}
                   onChange={handleSearchChange} 
                 />
+                {/* PUT IN FILTER THING HERE */}
+                {/* PUT IN RESET BUTTON HERE */}
+
+                {/* ADD INTERESTS SPOT- INTERESTS I HAVENT SELECTED */}
+                <div id="add-interests-container">
+                  {filteredByAllCriteria.map((interest) => {
+                    const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
+                    if (isInterestSelected) {
+                      return null;
+                    }
+                    return (
+                      <div id="individual-interest-all" key={interest.id}>
+                        <Button onClick={() => handleInterestClick(interest.id)}
+                          variant="outlined"
+                          size="small"
+                          startIcon={<AddIcon />}>
+                            {interest.name}
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* DELETE INTERESTS SPOT- ALREADY SELECTED INTERESTS */}
+
               </Stack>
             </Item>
           </Grid>
