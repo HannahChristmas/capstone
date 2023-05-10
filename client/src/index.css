@@ -177,7 +177,6 @@ nav li:hover {
 .activities-page-container {
   display: flex;
   border: 2px solid brown;
-  /* margin-top: 10px; */
   align-items: stretch;
   margin-bottom: 20px;
 }
@@ -194,8 +193,8 @@ nav li:hover {
 }
 
 .activity-search-container {
-  border: 3px solid orange;
-  width: 12rem;
+  /* border: 3px solid orange; */
+  width: 20rem;
   margin-left: 20px;
 }
 

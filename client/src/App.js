@@ -19,16 +19,16 @@ function App() {
   const [activities, setActivities] = useState([]);
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [filterNeighborhood, setFilterNeighborhood] = useState("Neighborhood")
-  const [filterCost, setFilterCost] = useState("Cost")
+  const [filterNeighborhood, setFilterNeighborhood] = useState([])
+  const [filterCost, setFilterCost] = useState([])
 
   const location = useLocation();
 
   useEffect(() => {
     setSelectedActivity(null); // set state to null every time the location changes
     setSearchQuery('')
-    setFilterCost('Cost')
-    setFilterNeighborhood('Neighborhood');
+    setFilterCost([])
+    setFilterNeighborhood([]);
   }, [location]);
 
   useEffect(() => {
@@ -87,12 +87,22 @@ function App() {
   });
 
   const filteredByAllCriteria = searchList.filter(activity => {
-    if((filterNeighborhood === "Neighborhood" || activity.neighborhood === filterNeighborhood) 
-    && (filterCost === "Cost" || activity.cost === filterCost)) { 
-      return true
-      }
-      return false;
-      })
+    if (
+      (filterNeighborhood.length === 0 || filterNeighborhood.includes(activity.neighborhood)) &&
+      (filterCost.length === 0 || filterCost.includes(activity.cost))
+    ) {
+      return true;
+    }
+    return false;
+  });
+
+  // const filteredByAllCriteria = searchList.filter(activity => {
+  //   if((filterNeighborhood.length === 0 || activity.neighborhood === filterNeighborhood || filterNeighborhood.includes(activity.neighborhood)) 
+  //   && (filterCost.length === 0 || activity.cost === filterCost) || filterCost.includes(activity.cost)) { 
+  //     return true
+  //     }
+  //     return false;
+  //     })
 
     return (
         <>
@@ -103,7 +113,9 @@ function App() {
           handleSearchChange,
           searchQuery,
           setSearchQuery,
+          filterNeighborhood,
           setFilterNeighborhood,
+          filterCost,
           setFilterCost,
           setActivities,
           selectedActivity,
