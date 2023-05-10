@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+#CENTER-THIS-BITCH {
+  display: flex;
+  justify-content: center;
+}
+
 body {
   background-color: #F1EEE9;
   margin: 0;
