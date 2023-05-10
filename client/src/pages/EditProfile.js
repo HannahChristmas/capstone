@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  height: '40rem',
+  // height: '40rem',
   display: 'flex',
   justifyContent: 'center',
   color: theme.palette.text.secondary,
@@ -214,8 +214,9 @@ function EditProfile () {
                   onChange={handleSearchChange} 
                 />
                 {/* PUT IN FILTER THING HERE */}
-                {/* PUT IN RESET BUTTON HERE */}
 
+                {/* PUT IN RESET BUTTON HERE */}
+                <Button onClick={handleReset}>reset</Button>
                 {/* ADD INTERESTS SPOT- INTERESTS I HAVENT SELECTED */}
                 <div id="add-interests-container">
                   {filteredByAllCriteria.map((interest) => {
