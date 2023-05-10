@@ -168,17 +168,14 @@ nav li:hover {
   margin: 2px;
 }
 
-
-
-
-
 /* ACTIVITIES PAGE */
 
 .activities-page-container {
   display: flex;
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
   align-items: stretch;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 /* Parent of PopUp & .individual-activity */
@@ -186,10 +183,11 @@ nav li:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border: solid pink 2px;
-  margin-left: 20px;
+  /* border: solid pink 2px; */
+  margin-left: 10px;
   margin-right: 20px;
   position: relative;
+  width: 80rem;
 }
 
 .activity-search-container {
@@ -204,11 +202,11 @@ nav li:hover {
 }
 
 .individual-activity {
-  border: solid blue 2px;
+  /* border: solid blue 2px; */
   /* min-height: 200px; */
   width: 200px;
   align-items: center;
-  margin: 15px;
+  margin: 5px;
   padding-bottom: 20px;
 
 }

@@ -1,9 +1,10 @@
-
 import React, { useContext } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SearchBar from '../components/SearchBar';
 import SortBar from '../components/SortBar';
 import ActivityCard from './ActivityCard';
+import Paper from '@mui/material/Paper';
+
 
 function AllActivities() {
   const { filteredByAllCriteria } = useContext(ActivitiesContext)
@@ -13,11 +14,11 @@ function AllActivities() {
       <SortBar></SortBar>
       <div className="activities-page-container">
       <SearchBar></SearchBar>
-        <div className="activities-list-container">
+        <Paper className="activities-list-container">
           {filteredByAllCriteria.map((activity) => (
             <ActivityCard key={activity.id} activity={activity}></ActivityCard>
           ))}
-        </div>
+        </Paper>
       </div>
    </>
   );

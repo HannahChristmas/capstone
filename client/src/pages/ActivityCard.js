@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
+import Paper from '@mui/material/Paper';
+
 
 function ActivityCard({activity}) {
   const { user } = useContext(UserContext)
@@ -228,12 +230,12 @@ function visitedClick() {
 
     return (
       <>
-        <div key={activity.id} className="individual-activity">
+        <Paper key={activity.id} className="individual-activity">
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood}</h2>
           <h4>${activity.cost}</h4>
           <button onClick={() => handleViewClick(activity)}>Quick View</button>
-        </div>  
+        </Paper>  
 
         {selectedActivity?.id === activity?.id && (
         <div className="popup-card">

@@ -96,14 +96,6 @@ function App() {
     return false;
   });
 
-  // const filteredByAllCriteria = searchList.filter(activity => {
-  //   if((filterNeighborhood.length === 0 || activity.neighborhood === filterNeighborhood || filterNeighborhood.includes(activity.neighborhood)) 
-  //   && (filterCost.length === 0 || activity.cost === filterCost) || filterCost.includes(activity.cost)) { 
-  //     return true
-  //     }
-  //     return false;
-  //     })
-
     return (
         <>
         <UserContext.Provider value={{ user, setUser, selectedImage, setSelectedImage }}>
