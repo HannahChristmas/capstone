@@ -111,8 +111,8 @@ nav li:hover {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 30rem;
-  height: 20rem;
+  width: 40rem;
+  /* height: 20rem; */
 
 }
 
@@ -149,8 +149,8 @@ nav li:hover {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 30rem;
-  height: 30rem;
+  width: 40rem;
+  /* height: 30rem; */
 
   border: 2px solid green;
 }
