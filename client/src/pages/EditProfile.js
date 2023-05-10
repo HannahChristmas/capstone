@@ -10,6 +10,14 @@ import Input from '@mui/material/Input';
 import { Stack } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,6 +30,29 @@ const Item = styled(Paper)(({ theme }) => ({
   border: '2px solid green',
 }));
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const categories = [
+  'Culture',
+  'Festivals',
+  'Fitness',
+  'Going Out',
+  'Hobbies',
+  'Playing Sports',
+  'Sporting Events',
+  'Water Sports',
+];
+
+
 function EditProfile () {
     const { user, setUser, selectedImage, setSelectedImage } = useContext(UserContext)
     const imageUpload = useRef()
@@ -33,7 +64,7 @@ function EditProfile () {
     const [interests, setInterests] = useState([]);
     const [userInterests, setUserInterests] = useState([]);
     const [searchInterest, setSearchInterest] = useState('');
-    const [filterCategory, setFilterCategory] = useState("Category")
+    const [filterCategory, setFilterCategory] = useState([])
 
     const filteredUserInterests = userInterests?.filter((interest) => 
       interest.user?.id === user?.id)
@@ -47,7 +78,7 @@ function EditProfile () {
       } 
 
       function handleReset(){
-        setFilterCategory("Category")
+        setFilterCategory([])
         setSearchInterest("")
       }
 
@@ -61,8 +92,8 @@ function EditProfile () {
       });
     
     const filteredByAllCriteria = searchList.filter(interest => {
-    if(filterCategory === "Category" || interest.category === filterCategory) {
-            return true
+      if (filterCategory.length === 0 || filterCategory.includes(interest.category)) {
+        return true
         } else {
             return false
         }
@@ -214,6 +245,28 @@ function EditProfile () {
                   onChange={handleSearchChange} 
                 />
                 {/* PUT IN FILTER THING HERE */}
+                <div>
+                  <FormControl sx={{ m: 1, width: 300 }}>
+                    <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
+                    <Select
+                      labelId="demo-multiple-checkbox-label"
+                      id="demo-multiple-checkbox"
+                      multiple
+                      value={filterCategory}
+                      onChange={handleCategoryFilter}
+                      input={<OutlinedInput label="Tag" />}
+                      renderValue={(selected) => selected.join(', ')}
+                      MenuProps={MenuProps}
+                    >
+                      {categories.map((category) => (
+                        <MenuItem key={category} value={category}>
+                          <Checkbox checked={filterCategory.indexOf(category) > -1} />
+                          <ListItemText primary={category} />
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
 
                 {/* PUT IN RESET BUTTON HERE */}
                 <Button onClick={handleReset}>reset</Button>
@@ -263,55 +316,6 @@ function EditProfile () {
 
         <br></br>
         <div id="main-profile-container">
-            <div className="activity-search-container">
-                <h4>Search Bar</h4>
-                <div>
-                <input type="text" value={searchInterest} onChange={handleSearchChange} />
-                <br></br>
-                <strong className="strong"> Filter By: </strong><br></br>
-                <select className={"dropdown-filter"} onChange={handleCategoryFilter}>
-                    <option value="Culture">Culture</option>
-                    <option value="Festivals">Festivals</option>
-                    <option value="Fitness">Fitness</option>
-                    <option value="Going Out">Going Out</option>
-                    <option value="Hobbies">Hobbies</option>
-                    <option value="Playing Sports">Playing Sports</option>
-                    <option value="Sporting Events">Sporting Events</option>
-                    <option value="Water Sports">Water Sports</option>
-
-                </select><br></br>
-                <button onClick={handleReset}>Reset</button>
-                </div>
-            </div>
-
-            {/* <div id="add-interests-container">
-              <div id="heading-container">
-              <h4>Select your interests:</h4>
-              </div>
-              {filteredByAllCriteria.map((interest) => {
-                const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
-                if (isInterestSelected) {
-                  return null;
-                }
-                return (
-                  <div id="individual-interest-all" key={interest.id}>
-                    <button onClick={() => handleInterestClick(interest.id)}>{interest.name}</button>
-                  </div>
-                );
-              })}
-            </div> */}
-            {/* <div id="your-interests-container">
-              <div id="heading-container">
-                <h4>Your interests:</h4>
-              </div>
-                <div>
-                    {filteredUserInterests?.map((interest) => (
-                    <div id="individual-interest-all" key={interest.id}>
-                    <p>{interest.interest.name}</p><button id="delete-interest-button"onClick={() => handleInterestDelete(interest.id)}>X</button>
-                    </div>
-                    ))}
-                </div>     
-            </div> */}
           </div>
         </>
     )
