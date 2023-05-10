@@ -94,64 +94,83 @@ nav li:hover {
 #main-edit-profile-container {
   display: flex;
   justify-content: center;
-  border: 5px solid rgb(162, 15, 133);
+  margin-bottom: 20px;
+  /* border: 5px solid rgb(162, 15, 133); */
 }
 
-#scrollable-interests {
-  border: 2px solid blue;
-  overflow: auto;
-  max-height: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 40rem;
-  justify-content: center;
-
+#edit-profile-paper {
+  width: 30rem;
 }
-
-#individual-interest-buttons {
-  border: 2px solid yellow;
-  width: fit-content;
-}
-
-#your-interests-container {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 40rem;
-  
-  /* height: 30rem; */
-
-  border: 2px solid green;
-}
-
-/* #add-interests-container {
-  border: 2px solid blue;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  flex-wrap: wrap;
-} */
-
-
-
-
-
-
-
-
-
-
-/* PROFILE PAGE  */
 
 #profile-picture {
   height: 200px;
   width: 200px;
   border-radius: 50%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
+
+#edit-profile-username-h1 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#edit-profile-bio-p {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 10px;
+}
+
+#interests-paper {
+  margin-left: 5px;
+  width: 40rem;
+}
+
+#interests-h4 {
+  text-align: left;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+#interest-search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#scrollable-interests {
+  /* border: 2px solid blue; */
+  overflow: auto;
+  max-height: 200px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-bottom: 10px;
+}
+
+#your-interests-container {
+  /* border: 2px solid green; */
+  overflow: auto;
+  max-height: 200px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin-top: 10px;
+}
+
+#individual-interest-buttons {
+  /* border: 2px solid yellow; */
+  width: fit-content;
+  margin: 2px;
+}
+
+
+
+
 
 /* ACTIVITIES PAGE */
 

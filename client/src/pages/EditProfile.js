@@ -1,9 +1,7 @@
 import { useContext, useState, useEffect, useRef } from 'react'
 import { UserContext } from "../UserContext";
-import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-// import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
@@ -175,17 +173,18 @@ function EditProfile () {
         <>
         <div id="main-edit-profile-container">
           {/* MAIN GRID */}
-        <Grid  border="2px solid red" width="88%" container spacing={0} justifyContent="center">
+        <Grid  width="88%" container spacing={0} justifyContent="center">
+        {/* in Grid: border="2px solid red" */}
 
           {/* PAPER WITH PIC */}
-          <Paper>
+          <Paper id="edit-profile-paper">
             <Stack>
-              <h1>{user.username}</h1>
-              <p>{user.bio}</p><br></br>
+              <h1 id="edit-profile-username-h1">{user.username}</h1>
+              <p id="edit-profile-bio-p">{user.bio}</p>
               <div >
                 <img src={user.image} id="profile-picture" alt="pro-pic"/>
-              </div><br></br><br></br>
-                <form onSubmit={handlePostUpdateSubmit}>
+              </div><br></br>
+                <form id="edit-profile-form" onSubmit={handlePostUpdateSubmit}>
                 <TextField 
                       id="outlined-basic" 
                       label="username" 
@@ -220,8 +219,9 @@ function EditProfile () {
           </Paper>
           
           {/* PAPER WITH INTERESTS */}
-            <Paper >
-            <h4 id="add-interests-h4">ADD INTERESTS:</h4>
+            <Paper id="interests-paper">
+            <h4 id="interests-h4">ADD INTERESTS:</h4>
+            <div id="interest-search-container">
               <TextField 
                   label="Search" 
                   variant="outlined" 
@@ -250,8 +250,9 @@ function EditProfile () {
                 </Select>
               </FormControl>
               <Button onClick={handleReset}>reset</Button>
+              </div>
             <Stack>
-                <div container id="scrollable-interests">
+                <div id="scrollable-interests">
                   {filteredByAllCriteria.map((interest) => {
                     const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
                     if (isInterestSelected) {
@@ -271,11 +272,8 @@ function EditProfile () {
                 </div>
 
                 {/* DELETE INTERESTS SPOT- ALREADY SELECTED INTERESTS */}
+                <h4 id="interests-h4">YOUR INTERESTS:</h4>
                 <div id="your-interests-container">
-                  <div id="heading-container">
-                    <h4>Your interests:</h4>
-                  </div>
-                    <div>
                         {filteredUserInterests?.map((interest) => (
                         <div id="individual-interest-all" key={interest.id}>
                         <Button onClick={() => handleInterestDelete(interest.id)}
@@ -285,8 +283,7 @@ function EditProfile () {
                             {interest.interest.name}
                         </Button>
                         </div>
-                        ))}
-                    </div>     
+                        ))}  
                 </div>
               </Stack>
             </Paper>
