@@ -18,18 +18,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  // height: '40rem',
-  display: 'flex',
-  justifyContent: 'center',
-  color: theme.palette.text.secondary,
-  border: '2px solid green',
-}));
-
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -185,100 +173,92 @@ function EditProfile () {
     
     return ( 
         <>
-        <div id="CENTER-THIS-BITCH">
+        <div id="main-edit-profile-container">
           {/* MAIN GRID */}
-        <Grid  width="85%" container spacing={1} justifyContent="center">
+        <Grid  border="2px solid red" width="88%" container spacing={0} justifyContent="center">
 
-          {/* GRID WITH PIC */}
-          <Grid container display="flex" justifyContent="center">
-            <Item>
-              <Stack>
-                <h1>{user.username}</h1>
-                <p>{user.bio}</p><br></br>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <img src={user.image} id="profile-picture" alt="pro-pic"/>
-                </div><br></br><br></br>
-                  <form onSubmit={handlePostUpdateSubmit}>
-                  <TextField 
-                        id="outlined-basic" 
-                        label="username" 
-                        variant="outlined"
-                        value={username} 
-                        onChange={(e) => setUsername(e.target.value)}
-                        sx={{ width: '90%' }}
-                      /><br></br><br></br>
-                      <TextField 
-                        id="outlined-basic" 
-                        label="bio" 
-                        variant="outlined"
-                        value={bio ? bio : "Enter bio here"} 
-                        onChange={(e) => setBio(e.target.value)}
-                        sx={{ width: '90%' }}
-                      /><br></br><br></br>
-                  <Input
-                    type="file"
-                    onChange={e => setSelectedImage(e.target.files[0])}
-                    ref={imageUpload}
-                    accept="image/png, image/jpeg"
-                    sx={{ width: '90%' }}
-                  /><br></br><br></br>             
-                  <Button type="submit">{isLoading ? "Loading..." : "update profile"}</Button>
-                  <label>
-                    {errors?.map((err) => (
-                        <p key={err}>{err}</p>
-                    ))}
-                  </label>
-                </form>
-              </Stack>
-            </Item>
-          </Grid>
-          
-          {/* GRID WITH INTERESTS */}
-          <Grid xs={8}>
-            <Item>
-              <Stack>
+          {/* PAPER WITH PIC */}
+          <Paper>
+            <Stack>
+              <h1>{user.username}</h1>
+              <p>{user.bio}</p><br></br>
+              <div >
+                <img src={user.image} id="profile-picture" alt="pro-pic"/>
+              </div><br></br><br></br>
+                <form onSubmit={handlePostUpdateSubmit}>
                 <TextField 
+                      id="outlined-basic" 
+                      label="username" 
+                      variant="outlined"
+                      value={username} 
+                      onChange={(e) => setUsername(e.target.value)}
+                      sx={{ width: '90%' }}
+                    /><br></br><br></br>
+                    <TextField 
+                      id="outlined-basic" 
+                      label="bio" 
+                      variant="outlined"
+                      value={bio ? bio : "Enter bio here"} 
+                      onChange={(e) => setBio(e.target.value)}
+                      sx={{ width: '90%' }}
+                    /><br></br><br></br>
+                <Input
+                  type="file"
+                  onChange={e => setSelectedImage(e.target.files[0])}
+                  ref={imageUpload}
+                  accept="image/png, image/jpeg"
+                  sx={{ width: '90%' }}
+                /><br></br><br></br>             
+                <Button type="submit">{isLoading ? "Loading..." : "update profile"}</Button>
+                <label>
+                  {errors?.map((err) => (
+                      <p key={err}>{err}</p>
+                  ))}
+                </label>
+              </form>
+            </Stack>
+          </Paper>
+          
+          {/* PAPER WITH INTERESTS */}
+            <Paper >
+            <h4 id="add-interests-h4">ADD INTERESTS:</h4>
+              <TextField 
                   label="Search" 
                   variant="outlined" 
-                  sx={{ width: '100%' }}
+                  sx={{ m: 1, width: '40%' }}
                   value={searchInterest}
                   onChange={handleSearchChange} 
-                />
-                {/* PUT IN FILTER THING HERE */}
-                <div>
-                  <FormControl sx={{ m: 1, width: 300 }}>
-                    <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
-                    <Select
-                      labelId="demo-multiple-checkbox-label"
-                      id="demo-multiple-checkbox"
-                      multiple
-                      value={filterCategory}
-                      onChange={handleCategoryFilter}
-                      input={<OutlinedInput label="Tag" />}
-                      renderValue={(selected) => selected.join(', ')}
-                      MenuProps={MenuProps}
-                    >
-                      {categories.map((category) => (
-                        <MenuItem key={category} value={category}>
-                          <Checkbox checked={filterCategory.indexOf(category) > -1} />
-                          <ListItemText primary={category} />
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </div>
-
-                {/* PUT IN RESET BUTTON HERE */}
-                <Button onClick={handleReset}>reset</Button>
-                {/* ADD INTERESTS SPOT- INTERESTS I HAVENT SELECTED */}
-                <div id="add-interests-container">
+              />
+              <FormControl sx={{ m: 1, width: '40%' }}>
+                <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={filterCategory}
+                  onChange={handleCategoryFilter}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selected) => selected.join(', ')}
+                  MenuProps={MenuProps}
+                >
+                  {categories.map((category) => (
+                    <MenuItem key={category} value={category}>
+                      <Checkbox checked={filterCategory.indexOf(category) > -1} />
+                      <ListItemText primary={category} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <Button onClick={handleReset}>reset</Button>
+            <Stack>
+                <div container id="scrollable-interests">
                   {filteredByAllCriteria.map((interest) => {
                     const isInterestSelected = filteredUserInterests.find((userInterest) => userInterest.interest_id === interest.id);
                     if (isInterestSelected) {
                       return null;
                     }
                     return (
-                      <div id="individual-interest-all" key={interest.id}>
+                      <div id="individual-interest-buttons" key={interest.id}>
                         <Button onClick={() => handleInterestClick(interest.id)}
                           variant="outlined"
                           size="small"
@@ -309,14 +289,9 @@ function EditProfile () {
                     </div>     
                 </div>
               </Stack>
-            </Item>
-          </Grid>
+            </Paper>
         </Grid>
         </div>
-
-        <br></br>
-        <div id="main-profile-container">
-          </div>
         </>
     )
 }

@@ -2,10 +2,7 @@
   box-sizing: border-box;
 }
 
-#CENTER-THIS-BITCH {
-  display: flex;
-  justify-content: center;
-}
+
 
 body {
   background-color: #F1EEE9;
@@ -92,55 +89,29 @@ nav li:hover {
   /* border: solid 2px black; */
 }
 
-/* EDIT PROFILE PAGE */
 
-#main-profile-container {
-  border: 2px solid brown;
+/*** EDIT PROFILE PAGE  ***/
+#main-edit-profile-container {
   display: flex;
-}
-
-#edit-profile-container {
-  border: 2px solid pink;
-}
-
-#add-interests-container {
-  border: 2px solid blue;
-  display: flex;
-  align-items: center;
-  text-align: center;
   justify-content: center;
-  flex-direction: row;
+  border: 5px solid rgb(162, 15, 133);
+}
+
+#scrollable-interests {
+  border: 2px solid blue;
+  overflow: auto;
+  max-height: 200px;
+  display: flex;
   flex-wrap: wrap;
   width: 40rem;
-  /* height: 20rem; */
+  justify-content: center;
 
 }
 
-#heading-container {
-  border: 2px solid purple;
-  margin-right: 10px;
-  /* display: flex;
-  flex-wrap: wrap; */
-
-}
-
-#individual-interest-all {
+#individual-interest-buttons {
   border: 2px solid yellow;
-  /* flex-basis: 25%; */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center; 
-  margin: 5px;
-
-  height: auto;
-  width: auto;
+  width: fit-content;
 }
-
-#delete-interest-button {
- margin-left: 4px;
-}
-
 
 #your-interests-container {
   display: flex;
@@ -150,10 +121,29 @@ nav li:hover {
   flex-direction: row;
   flex-wrap: wrap;
   width: 40rem;
+  
   /* height: 30rem; */
 
   border: 2px solid green;
 }
+
+/* #add-interests-container {
+  border: 2px solid blue;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: wrap;
+} */
+
+
+
+
+
+
+
+
+
 
 /* PROFILE PAGE  */
 
