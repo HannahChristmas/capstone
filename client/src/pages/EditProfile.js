@@ -17,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',
   color: theme.palette.text.secondary,
+  border: '2px solid green',
 }));
 
 function EditProfile () {
@@ -207,6 +208,8 @@ function EditProfile () {
                   label="Search" 
                   variant="outlined" 
                   sx={{ width: '100%' }}
+                  value={searchInterest}
+                  onChange={handleSearchChange} 
                 />
               </Stack>
             </Item>
