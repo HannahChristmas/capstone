@@ -200,7 +200,8 @@ nav li:hover {
 }
 
 .sort-bar {
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
+  text-align: left;
 }
 
 .individual-activity {

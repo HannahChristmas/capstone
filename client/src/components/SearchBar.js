@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 
+
 function SearchBar() {
     const { handleSearchChange, searchQuery, setSearchQuery, setFilterNeighborhood, setFilterCost } = useContext(ActivitiesContext)
 
