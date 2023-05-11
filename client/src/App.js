@@ -10,6 +10,7 @@ import Interested from './pages/Interested.js';
 import Visited from './pages/Visited.js';
 import PublicProfile from './pages/PublicProfile';
 import EditProfile from './pages/EditProfile';
+import EditActivity from './pages/EditActivity';
 import { UserContext } from './UserContext'; 
 import { ActivitiesContext } from './ActivitiesContext'; 
 
@@ -127,6 +128,8 @@ function App() {
                     <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
                     <Route path="/users/:id" element={<PublicProfile/>}></Route>
+                    <Route path="/edit-activity/:id" element={<EditActivity/>}></Route>
+
                 </Routes>
             </main>
           </ActivitiesContext.Provider>
