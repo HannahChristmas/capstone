@@ -2,6 +2,10 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 function ActivityCard({activity}) {
@@ -238,21 +242,41 @@ function visitedClick() {
         </Paper>  
 
         {selectedActivity?.id === activity?.id && (
-        <div className="popup-card">
+        <Paper className="popup-card">
           <h2>{selectedActivity.title}</h2>
           <h2>{selectedActivity.neighborhood}</h2>
           <a href={activity.website} target="_blank" rel="noreferrer">website</a><br></br>
 
           { user ? (
             <>
-              <button onClick={() => interestedClick(selectedActivity)}>{userInterested ? "❤️" : "♡"}</button><br/>
-              <button onClick={() => visitedClick(selectedActivity)}>{userVisited ? "YAYA" : "Nono"}</button><br/><br/><br/>
+              <Button onClick={() => interestedClick(selectedActivity)}>
+                {userInterested ? (
+                  <>
+                    <DeleteIcon /> Remove from Interests
+                  </>
+                ) : (
+                  <>
+                    <AddIcon /> Add to Interests
+                  </>
+                )}
+              </Button><br/>
+              <Button onClick={() => visitedClick(selectedActivity)}>
+                {userVisited ? (
+                    <>
+                      <DeleteIcon /> Remove from Visited
+                    </>
+                  ) : (
+                    <>
+                      <AddIcon /> Add to Visited
+                    </>
+                  )}
+                </Button><br/><br/><br/>
             </>
           ) : (
             <p>You must log in to update your interests and places you've visited.</p>
           )}
-          <button>reviews</button><br/>
-          <button onClick={displayInterestedUsers}>who's interested</button><br/>
+          <Button>reviews</Button><br/>
+          <Button onClick={displayInterestedUsers}>who's interested</Button><br/>
             {showInterestedUsers && 
               (interestedUsers.length === 0 ?
                 <p>no users have added this to their interests yet.</p> :
@@ -263,7 +287,7 @@ function visitedClick() {
                 )
               )
             }
-          <button onClick={displayVisitedUsers}>who's visited</button><br/>
+          <Button onClick={displayVisitedUsers}>who's visited</Button><br/>
             {showVisitedUsers && 
               (visitedUsers.length === 0 ?
                 <p>no users have visited yet.</p> :
@@ -274,8 +298,8 @@ function visitedClick() {
                 )
               )
             }
-          <button onClick={() => handleXClick(selectedActivity)}>X</button>
-        </div>
+          <Button onClick={() => handleXClick(selectedActivity)}>X</Button>
+        </Paper>
         )}  
      </>
     );

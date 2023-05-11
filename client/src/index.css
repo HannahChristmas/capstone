@@ -172,18 +172,19 @@ nav li:hover {
 
 .activities-page-container {
   display: flex;
-  /* border: 2px solid brown; */
+  border: 2px solid brown;
   align-items: stretch;
   margin-bottom: 20px;
   justify-content: center;
+  height: fit-content;
 }
 
 /* Parent of PopUp & .individual-activity */
 .activities-list-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  /* border: solid pink 2px; */
+  /* justify-content: space-around; */
+  border: solid pink 2px;
   margin-left: 10px;
   margin-right: 20px;
   position: relative;
@@ -218,7 +219,7 @@ nav li:hover {
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: orange;
+  height: fit-content;
 }
 
 /* LOGIN PAGE */
