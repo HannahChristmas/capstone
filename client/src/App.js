@@ -26,10 +26,12 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    setSelectedActivity(null); // set state to null every time the location changes
-    setSearchQuery('')
-    setFilterCost([])
-    setFilterNeighborhood([]);
+    if (location.pathname !== `/edit-activity/${selectedActivity?.id}`) {
+      setSelectedActivity(null);
+      setSearchQuery('');
+      setFilterCost([]);
+      setFilterNeighborhood([]);
+    }
   }, [location]);
 
   useEffect(() => {

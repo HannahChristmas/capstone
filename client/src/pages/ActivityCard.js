@@ -5,12 +5,12 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-
+import { useNavigate } from 'react-router-dom';
 
 function ActivityCard({activity}) {
   const { user } = useContext(UserContext)
   const { activities, setActivities, selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
+  const navigate = useNavigate();
 
   const [showInterestedUsers, setShowInterestedUsers] = useState(false);
   const [showVisitedUsers, setShowVisitedUsers] = useState(false);
@@ -37,11 +37,6 @@ function ActivityCard({activity}) {
   })
   .filter(username => username !== null)
 
-  // const visitedUsers = activity.user_activities.filter(activity => activity.visited)
-  // .map(activity => activity.user_id)
-  // .map(userId => activity.users.find(user => user.id === userId).username);
-
-
   const handleViewClick = (activity) => {
     (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
     setShowInterestedUsers(false);
@@ -49,6 +44,11 @@ function ActivityCard({activity}) {
 
   const handleXClick = () => {
     setSelectedActivity(null);
+  }
+
+  const handleActivityPageClick = () => {
+    console.log(selectedActivity)
+    navigate(`/edit-activity/${selectedActivity.id}`);
   }
 
   const displayInterestedUsers = () => {
@@ -299,6 +299,7 @@ function visitedClick() {
               )
             }
           <Button onClick={() => handleXClick(selectedActivity)}>X</Button>
+          <Button onClick={() => handleActivityPageClick(selectedActivity)}>look at more</Button>
         </Paper>
         )}  
      </>
