@@ -1,14 +1,18 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { ActivitiesContext } from '../ActivitiesContext';
+
 
 function EditActivity() {
+    const { filteredByAllCriteria, setActivities } = useContext(ActivitiesContext)
     const imageUpload = useRef()
     const { id } = useParams();
+
 
     const [activity, setActivity] = useState(null)
     const [title, setTitle] = useState('');
@@ -38,11 +42,6 @@ function EditActivity() {
         }
       }, [activity]);
 
-    // console.log("from EditAct.js: ", activity)
-    // console.log("from EditAct.js: ", activity.id)
-
-
-
     function handleActivityUpdate(e, id) {
         e.preventDefault()
         const formData = new FormData();
@@ -70,13 +69,23 @@ function EditActivity() {
             r.json().then((err) => setErrors(err.errors))
 
           } else {
-            r.json().then((updatedActivity) => setActivity(updatedActivity));
-            setErrors([])
-            // debugger;
-            // const updatedIndex = activities.findIndex((act) => act.id === updatedActivity.id);
-            // const newActivities = [...prevActivities]
-          }
-        })
+            r.json().then((updatedActivity) => {
+                setActivity(updatedActivity);
+                setErrors([])
+    
+            const newActivities = filteredByAllCriteria.map(act => {
+                if (activity.id === act.id) {
+                    return updatedActivity
+                } else {
+                    return act
+                }
+            });
+            setActivities(newActivities)
+
+          })
+        }
+    })
+        
     }
 
 
