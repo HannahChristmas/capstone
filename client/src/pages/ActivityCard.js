@@ -179,66 +179,14 @@ function visitedClick() {
   })
 }
 }
-    
-  // function visitedClick() {
-  //   const userActivity = selectedActivity.user_activities?.find((userActivity) => userActivity.user_id === user.id)
-  //   if(userActivity) {
-  //     fetch(`/user_activities/${userActivity.id}`, { 
-  //       method: 'PATCH',
-  //       body: JSON.stringify({
-  //       visited: !userActivity.visited
-  //     }),
-  //       headers: {
-  //       'Content-Type': 'application/json'
-  //       }
-  //     })
-  //     .then(r => r.json())
-  //     .then(data => {
-  //       const updatedUserActivity = selectedActivity.user_activities.map((activity) => activity.id === data.id ? data : activity)
-  //       selectedActivity.user_activities = updatedUserActivity
-  //       const updatedActivities = activities.map((activity) => {
-  //         if (selectedActivity.id === activity.id) {
-  //           return selectedActivity
-  //         } else {
-  //           return activity
-  //         }
-  //       })
-  //     setActivities(updatedActivities)
-  //     })
-  //     } else {
-  //     fetch('/user_activities', { 
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //       user_id: user.id,
-  //       activity_id: selectedActivity.id,
-  //       visited: true,
-  //       }),
-  //       headers: {
-  //       'Content-Type': 'application/json'
-  //       }
-  //     })
-  //     .then(r => r.json())
-  //     .then(data => {
-  //       selectedActivity.user_activities.push(data)
-  //       const updatedActivities = activities.map((activity) => {
-  //         if (selectedActivity.id === activity.id) {
-  //           return selectedActivity
-  //         } else {
-  //           return activity
-  //         }
-  //       })
-  //     setActivities(updatedActivities)
-  //     })
-  //   }
-  // }
-
     return (
       <>
         <Paper key={activity.id} className="individual-activity">
+          <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img>
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood}</h2>
           <h4>${activity.cost}</h4>
-          <button onClick={() => handleViewClick(activity)}>Quick View</button>
+          <Button onClick={() => handleViewClick(activity)}>Quick View</Button>
         </Paper>  
 
         {selectedActivity?.id === activity?.id && (
@@ -298,7 +246,7 @@ function visitedClick() {
                 )
               )
             }
-          <Button onClick={() => handleXClick(selectedActivity)}>X</Button>
+          <Button onClick={() => handleXClick(selectedActivity)}>X</Button><br></br>
           <Button onClick={() => handleActivityPageClick(selectedActivity.id)}>look at more</Button>
         </Paper>
         )}  

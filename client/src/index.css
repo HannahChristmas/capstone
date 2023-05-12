@@ -224,11 +224,17 @@ nav li:hover {
 .individual-activity {
   /* border: solid blue 2px; */
   /* min-height: 200px; */
-  width: 200px;
+  width: 250px;
   align-items: center;
   margin: 5px;
   padding-bottom: 20px;
+}
 
+#activity-card-pic {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin: 10px;
 }
 
 .popup-card {
