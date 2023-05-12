@@ -102,7 +102,26 @@ nav li:hover {
   width: 30rem;
 }
 
+#edit-activity-container {
+  display: flex; 
+  justify-content: center;
+  border: 2px solid pink; 
+}
+
+#edit-activity-paper {
+  width: 75%;
+  border: 2px solid red;
+}
+
 #profile-picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+#activity-picture {
   height: 200px;
   width: 200px;
   border-radius: 50%;

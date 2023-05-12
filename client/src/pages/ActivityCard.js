@@ -46,9 +46,9 @@ function ActivityCard({activity}) {
     setSelectedActivity(null);
   }
 
-  const handleActivityPageClick = () => {
-    console.log(selectedActivity)
-    navigate(`/edit-activity/${selectedActivity.id}`);
+  const handleActivityPageClick = (activityId) => {
+    console.log(activityId)
+    navigate(`/activities/${activityId}`);
   }
 
   const displayInterestedUsers = () => {
@@ -299,7 +299,7 @@ function visitedClick() {
               )
             }
           <Button onClick={() => handleXClick(selectedActivity)}>X</Button>
-          <Button onClick={() => handleActivityPageClick(selectedActivity)}>look at more</Button>
+          <Button onClick={() => handleActivityPageClick(selectedActivity.id)}>look at more</Button>
         </Paper>
         )}  
      </>

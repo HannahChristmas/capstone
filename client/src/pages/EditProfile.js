@@ -32,7 +32,7 @@ const categories = [
   'Festivals',
   'Fitness',
   'Going Out',
-  'Hobbies',
+  'Hobbies', 
   'Playing Sports',
   'Sporting Events',
   'Water Sports',

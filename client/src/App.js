@@ -26,12 +26,10 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== `/edit-activity/${selectedActivity?.id}`) {
       setSelectedActivity(null);
       setSearchQuery('');
       setFilterCost([]);
       setFilterNeighborhood([]);
-    }
   }, [location]);
 
   useEffect(() => {
@@ -130,7 +128,7 @@ function App() {
                     <Route path="/interested" element={<Interested/>} ></Route>
                     <Route path="/visited" element={<Visited/>}></Route>
                     <Route path="/users/:id" element={<PublicProfile/>}></Route>
-                    <Route path="/edit-activity/:id" element={<EditActivity/>}></Route>
+                    <Route path="/activities/:id" element={<EditActivity/>}></Route>
 
                 </Routes>
             </main>
