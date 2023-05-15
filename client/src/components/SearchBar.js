@@ -61,8 +61,8 @@ function SearchBar() {
     <>
     <Paper className="activity-search-container">
           <br></br>
-          <Button onClick={sortByName}>Alphabetize</Button>
-          <Button onClick={sortByCost}>Sort By Cost</Button>
+          <button id='sort-alphabetically-button' className='custom-button' onClick={sortByName}>abc</button><br></br>
+          <button id='sort-by-cost-button' className='custom-button' onClick={sortByCost}>$ - $$$</button><br></br>
           <TextField 
             label="Search by name or neighborhood" 
             variant="outlined" 

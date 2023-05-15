@@ -10,30 +10,53 @@
   font-style: normal;
 }
 
+
+@font-face {
+  font-family: 'Beachfly';
+  src: url('./fonts/Beachfly.ttf') format('truetype');
+}
+
 @font-face {
   font-family: 'Eyez';
   src: url('./fonts/Eyez.ttf') format('truetype');
 }
 
-#quick-view-button {
+.custom-button {
   color: #125B50;
-  font-family: 'Eyez';
-  font-size: 3rem;
   background: white;
   border: none;
   transition: transform .3s;
 }
 
-#quick-view-button:hover {
+.custom-button:hover {
   color: pink;
   cursor: pointer;
 }
 
-#quick-view-button:active,
-#quick-view-button:focus 
+.custom-button:active,
+.custom-button:focus 
 {
   color: orange;
   transform: scale(1.5);
+  /* font-style: italic; */
+}
+
+#quick-view-button {
+  font-family: 'Eyez';
+  font-size: 3rem;
+}
+
+#sort-by-cost-button {
+  font-family: 'Beachfly';
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#sort-alphabetically-button {
+  font-family: 'Bright';
+  font-size: 2.5rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 body {

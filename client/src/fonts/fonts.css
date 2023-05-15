@@ -1,7 +1,0 @@
-@font-face {
-    font-family: 'Bright';
-    src: url('./Bright DEMO.otf') format('opentype');
-    /* Add more src lines for different font file formats (e.g., woff, woff2) if available */
-    font-weight: normal;
-    font-style: normal;
-  }
