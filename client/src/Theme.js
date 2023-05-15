@@ -32,6 +32,21 @@ const theme = createTheme({
         },
       },
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          color: 'pink',
+          backgroundColor: 'orange',
+          fontFamily: 'cursive',
+        }, 
+        input: {
+          color: 'blue',
+          fontFamily: 'cursive',
+
+          // backgroundColor: 'orange',
+        },
+      }
+    }
   },
 });
 
