@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  
 }
 
 body {
@@ -8,6 +9,34 @@ body {
   font-family: 'Quicksand', sans-serif;
   color: #125B50;
   text-align: center;
+}
+
+.MuiTextField-root input {
+  font-family: Quicksand, sans-serif;
+  color: #125B50;
+}
+
+#input-label-top-color {
+  color: #125B50;
+  background-color: white; /* Adjust the color as needed */
+  padding-right: 3px;
+}
+
+.MuiTextField-root .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #E1A400;
+}
+
+.MuiTextField-root .MuiInputLabel-root.Mui-focused {
+  color: #125B50;
+}
+
+.MuiFormControl-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.MuiFormControl-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #E1A400 !important;
+}
+
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #E1A400 !important;
 }
 
 @font-face {
@@ -29,22 +58,32 @@ body {
   src: url('./fonts/Eyez.ttf') format('truetype');
 }
 
+#sort-buttons-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
 .custom-button {
   color: #125B50;
   background: white;
   border: none;
   transition: transform .3s;
+  margin: 5px;
 }
 
 .custom-button:hover {
-  color: pink;
+  color: pink !important;
   cursor: pointer;
+  transform: scale(1.4);
 }
 
 .custom-button:active,
 .custom-button:focus 
 {
-  color: orange;
+  color: orange !important;
   transform: scale(1.5);
   /* font-style: italic; */
 }
@@ -56,15 +95,21 @@ body {
 
 #sort-by-cost-button {
   font-family: 'Beachfly';
-  margin-top: 10px;
-  margin-bottom: 5px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #3ca393;
+  color: white;
 }
 
 #sort-alphabetically-button {
   font-family: 'Bright';
   font-size: 2.5rem;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #3ca393;
+  color: white;
 }
 
 a {

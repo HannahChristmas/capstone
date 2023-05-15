@@ -10,9 +10,21 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import { makeStyles } from '@mui/styles';
+
 
 function SearchBar() {
     const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
+
+    const useStyles = makeStyles(() => ({
+      menuItem: {
+        fontFamily: 'Quicksand',
+        color: '#125B50',
+      },
+    }));
+
+    const classes = useStyles();
+
 
     function handleNeighborhoodFilter(e){
       setFilterNeighborhood(e.target.value)
@@ -48,10 +60,12 @@ function SearchBar() {
     <>
     <Paper className="activity-search-container">
           <br></br>
-          <button id='sort-alphabetically-button' className='custom-button' onClick={sortByName}>abc</button><br></br>
+          <div id="sort-buttons-container">
+          <button id='sort-alphabetically-button' className='custom-button' onClick={sortByName}>abc</button>
           <button id='sort-by-cost-button' className='custom-button' onClick={sortByCost}>$ - $$$</button><br></br>
-          <TextField 
-            label="Search by name or neighborhood" 
+          </div>
+          <TextField id="input-label-top-color"
+            label="Name or neighborhood" 
             variant="outlined" 
             sx={{ m: 1, width: '80%' }}
             value={searchQuery}
@@ -59,7 +73,9 @@ function SearchBar() {
           /><br></br>
 
           <FormControl sx={{ m: 1, width: '80%' }}>
-            <InputLabel id="demo-multiple-checkbox-label">Neighborhood</InputLabel>
+            <InputLabel 
+              id="input-label-top-color"
+              >Neighborhood</InputLabel>
             <Select
               labelId="demo-multiple-checkbox-label"
               id="demo-multiple-checkbox"
@@ -70,7 +86,7 @@ function SearchBar() {
               renderValue={(selected) => selected.join(', ')}
             >
               {neighborhoods.map((neighborhood) => (
-                <MenuItem key={neighborhood} value={neighborhood}>
+                <MenuItem key={neighborhood} value={neighborhood} classes={{ root: classes.menuItem }}>
                   <Checkbox checked={filterNeighborhood.indexOf(neighborhood) > -1} />
                   <ListItemText primary={neighborhood} />
                 </MenuItem>
@@ -79,7 +95,7 @@ function SearchBar() {
           </FormControl>
           
           <FormControl sx={{ m: 1, width: '80%' }}>
-            <InputLabel id="demo-multiple-checkbox-label">Cost</InputLabel>
+            <InputLabel id="input-label-top-color">Cost</InputLabel>
               <Select
                 labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"

@@ -230,7 +230,7 @@ function EditProfile () {
                   onChange={handleSearchChange} 
               />
               <FormControl sx={{ m: 1, width: '40%' }}>
-                <InputLabel id="demo-multiple-checkbox-label">Category</InputLabel>
+                <InputLabel id="input-label-top-color">Category</InputLabel>
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"

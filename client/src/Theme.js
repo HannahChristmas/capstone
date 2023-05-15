@@ -7,7 +7,14 @@ import { createTheme } from '@mui/material/styles';
 //  body: #F1EEE9;
 
 const theme = createTheme({
+
+  typography: {
+    "fontFamily": "Quicksand",
+    "fontSize": 16,
+   },
+
   components: {
+
     MuiButton: {
       styleOverrides: {
         root: {
@@ -32,26 +39,35 @@ const theme = createTheme({
         },
       },
     },
-    MuiTextField: {
+
+    // Once something is clicked - only for outlined not root:
+    MuiSelect: {
       styleOverrides: {
         root: {
-          color: 'pink',
-          backgroundColor: 'orange',
-        }, 
-        input: {
-          color: 'blue',
-          // backgroundColor: 'orange',
+          // fontFamily: 'Quicksand',
+          // color: 'blue',
+        },
+        outlined: {
+          color: '#125B50',
+          fontFamily: 'Quicksand',
+        }
+      },
+    },
+
+    // Styles dropdown menu- fontFamily doesn't work, but need it for color and textAlign
+    MuiListItemText: {
+      styleOverrides: {
+        root: {
+          color: '#125B50',
+          textAlign: 'left',
         },
       },
     },
 
-    MuiInputLabel: {
+    MuiCheckbox: {
       styleOverrides: {
         root: {
-          fontFamily: 'Quicksand',
           color: '#125B50',
-          fontSize: '16px', 
-          fontWeight: 'bold',
         },
       },
     },
