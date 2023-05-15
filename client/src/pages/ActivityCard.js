@@ -186,7 +186,7 @@ function visitedClick() {
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood}</h2>
           <h4>${activity.cost}</h4>
-          <Button onClick={() => handleViewClick(activity)}>Quick View</Button>
+          <button id='quick-view-button' onClick={() => handleViewClick(activity)}>I</button>
         </Paper>  
 
         {selectedActivity?.id === activity?.id && (

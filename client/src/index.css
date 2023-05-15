@@ -10,6 +10,32 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Eyez';
+  src: url('./fonts/Eyez.ttf') format('truetype');
+}
+
+#quick-view-button {
+  color: #125B50;
+  font-family: 'Eyez';
+  font-size: 3rem;
+  background: white;
+  border: none;
+  transition: transform .3s;
+}
+
+#quick-view-button:hover {
+  color: pink;
+  cursor: pointer;
+}
+
+#quick-view-button:active,
+#quick-view-button:focus 
+{
+  color: orange;
+  transform: scale(1.5);
+}
+
 body {
   background-color: #F1EEE9;
   margin: 0;
