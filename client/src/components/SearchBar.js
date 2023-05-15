@@ -25,7 +25,7 @@ const MenuProps = {
 
 
 function SearchBar() {
-    const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost } = useContext(ActivitiesContext)
+    const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
 
     function handleNeighborhoodFilter(e){
       setFilterNeighborhood(e.target.value)
@@ -60,6 +60,9 @@ function SearchBar() {
     return (
     <>
     <Paper className="activity-search-container">
+          <br></br>
+          <Button onClick={sortByName}>Sort Alphabetically</Button>
+          <Button onClick={sortByCost}>Sort By Cost</Button>
           <TextField 
             label="Search by name or neighborhood" 
             variant="outlined" 

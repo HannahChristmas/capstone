@@ -1,6 +1,7 @@
 import { ActivitiesContext } from '../ActivitiesContext';
 import React, { useContext } from 'react';
 import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 
 
 function SortBar() {
@@ -8,10 +9,10 @@ function SortBar() {
  
     return (
     <>
-    <div className="sort-bar">
+    <Paper className="sort-bar">
         <Button onClick={sortByName}>Sort Alphabetically</Button>
         <Button onClick={sortByCost}>Sort By Cost</Button>
-    </div>
+    </Paper>
     </>
     );
 };

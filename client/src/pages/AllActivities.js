@@ -11,7 +11,7 @@ function AllActivities() {
 
   return (
     <>
-      <SortBar></SortBar>
+      {/* <SortBar></SortBar> */}
       <div className="activities-page-container">
       <SearchBar></SearchBar>
         <Paper className="activities-list-container">

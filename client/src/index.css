@@ -226,6 +226,7 @@ nav li:hover {
 .sort-bar {
   /* border: 3px solid grey; */
   text-align: left;
+  align-items: center;
 }
 
 .individual-activity {
