@@ -24,13 +24,13 @@ const theme = createTheme({
             border: 0,
             color: '#125B50',
             height: 25,
-            padding: '0 30px',
+            // padding: '0 30px',
             marginBottom: '10px',
             //   boxShadow: '0 3px 5px 2px #E85F5F',
             transition: 'background-color 0.3s, color 0.3s',
             '&:hover': {
             backgroundColor: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-            color: 'blue',
+            color: 'orange',
             },
             '&:active': {
             backgroundColor: 'linear-gradient(45deg, #FF8E53 30%, #FE6B8B 90%)',
@@ -68,6 +68,26 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: '#125B50',
+        },
+      },
+    },
+
+    MuiInput: {
+      styleOverrides: {
+        input: {
+          '&[type="file"]': {
+            // Hide the default button text
+            // Style the custom button
+              content: '"Butts"',
+              fontFamily: 'Quicksand',
+              fontSize: '16px',
+              padding: '8px 12px',
+              border: '1px solid #e0e0e0',
+              borderRadius: '4px',
+              // background: 'red',
+              color: '#125B50',
+              cursor: 'pointer',
+          },
         },
       },
     },

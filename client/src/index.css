@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  
+  color: rgb(60, 67, 66);
 }
 
 body {
@@ -39,6 +39,7 @@ body {
   border-color: #E1A400 !important;
 }
 
+
 @font-face {
   font-family: 'Bright';
   src: url('./fonts/Bright DEMO.otf') format('opentype');
@@ -68,9 +69,9 @@ body {
 
 .custom-button {
   color: #125B50;
-  background: white;
+  background: transparent;
   border: none;
-  transition: transform .3s;
+  transition: transform .3s;  
   margin: 5px;
 }
 
@@ -95,22 +96,39 @@ body {
 
 #sort-by-cost-button {
   font-family: 'Beachfly';
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: #3ca393;
-  color: white;
+  height: 50px;
+  width: 6rem;
+  border-radius: 40%;
+  /* background-color: #125B50;
+  color: white; */
 }
 
 #sort-alphabetically-button {
   font-family: 'Bright';
   font-size: 2.5rem;
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background-color: #3ca393;
-  color: white;
+  height: 50px;
+  width: 6rem;
+  border-radius: 40%;
+  /* background-color: #125B50;
+  color: white; */
 }
+
+#reset-button {
+  /* font-family: 'Bright'; */
+  font-family: 'Bright';
+  font-size: 2.75rem;
+  border: none;
+  background-color: white;
+  color: #125B50;
+  margin-top: 10px;
+}
+
+#reset-button:hover {
+  color: pink !important;
+  cursor: pointer;
+  /* transform: scale(1.4); */
+}
+
 
 a {
   color: inherit;
@@ -149,18 +167,26 @@ nav li:hover {
   text-align: right;
 }
 
+.nav li {
+  color: #125B50;
+  font-size: 18px;
+  margin-right: 2rem;
+  font-weight: 500;
+
+}
+
 .nav img {
   height: 60px;
   width: 60px;
   border-radius: 50%;
   margin-right: 2rem;
   cursor: pointer;
-
 }
 
 .site-title {
   font-size: 5rem;
   font-family: 'Bright';
+  color: #125B50;
   /* border: solid 2px pink; */
 }
 
@@ -168,16 +194,21 @@ nav li:hover {
 
 .activity-nav {
   display: flex;
-  /* border: solid blue 2px; */
   height: 2rem;
   align-items: center;
   flex: 10;
 }
 
+.activity-nav li {
+  color: #125B50;
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .activity-nav .active {
   color: #E85F5F;
   text-decoration: underline;
-  text-decoration-color: #E1A400;
+  text-decoration-color: orange;
 }
 
 .activity-nav ul {
@@ -231,14 +262,8 @@ nav li:hover {
 }
 
 #edit-profile-username-h1 {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-#edit-profile-bio-p {
-  margin-top: 0;
-  padding-top: 0;
   margin-bottom: 10px;
+  color: #125B50;
 }
 
 #interests-paper {
@@ -268,18 +293,6 @@ nav li:hover {
   justify-content: center;
 
   margin-bottom: 10px;
-}
-
-#your-interests-container {
-  /* border: 2px solid green; */
-  overflow: auto;
-  max-height: 200px;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  margin-top: 10px;
 }
 
 #individual-interest-buttons {
@@ -332,11 +345,23 @@ nav li:hover {
   padding-bottom: 20px;
 }
 
+.individual-activity h1 {
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.individual-activity h2 {
+  font-weight: 300;
+  font-size: 18px;
+}
+
 #activity-card-pic {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   margin: 10px;
+  margin-top: 15px;
+
 }
 
 .popup-card {

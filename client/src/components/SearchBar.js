@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -10,21 +9,11 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-import { makeStyles } from '@mui/styles';
 
 
 function SearchBar() {
     const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
-
-    const useStyles = makeStyles(() => ({
-      menuItem: {
-        fontFamily: 'Quicksand',
-        color: '#125B50',
-      },
-    }));
-
-    const classes = useStyles();
-
+    const resetButton = document.getElementById('reset-button');
 
     function handleNeighborhoodFilter(e){
       setFilterNeighborhood(e.target.value)
@@ -38,6 +27,8 @@ function SearchBar() {
       setFilterNeighborhood([])
       setFilterCost([])
       setSearchQuery("")
+      resetButton.blur();
+      resetButton.style.transform = 'scale(1)';
     }
 
     const neighborhoods = [
@@ -86,7 +77,7 @@ function SearchBar() {
               renderValue={(selected) => selected.join(', ')}
             >
               {neighborhoods.map((neighborhood) => (
-                <MenuItem key={neighborhood} value={neighborhood} classes={{ root: classes.menuItem }}>
+                <MenuItem key={neighborhood} value={neighborhood} >
                   <Checkbox checked={filterNeighborhood.indexOf(neighborhood) > -1} />
                   <ListItemText primary={neighborhood} />
                 </MenuItem>
@@ -113,7 +104,7 @@ function SearchBar() {
                 ))}
               </Select>
           </FormControl>
-          <Button onClick={handleReset}>reset</Button>
+          <button id='reset-button' onClick={handleReset}>reset</button>
     </Paper>  
     </>
     );

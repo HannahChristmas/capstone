@@ -180,7 +180,6 @@ function EditProfile () {
           <Paper id="edit-profile-paper">
             <Stack>
               <h1 id="edit-profile-username-h1">{user.username}</h1>
-              <p id="edit-profile-bio-p">{user.bio}</p>
               <div >
                 <img src={user.image} id="profile-picture" alt="pro-pic"/>
               </div><br></br>
@@ -193,14 +192,17 @@ function EditProfile () {
                       onChange={(e) => setUsername(e.target.value)}
                       sx={{ width: '90%' }}
                     /><br></br><br></br>
-                    <TextField 
-                      id="outlined-basic" 
-                      label="bio" 
-                      variant="outlined"
-                      value={bio ? bio : "Enter bio here"} 
-                      onChange={(e) => setBio(e.target.value)}
-                      sx={{ width: '90%' }}
-                    /><br></br><br></br>
+                <TextField 
+                  id="outlined-basic" 
+                  label="bio" 
+                  variant="outlined"
+                  value={bio ? bio : "Enter bio here"} 
+                  onChange={(e) => setBio(e.target.value)}
+                  sx={{ width: '90%' }}
+                  InputProps={{ sx: { height: '10rem', color: '#125B50'} }}
+                  multiline
+                  rows={4}
+                /><br></br><br></br>
                 <Input
                   type="file"
                   onChange={e => setSelectedImage(e.target.files[0])}
@@ -273,9 +275,9 @@ function EditProfile () {
 
                 {/* DELETE INTERESTS SPOT- ALREADY SELECTED INTERESTS */}
                 <h4 id="interests-h4">YOUR INTERESTS:</h4>
-                <div id="your-interests-container">
+                <div id="scrollable-interests">
                         {filteredUserInterests?.map((interest) => (
-                        <div id="individual-interest-all" key={interest.id}>
+                        <div id="individual-interest-buttons" key={interest.id}>
                         <Button onClick={() => handleInterestDelete(interest.id)}
                           variant="outlined"
                           size="small"

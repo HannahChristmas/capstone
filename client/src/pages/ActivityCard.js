@@ -184,8 +184,7 @@ function visitedClick() {
         <Paper key={activity.id} className="individual-activity">
           <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img>
           <h1>{activity.title}</h1>
-          <h2>{activity.neighborhood}</h2>
-          <h4>${activity.cost}</h4>
+          <h2>{activity.neighborhood} · ${activity.cost}</h2>
           <button id='quick-view-button' className='custom-button' onClick={() => handleViewClick(activity)}>I</button>
         </Paper>  
 

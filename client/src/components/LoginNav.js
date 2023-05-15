@@ -67,7 +67,7 @@ function LoginNav() {
                         {user ? (
                             <>
                                 <li><Link to={`/users/${user.id}`}>view {user.username}</Link></li>
-                                <li><Link to='/edit-profile'>EDIT PROFILE</Link></li>
+                                <li><Link to='/edit-profile'>edit profile</Link></li>
                                 <li><Link 
                                     to='/logout' 
                                     className="login-nav"
@@ -75,7 +75,7 @@ function LoginNav() {
                                         e.preventDefault();
                                         handleLogoutClick();
                                     }}
-                                    >LOGOUT</Link>
+                                    >logout</Link>
                                 </li>
                             </>
                         ) : (
