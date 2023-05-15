@@ -60,7 +60,7 @@ function LoginNav() {
                 </li>
             </ul>
         </nav>
-            <Link to='/' className="site-title">CINCY SOCIAL</Link>
+            <Link to='/' className="site-title">cincy social</Link>
             <div ref={menuRef} id="avatar">
                 {isMenuOpen ? (
                     <ul>
