@@ -37,16 +37,25 @@ const theme = createTheme({
         root: {
           color: 'pink',
           backgroundColor: 'orange',
-          fontFamily: 'cursive',
         }, 
         input: {
           color: 'blue',
-          fontFamily: 'cursive',
-
           // backgroundColor: 'orange',
         },
-      }
-    }
+      },
+    },
+
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Quicksand',
+          color: '#125B50',
+          fontSize: '16px', 
+          fontWeight: 'bold',
+        },
+      },
+    },
+
   },
 });
 

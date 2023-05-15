@@ -11,19 +11,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-
-
 function SearchBar() {
     const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
 
@@ -81,7 +68,6 @@ function SearchBar() {
               onChange={handleNeighborhoodFilter}
               input={<OutlinedInput label="Tag" />}
               renderValue={(selected) => selected.join(', ')}
-              MenuProps={MenuProps}
             >
               {neighborhoods.map((neighborhood) => (
                 <MenuItem key={neighborhood} value={neighborhood}>
@@ -102,7 +88,6 @@ function SearchBar() {
                 onChange={handleCostFilter}
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => selected.join(', ')}
-                MenuProps={MenuProps}
               >
                 {costs.map((cost) => (
                   <MenuItem key={cost} value={cost}>
