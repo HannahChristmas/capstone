@@ -112,7 +112,7 @@ nav li:hover {
 #edit-activity-container {
   display: flex; 
   justify-content: center;
-  border: 2px solid pink; 
+  /* border: 2px solid pink;  */
 }
 
 #edit-activity-paper {
@@ -198,7 +198,7 @@ nav li:hover {
 
 .activities-page-container {
   display: flex;
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
   align-items: stretch;
   margin-bottom: 20px;
   justify-content: center;
@@ -210,7 +210,7 @@ nav li:hover {
   display: flex;
   flex-wrap: wrap;
   /* justify-content: space-around; */
-  border: solid pink 2px;
+  /* border: solid pink 2px; */
   margin-left: 10px;
   margin-right: 20px;
   position: relative;
