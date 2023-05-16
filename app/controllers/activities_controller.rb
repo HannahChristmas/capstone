@@ -11,6 +11,11 @@ class ActivitiesController < ApplicationController
         render json: activity
     end
 
+    def create
+        activity = Activity.create!(activity_params)
+        render json: activity, status: 201
+    end
+
     def update 
         activity = Activity.find_by(id: params[:id])
         activity.update!(activity_params)

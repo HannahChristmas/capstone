@@ -6,13 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 puts "🏈 Seeding activities..."
 
 activity1 = Activity.create(title: 'Dinner Train', neighborhood: 'Golf Manor', cost: 95, address: '2172 E Seymour Ave, Cincinnati, OH 45237', phone_number: '(513) 791-7245', website: 'https://cincinnatidinnertrain.com/')
 activity2 = Activity.create(title: 'Music Hall Tour', neighborhood: 'OTR', cost: 15, address: '1241 Elm St, Cincinnati, OH 45202', phone_number: '(513) 744-3293', website: 'https://friendsofmusichall.org/music-hall-tours/')
-activity3 = Activity.create(title: 'Behringer Crawford Museum', neighborhood: 'Covington', cost: 9, address: '1600 Montague Rd, Covington, KY 41011', phone_number: '(859) 491-4003', website: 'https://www.bcmuseum.org/')
+activity3 = Activity.create(title: 'Behringer Crawford Museum', neighborhood: 'Covington, KY', cost: 9, address: '1600 Montague Rd, Covington, KY 41011', phone_number: '(859) 491-4003', website: 'https://www.bcmuseum.org/')
 activity4 = Activity.create(title: 'Carousel', neighborhood: 'The Banks', cost: 2, address: '8 E Mehring Way, Cincinnati, OH 45202', phone_number: '(513) 381-3756', website: 'https://www.cincinnati-oh.gov/cincyparks/visit-a-park/find-a-parkfacility/carol-anns-carousel/')
 activity5 = Activity.create(title: 'Cincinnati Fire Museum', neighborhood: 'Downtown', cost: 8, address: '315 W Court St, Cincinnati, OH 45202', phone_number: '(513) 621-5553', website: 'https://www.cincyfiremuseum.com')
+activity4 = Activity.create(title: 'Taft Art Museum', neighborhood: 'Downtown', cost: 12, address: '316 Pike St, Cincinnati, OH 45202', phone_number: '(513) 241-0343', website: 'https://www.taftmuseum.org/')
+activity4 = Activity.create(title: 'Pendleton Art Center', neighborhood: 'Pendleton', cost: 0, address: '1310 Pendleton St, Cincinnati, OH 45202', phone_number: '(513) 421-4339', website: 'https://pendletonartcenter.com/')
+activity4 = Activity.create(title: 'Riverboat Cruise', neighborhood: 'Newport, KY', cost: 34, address: '101 Riverboat Row, Newport, KY 41071', phone_number: '(800) 261-8586', website: 'https://bbriverboats.com/')
+activity4 = Activity.create(title: 'Haunted Tour', neighborhood: 'OTR', cost: 25, address: '1225 Elm St, Cincinnati, OH 45202', phone_number: '(844) 757-5657', website: 'https://cincinnatighosts.com/')
+activity4 = Activity.create(title: 'Paddlefest', neighborhood: 'The Banks', cost: 45, address: '435 E Mehring Way, Cincinnati OH 45202', phone_number: '', website: 'https://www.ohioriverpaddlefest.org/')
+activity4 = Activity.create(title: 'American Sign Museum', neighborhood: 'Camp Washington', cost: 15, address: '1330 Monmouth Ave, Cincinnati, OH 45225', phone_number: '(513) 541-6366', website: 'https://www.americansignmuseum.org/')
+activity4 = Activity.create(title: 'Cincinnati Art Museum', neighborhood: 'Mt. Adams', cost: 0, address: '953 Eden Park Dr, Cincinnati, OH 45202', phone_number: '(513) 721-2787', website: 'https://www.cincinnatiartmuseum.org/')
+activity4 = Activity.create(title: 'Cincinnati Museum Center', neighborhood: 'Downtown', cost: 22, address: '1301 Western Ave, Cincinnati, OH 45203', phone_number: '(513) 287-7000', website: 'https://www.cincymuseum.org/')
+activity4 = Activity.create(title: 'Harriet Beecher Stowe House', neighborhood: 'Walnut Hills', cost: 6, address: '2950 Gilbert Ave, Cincinnati, OH 45206', phone_number: '(513) 751-0651', website: 'http://stowehousecincy.org/index.html')
+activity4 = Activity.create(title: 'Lucky Cat Museum', neighborhood: 'Walnut Hills', cost: 2, address: '2511 Essex Place #150, Cincinnati, OH 45206', phone_number: '(513) 633-3923', website: 'http://www.luckycatmewseum.com/')
+activity4 = Activity.create(title: 'National Underground Railroad Freedom Center', neighborhood: 'The Banks', cost: 16.50, address: '50 E Freedom Way, Cincinnati, OH 45202', phone_number: '(513) 333-7500', website: 'https://freedomcenter.org/')
+activity4 = Activity.create(title: 'Pyramid Hill Sculpture Park & Museum', neighborhood: 'Cleves', cost: 10, address: '1763 Hamilton Cleves Rd, Hamilton, OH 45013', phone_number: '(513) 868-8336', website: 'https://www.pyramidhill.org/')
+activity4 = Activity.create(title: 'Vent Haven Museum', neighborhood: 'Fort Mitchell, KY', cost: 15, address: '33 W Maple Ave, Fort Mitchell, KY 41011', phone_number: '(859) 341-0461', website: 'https://www.venthaven.org/')
+activity4 = Activity.create(title: 'Cincinnati Observatory', neighborhood: 'Hyde Park', cost: 20, address: '3489 Observatory Pl, Cincinnati, OH 45208', phone_number: '(513) 321-5186', website: 'https://www.cincinnatiobservatory.org/home/')
+activity4 = Activity.create(title: 'William Howard Taft National Historic Site', neighborhood: 'Walnut Hills', cost: 0, address: '2038 Auburn Ave, Cincinnati, OH 45219', phone_number: '(513) 684-3262', website: 'https://www.nps.gov/wiho/index.htm')
 
 interest1 = Interest.create(name: 'Art exhibits', category: 'Culture')
 interest2 = Interest.create(name: 'Concerts', category: 'Culture')
