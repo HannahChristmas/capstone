@@ -12,7 +12,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 function SearchBar() {
-    const { activities, filteredByAllCriteria, handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCategory, setFilterCategory, sortByName, sortByCost } = useContext(ActivitiesContext)
+    const { activities, handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCategory, setFilterCategory, sortByName, sortByCost } = useContext(ActivitiesContext)
     const resetButton = document.getElementById('reset-button');
 
     function handleNeighborhoodFilter(e){
@@ -31,27 +31,8 @@ function SearchBar() {
       resetButton.style.transform = 'scale(1)';
     }
 
-    // const neighborhoods = [
-    //   'Covington',
-    //   'Downtown',
-    //   'Golf Manor',
-    //   'OTR',
-    //   'The Banks',
-    // ];
-
-    const categories = [...new Set(activities.flatMap((activity) => activity.category))];
-    console.log(categories);
-
-    const neighborhoods = [... new Set(activities.flatMap((activity) => activity.neighborhood))];
-    console.log(neighborhoods);
-
-    const costs = [
-      2,
-      8,
-      9,
-      15,
-      95,
-    ];
+    const categories = [...new Set(activities.flatMap((activity) => activity.category))].sort();
+    const neighborhoods = [...new Set(activities.flatMap((activity) => activity.neighborhood))].sort();
 
     return (
     <>
