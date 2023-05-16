@@ -324,10 +324,26 @@ nav li:hover {
   width: 80rem;
 }
 
+/* INTERESTED & VISITED PAGES */
+.activities-list-container .empty-interested-visited {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin: 0 auto; 
+  margin-bottom: 100px;
+}
+
+.activities-list-container .empty-interests-or-visits {
+  padding-left: 10px;
+  text-align: center; 
+}
+
+
 .activity-search-container {
-  /* border: 3px solid orange; */
+  border: 3px solid orange;
   width: 20rem;
   margin-left: 20px;
+  max-height: 100%;
 }
 
 .sort-bar {
@@ -373,6 +389,7 @@ nav li:hover {
   bottom: 0;
   height: fit-content;
 }
+
 
 /* LOGIN PAGE */
 

@@ -23,9 +23,13 @@ function Interested() {
         <div className="activities-page-container">
           <SearchBar></SearchBar>
           <Paper className="activities-list-container">
-            {userInterestedActivities.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity}></ActivityCard>
-            ))}
+            {userInterestedActivities.length > 0 ? (
+              userInterestedActivities.map((activity) => (
+                <ActivityCard key={activity.id} activity={activity}></ActivityCard>
+              ))
+            ) : (
+                <p className='empty-interested-visited'>Head back to All Activities to add things you want to do!</p>
+            )}
           </Paper>
         </div>
       </>

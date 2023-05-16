@@ -23,9 +23,13 @@ function Visited() {
         <div className="activities-page-container">
           <SearchBar></SearchBar>
           <Paper className="activities-list-container">
-            {userVisitedActivities.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity}></ActivityCard>
-            ))}
+            {userVisitedActivities.length > 0 ? (
+                userVisitedActivities.map((activity) => (
+                  <ActivityCard key={activity.id} activity={activity}></ActivityCard>
+                ))
+              ) : (
+                  <p className='empty-interested-visited'>Head back to All Activities to add places you've been!</p>
+              )}
           </Paper>
         </div>
       </>
