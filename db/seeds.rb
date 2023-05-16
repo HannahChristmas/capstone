@@ -24,7 +24,7 @@ activity2 = Activity.create(
     address: '1241 Elm St, Cincinnati, OH 45202', 
     phone_number: '(513) 744-3293', 
     website: 'https://friendsofmusichall.org/music-hall-tours/',
-    category: ['Tours', 'History'])
+    category: ['Tour', 'History'])
 activity3 = Activity.create(
     title: 'Behringer Crawford Museum', 
     neighborhood: 'Covington, KY', 
@@ -72,7 +72,7 @@ activity4 = Activity.create(
     address: '101 Riverboat Row, Newport, KY 41071', 
     phone_number: '(800) 261-8586', 
     website: 'https://bbriverboats.com/',
-    category: ['Events', 'Date Night, On the Water'])
+    category: ['Events', 'Date Night', 'On the Water'])
 activity4 = Activity.create(
     title: 'Haunted Tour', 
     neighborhood: 'OTR', 

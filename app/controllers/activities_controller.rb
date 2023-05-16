@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
     private 
 
     def activity_params 
-        params.permit(:title, :neighborhood, :cost, :address, :phone_number, :website, :image)
+        params.permit(:title, :neighborhood, :cost, :address, :phone_number, :website, :image, category: [])
     end
 
     # add :image to activity_params if users can create them

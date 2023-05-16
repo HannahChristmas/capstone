@@ -12,7 +12,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 function SearchBar() {
-    const { handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
+    const { filteredByAllCriteria, handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
     const resetButton = document.getElementById('reset-button');
 
     function handleNeighborhoodFilter(e){
@@ -38,6 +38,9 @@ function SearchBar() {
       'OTR',
       'The Banks',
     ];
+
+    const categories = [...new Set(filteredByAllCriteria.flatMap((activity) => activity.category))];
+    console.log(categories);
 
     const costs = [
       2,
