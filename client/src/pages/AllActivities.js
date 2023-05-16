@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 import SearchBar from '../components/SearchBar';
-import SortBar from '../components/SortBar';
 import ActivityCard from './ActivityCard';
 import Paper from '@mui/material/Paper';
 

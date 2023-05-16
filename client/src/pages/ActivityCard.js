@@ -185,6 +185,14 @@ function visitedClick() {
           <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img>
           <h1>{activity.title}</h1>
           <h2>{activity.neighborhood} · ${activity.cost}</h2>
+          <p>
+          {activity.category.map((category, index) => (
+            <span key={category}>
+              {category}
+              {index !== activity.category.length - 1 && ", "}
+            </span>
+          ))}
+          </p>
           <button id='quick-view-button' className='custom-button' onClick={() => handleViewClick(activity)}>I</button>
         </Paper>  
 

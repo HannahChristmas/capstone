@@ -1,12 +1,13 @@
 import '../index.css';
 import { useState, useContext, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from "../UserContext";
 
 
 function CreateAccount() {
     const { setUser, selectedImage, setSelectedImage } = useContext(UserContext)
     const imageUpload = useRef()
- 
+    const navigate = useNavigate(); 
 
     const [username, setUsername] = useState("");
     // const [selectedImage, setSelectedImage] = useState(null);
@@ -22,11 +23,15 @@ function CreateAccount() {
         setIsLoading(true);
 
         const formData = new FormData();
-        formData.append('image', selectedImage)
+        // formData.append('image', selectedImage)
         formData.append('username', username)
         formData.append('password', password)
         formData.append('password_confirmation', passwordConfirmation)
         console.log(formData)
+
+        if (selectedImage) {
+            formData.append('image', selectedImage);
+          }
         
         fetch("/signup", {
             method: "POST", 
@@ -36,6 +41,7 @@ function CreateAccount() {
                 setIsLoading(false);
                 if (r.ok) {
                     r.json().then((user) => setUser(user));
+                    navigate("/activities");
                 } else {
                     r.json().then((err) => setErrors(err.errors))
                 }
@@ -85,7 +91,7 @@ function CreateAccount() {
         </label><br/>
         <button type="submit">{isLoading ? "Loading..." : "sign up"}</button>
         <label>
-            {errors.map((err) => (
+            {errors?.map((err) => (
                 <p key={err}>{err}</p>
             ))}
         </label>
