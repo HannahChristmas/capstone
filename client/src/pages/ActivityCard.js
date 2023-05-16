@@ -10,7 +10,6 @@ import visitedImage from '../photos/Visited.png'
 import notVisitedImage from '../photos/Not-visited.png'
 import websiteImage from '../photos/Website.png'
 
-
 function ActivityCard({activity}) {
   const { user } = useContext(UserContext)
   const { activities, setActivities, selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
@@ -19,18 +18,16 @@ function ActivityCard({activity}) {
   const [showInterestedUsers, setShowInterestedUsers] = useState(false);
   const [showVisitedUsers, setShowVisitedUsers] = useState(false);
 
-
   const userInterested = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.interested === true);
   const userVisited = !!selectedActivity?.user_activities.find((userActivity) => userActivity.user_id === user?.id && userActivity.visited === true);
 
   const interestedUsers = activity.user_activities
-    .filter(activity => activity.interested)
-    .map(activity => activity.user_id)
-    .map(userId => {
-      const user = activity.users.find(user => user.id === userId);
-      return user ? user : null;
-    })
-    .filter(username => username !== null)
+  .filter(userActivity => userActivity.interested && userActivity.user_id !== user?.id)
+  .map(userActivity => {
+    const user = activity.users.find(user => user.id === userActivity.user_id);
+    return user ? user : null;
+  })
+  .filter(username => username !== null);
 
   const visitedUsers = activity.user_activities
   .filter(activity => activity.visited)
@@ -64,7 +61,6 @@ function ActivityCard({activity}) {
   }
 
   function interestedClick() {
-
     const userActivity = selectedActivity?.user_activities?.find((userActivity) => userActivity?.user_id === user.id)
     if(userActivity) {
       fetch(`/user_activities/${userActivity.id}`, { 
@@ -77,7 +73,6 @@ function ActivityCard({activity}) {
         }
       })
       .then(r => r.json())
-        
       .then(data => {
         const deletedUserActivityId = data.deleted_user_activity_id?.id;
 
@@ -248,7 +243,7 @@ function visitedClick() {
           <Button onClick={displayInterestedUsers}>who's interested</Button><br/>
             {showInterestedUsers && 
               (interestedUsers.length === 0 ?
-                <p>no users have added this to their interests yet.</p> :
+                <p>no other users have added this to their interests yet.</p> :
                 interestedUsers.map((user) => 
                 <a href={`/users/${user.id}`} key={user.id}>
                   <h1>{user.username}</h1>
