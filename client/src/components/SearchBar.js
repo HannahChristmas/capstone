@@ -12,35 +12,38 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 function SearchBar() {
-    const { filteredByAllCriteria, handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCost, setFilterCost, sortByName, sortByCost } = useContext(ActivitiesContext)
+    const { activities, filteredByAllCriteria, handleSearchChange, searchQuery, setSearchQuery, filterNeighborhood, setFilterNeighborhood, filterCategory, setFilterCategory, sortByName, sortByCost } = useContext(ActivitiesContext)
     const resetButton = document.getElementById('reset-button');
 
     function handleNeighborhoodFilter(e){
       setFilterNeighborhood(e.target.value)
     } 
 
-    function handleCostFilter(e){
-        setFilterCost(e.target.value)
+    function handleCategoryFilter(e){
+      setFilterCategory(e.target.value)
     }
 
     function handleReset(){
       setFilterNeighborhood([])
-      setFilterCost([])
+      setFilterCategory([])
       setSearchQuery("")
       resetButton.blur();
       resetButton.style.transform = 'scale(1)';
     }
 
-    const neighborhoods = [
-      'Covington',
-      'Downtown',
-      'Golf Manor',
-      'OTR',
-      'The Banks',
-    ];
+    // const neighborhoods = [
+    //   'Covington',
+    //   'Downtown',
+    //   'Golf Manor',
+    //   'OTR',
+    //   'The Banks',
+    // ];
 
-    const categories = [...new Set(filteredByAllCriteria.flatMap((activity) => activity.category))];
+    const categories = [...new Set(activities.flatMap((activity) => activity.category))];
     console.log(categories);
+
+    const neighborhoods = [... new Set(activities.flatMap((activity) => activity.neighborhood))];
+    console.log(neighborhoods);
 
     const costs = [
       2,
@@ -89,20 +92,20 @@ function SearchBar() {
           </FormControl>
           
           <FormControl sx={{ m: 1, width: '80%' }}>
-            <InputLabel id="input-label-top-color">Cost</InputLabel>
+            <InputLabel id="input-label-top-color">Category</InputLabel>
               <Select
                 labelId="demo-multiple-checkbox-label"
                 id="demo-multiple-checkbox"
                 multiple
-                value={filterCost}
-                onChange={handleCostFilter}
+                value={filterCategory}
+                onChange={handleCategoryFilter}
                 input={<OutlinedInput label="Tag" />}
                 renderValue={(selected) => selected.join(', ')}
               >
-                {costs.map((cost) => (
-                  <MenuItem key={cost} value={cost}>
-                    <Checkbox checked={filterCost.indexOf(cost) > -1} />
-                    <ListItemText primary={cost} />
+                {categories.map((category) => (
+                  <MenuItem key={category} value={category}>
+                    <Checkbox checked={filterCategory.indexOf(category) > -1} />
+                    <ListItemText primary={category} />
                   </MenuItem>
                 ))}
               </Select>

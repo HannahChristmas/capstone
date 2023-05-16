@@ -21,14 +21,14 @@ function App() {
   const [selectedActivity, setSelectedActivity] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterNeighborhood, setFilterNeighborhood] = useState([])
-  const [filterCost, setFilterCost] = useState([])
+  const [filterCategory, setFilterCategory] = useState([])
 
   const location = useLocation();
 
   useEffect(() => {
       setSelectedActivity(null);
       setSearchQuery('');
-      setFilterCost([]);
+      setFilterCategory([]);
       setFilterNeighborhood([]);
   }, [location]);
 
@@ -90,7 +90,7 @@ function App() {
   const filteredByAllCriteria = searchList.filter(activity => {
     if (
       (filterNeighborhood.length === 0 || filterNeighborhood.includes(activity.neighborhood)) &&
-      (filterCost.length === 0 || filterCost.includes(activity.cost))
+      (filterCategory.length === 0 ||  filterCategory.every(category => activity.category.includes(category)))
     ) {
       return true;
     }
@@ -108,8 +108,8 @@ function App() {
           setSearchQuery,
           filterNeighborhood,
           setFilterNeighborhood,
-          filterCost,
-          setFilterCost,
+          filterCategory,
+          setFilterCategory,
           setActivities,
           selectedActivity,
           setSelectedActivity,
