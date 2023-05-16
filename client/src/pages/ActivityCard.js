@@ -3,9 +3,13 @@ import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
+import interestedImage from '../photos/Interested.png'
+import notInterestedImage from '../photos/Not-interested.png'
+import visitedImage from '../photos/Visited.png'
+import notVisitedImage from '../photos/Not-visited.png'
+import websiteImage from '../photos/Website.png'
+
 
 function ActivityCard({activity}) {
   const { user } = useContext(UserContext)
@@ -184,7 +188,7 @@ function visitedClick() {
         <Paper key={activity.id} className="individual-activity">
           <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img>
           <h1>{activity.title}</h1>
-          <h2>{activity.neighborhood} · ${activity.cost}</h2>
+          <h2 style={{ fontWeight: 'bold' }}>{activity.neighborhood} · ${activity.cost}</h2>
           <p>
           {activity.category.map((category, index) => (
             <span key={category}>
@@ -199,38 +203,48 @@ function visitedClick() {
         {selectedActivity?.id === activity?.id && (
         <Paper className="popup-card">
           <h2>{selectedActivity.title}</h2>
-          <h2>{selectedActivity.neighborhood}</h2>
-          <a href={activity.website} target="_blank" rel="noreferrer">website</a><br></br>
-
+          <p>{selectedActivity.neighborhood} · ${activity.cost}</p>
+          <p>{activity.address}</p>
+          <p>{activity.phone_number}</p>
+          <p>
+          {activity.category.map((category, index) => (
+            <span key={category}>
+              {category}
+              {index !== activity.category.length - 1 && ", "}
+            </span>
+          ))}
+          </p>
+          <button onClick={() => window.open(activity.website, '_blank')} className="custom-button">
+            <img className="website-icon" src={websiteImage} alt="website-icon"></img>
+          </button>
           { user ? (
             <>
-              <Button onClick={() => interestedClick(selectedActivity)}>
+              <button className="custom-button" onClick={() => interestedClick(selectedActivity)}>
                 {userInterested ? (
                   <>
-                    <DeleteIcon /> Remove from Interests
+                    <img className="interest-icon" src={interestedImage} alt="interested-icon"></img>
                   </>
                 ) : (
                   <>
-                    <AddIcon /> Add to Interests
+                    <img className="interest-icon" src={notInterestedImage} alt="not-interested-icon"></img>
                   </>
                 )}
-              </Button><br/>
-              <Button onClick={() => visitedClick(selectedActivity)}>
+              </button>
+              <button className="custom-button" onClick={() => visitedClick(selectedActivity)}>
                 {userVisited ? (
                     <>
-                      <DeleteIcon /> Remove from Visited
+                    <img className="visited-icon" src={visitedImage} alt="visited-icon"></img>
                     </>
                   ) : (
                     <>
-                      <AddIcon /> Add to Visited
+                    <img className="not-visited-icon" src={notVisitedImage} alt="not-visited-icon"></img>
                     </>
                   )}
-                </Button><br/><br/><br/>
+                </button><br/><br/><br/>
             </>
           ) : (
             <p>You must log in to update your interests and places you've visited.</p>
           )}
-          <Button>reviews</Button><br/>
           <Button onClick={displayInterestedUsers}>who's interested</Button><br/>
             {showInterestedUsers && 
               (interestedUsers.length === 0 ?

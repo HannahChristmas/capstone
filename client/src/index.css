@@ -85,7 +85,7 @@ body {
 .custom-button:focus 
 {
   color: orange !important;
-  transform: scale(1.5);
+  /* transform: scale(1.5); */
   /* font-style: italic; */
 }
 
@@ -309,19 +309,23 @@ nav li:hover {
   align-items: stretch;
   margin-bottom: 20px;
   justify-content: center;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 85vh;
 }
 
 /* Parent of PopUp & .individual-activity */
 .activities-list-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
+  justify-content: space-around;
   /* border: solid pink 2px; */
-  margin-left: 10px;
-  margin-right: 20px;
+  /* margin-left: 10px; */
+  /* margin-right: 20px; */
   position: relative;
   width: 80rem;
+  overflow: auto;
+  /* padding-left: 20px; */
+
 }
 
 /* INTERESTED & VISITED PAGES */
@@ -333,18 +337,21 @@ nav li:hover {
   margin-bottom: 100px;
 }
 
-.activities-list-container .empty-interests-or-visits {
-  padding-left: 10px;
-  text-align: center; 
-}
-
-
 .activity-search-container {
-  border: 3px solid orange;
+  /* border: 3px solid orange; */
   width: 20rem;
-  margin-left: 20px;
-  max-height: 100%;
+  /* margin-left: 20px; */
 }
+
+/* .activity-search-container {
+  border: 3px solid orange;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 100vh; /* 100% of viewport height
+  margin-left: 20px;
+} */ 
 
 .sort-bar {
   /* border: 3px solid grey; */
@@ -387,9 +394,28 @@ nav li:hover {
   top: 0;
   right: 0;
   bottom: 0;
-  height: fit-content;
+  height: 85vh;
 }
 
+.interest-icon {
+  height: 30px;
+  width: 25px;
+}
+
+.not-visited-icon {
+  height: 30px;
+  width: 19.6px;
+}
+
+.visited-icon {
+  height: 30px;
+  width: 21px;
+}
+
+.website-icon {
+  height: 30px;
+  width: 29.25px;
+}
 
 /* LOGIN PAGE */
 
