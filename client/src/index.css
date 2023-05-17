@@ -153,13 +153,13 @@ nav li:hover {
 
 .nav {
   background-color: #F1EEE9;
-  height: 7rem;
+  height: 6.5rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   /* border: solid green 2px; */
   gap: 2rem;
-  padding: 1rem;
+  /* padding: .5rem; */
   position: sticky;
   top: 0;
   z-index: 20;
@@ -329,6 +329,8 @@ nav li:hover {
   /* margin-right: 20px; */
   width: 80rem;
   overflow: auto;
+  margin-right: 20px;
+  margin-left: 10px;
   /* padding-left: 20px; */
 
 }
@@ -345,7 +347,7 @@ nav li:hover {
 .activity-search-container {
   /* border: 2px solid orange; */
   width: 20rem;
-  /* margin-left: 20px; */
+  margin-left: 20px;
 }
 .sort-bar {
   /* border: 3px solid grey; */
@@ -398,7 +400,7 @@ nav li:hover {
 .popup-card-content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* border: 5px solid black; */
 }
 
@@ -415,6 +417,7 @@ nav li:hover {
 #photo-and-current-user-buttons {
   /* border: 2px solid red; */
   margin-right: 20px;
+  margin-top: 30px;
 }
 
 /* #activity-info-other-user-buttons {
