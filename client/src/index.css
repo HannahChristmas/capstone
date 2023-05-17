@@ -305,23 +305,25 @@ nav li:hover {
 
 .activities-page-container {
   display: flex;
+  /* position: relative; */
   /* border: 2px solid brown; */
   align-items: stretch;
   margin-bottom: 20px;
   justify-content: center;
   /* height: fit-content; */
-  height: 85vh;
+  height: 83vh;
 }
 
 /* Parent of PopUp & .individual-activity */
 .activities-list-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   /* border: solid pink 2px; */
+  /* position: relative; */
+  padding-left: 20px;
   /* margin-left: 10px; */
   /* margin-right: 20px; */
-  position: relative;
   width: 80rem;
   overflow: auto;
   /* padding-left: 20px; */
@@ -338,21 +340,10 @@ nav li:hover {
 }
 
 .activity-search-container {
-  /* border: 3px solid orange; */
+  /* border: 2px solid orange; */
   width: 20rem;
   /* margin-left: 20px; */
 }
-
-/* .activity-search-container {
-  border: 3px solid orange;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20rem;
-  height: 100vh; /* 100% of viewport height
-  margin-left: 20px;
-} */ 
-
 .sort-bar {
   /* border: 3px solid grey; */
   text-align: left;
@@ -364,7 +355,7 @@ nav li:hover {
   /* min-height: 200px; */
   width: 250px;
   align-items: center;
-  margin: 5px;
+  margin: 8px;
   padding-bottom: 20px;
 }
 
@@ -386,7 +377,7 @@ nav li:hover {
   margin-top: 15px;
 }
 
-/* CONTAINER */
+/* MAIN CONTAINER - no CSS*/
 .popup-card {
   /* display: flex;
   justify-content: center;
@@ -394,11 +385,11 @@ nav li:hover {
   width: 700px;
   /* border: solid rgb(17, 173, 114) 2px; */
   position: absolute;
-  top: 0;
+  top: 7rem;
   right: 0;
-  bottom: 0;
   height: 85vh;
   overflow: auto;
+  z-index: 1;
 }
 
 .popup-card-content {
@@ -423,7 +414,7 @@ nav li:hover {
   justify-content: center;
   margin-top: 20px;
   height: 50px;
-  /* border: 2px solid orange; */
+  /* border: 2px solid yellow; */
   background-color: #125B50;
   font-family: 'Bright';
 } 

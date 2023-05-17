@@ -34,13 +34,13 @@ function SearchBar() {
     const categories = [...new Set(activities.flatMap((activity) => activity.category))].sort();
     const neighborhoods = [...new Set(activities.flatMap((activity) => activity.neighborhood))].sort();
 
-    return (
+    return ( 
     <>
     <Paper className="activity-search-container">
           <br></br>
           <div id="sort-buttons-container">
-          <button id='sort-alphabetically-button' className='custom-button' onClick={sortByName}>abc</button>
-          <button id='sort-by-cost-button' className='custom-button' onClick={sortByCost}>$ - $$$</button><br></br>
+            <button id='sort-alphabetically-button' className='custom-button' onClick={sortByName}>abc</button>
+            <button id='sort-by-cost-button' className='custom-button' onClick={sortByCost}>$ - $$$</button><br></br>
           </div>
           <TextField id="input-label-top-color"
             label="Name or neighborhood" 
