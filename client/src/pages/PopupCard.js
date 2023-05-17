@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../UserContext';
 import { ActivitiesContext } from '../ActivitiesContext';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import interestedImage from '../photos/Interested.png'
 import notInterestedImage from '../photos/Not-interested.png'
@@ -12,6 +11,7 @@ import websiteImage from '../photos/Website.png'
 import whoVisited from '../photos/Who-visited.png'
 import whoLikes from '../photos/Who-likes.png'
 import editActivityImage from '../photos/Edit-activity.png'
+import userImage from '../photos/User.png'
 
 
 
@@ -225,7 +225,7 @@ function visitedClick() {
 
             </div>
             {/* DIV with Activity info & other user buttons */}
-            <div id="activity-info-other-user-buttons">
+            <div id="popup-card-activity-info">
             <p>{selectedActivity.neighborhood} · ${activity.cost}</p>
             <p>{activity.address}</p>
             <p>{activity.phone_number}</p>
@@ -237,7 +237,8 @@ function visitedClick() {
                 </span>
             ))}
             </p>
-            
+            <div id="other-users-div">
+                <div id="other-users-expanded">
             <button className="custom-button" onClick={displayInterestedUsers}>
                 <img className="who-buttons" src={whoLikes} alt="user-likes" />
                 </button>
@@ -245,12 +246,17 @@ function visitedClick() {
                 (interestedUsers.length === 0 ?
                     <p>no other users have added this to their interests yet.</p> :
                     interestedUsers.map((user) => 
-                    <a href={`/users/${user.id}`} key={user.id}>
-                    <h1>{user.username}</h1>
-                    </a>
+                    <span>
+                        <a href={`/users/${user.id}`} key={user.id}>
+                        <h3><img src={userImage} className="generic-user-image"></img> {user.username}</h3>
+                        </a>
+                    </span>
                     )
                 )
                 }
+                </div>
+                <div id="other-users-expanded">
+
             <button className="custom-button" onClick={displayVisitedUsers}>
                 <img className="who-buttons" src={whoVisited} alt="user-visited" />
                 </button>
@@ -264,6 +270,9 @@ function visitedClick() {
                     )
                 )
                 }
+                                </div>
+
+            </div>
             </div>
         </div>
         <div id="x-button-div">

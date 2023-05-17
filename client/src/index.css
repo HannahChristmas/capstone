@@ -78,7 +78,7 @@ body {
 .custom-button:hover {
   color: pink !important;
   cursor: pointer;
-  transform: scale(1.4);
+  transform: scale(1.1);
 }
 
 .custom-button:active,
@@ -92,6 +92,10 @@ body {
 #quick-view-button {
   font-family: 'Eyez';
   font-size: 3rem;
+}
+
+#quick-view-button:hover {
+  transform: scale(1.4);
 }
 
 #sort-by-cost-button {
@@ -393,7 +397,7 @@ nav li:hover {
   top: 6rem;
   right: 0;
   height: 85vh;
-  overflow: auto;
+  /* overflow: auto; */
   z-index: 1;
 }
 
@@ -420,12 +424,26 @@ nav li:hover {
   margin-top: 30px;
 }
 
-#activity-info-other-user-buttons {
+#popup-card-activity-info {
   /* border: 2px solid purple; */
-  overflow: auto;
-  height: 60vh;
+  /* overflow: auto; */
+  height: 50vh;
   margin-bottom: 20px; 
   margin-top: 20px;
+}
+
+#other-users-div {
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid blue; */
+  /* overflow: auto;
+  height: 27vh; */
+}
+
+#other-users-expanded {
+  /* border: 2px solid gray; */
+  overflow: auto;
+  height: 27vh;
 }
 
 #x-button-div {
@@ -448,12 +466,15 @@ nav li:hover {
   color: white !important;
   font-size: 3rem;
   font-weight: normal;
+  transition: transform .3s;  
+
   /* position: relative; */
   /* z-index: 1000; */
 } 
 
 #x-button-div h2:hover{
   cursor: pointer;
+  transform: scale(1.1); 
 } 
 
 #activity-title-popup {
@@ -496,6 +517,11 @@ nav li:hover {
 .who-buttons {
   height: 80px;
   width: 80px;
+}
+
+.generic-user-image {
+  height: 15px;
+  width: 15px;
 }
 
 /* LOGIN PAGE */
