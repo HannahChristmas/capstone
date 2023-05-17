@@ -3,6 +3,8 @@ import {Link, NavLink} from 'react-router-dom'
 import profile from '../profile.png'
 import { UserContext } from "../UserContext";
 import { useNavigate } from "react-router";
+import interestedNav from '../photos/Interested-nav.png'
+import visitedNav from '../photos/Visited-nav.png'
 
 
 function LoginNav() {
@@ -40,13 +42,17 @@ function LoginNav() {
             <nav className="activity-nav">
                 <ul>
                     <li>
-                        <NavLink to='/activities' className="login-nav">ALL ACTIVITIES</NavLink>
+                        <NavLink to='/activities' className="login-nav" id="all-nav-link">all</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
+                        <NavLink to='/interested' className="login-nav">
+                            <img src={interestedNav} className="custom-button" id="nav-button-interest" alt="nav-button"></img>
+                        </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
+                        <NavLink to='/visited' className="login-nav">
+                            <img src={visitedNav} className="custom-button" id="nav-button-visit" alt="nav-button"></img>
+                        </NavLink>
                     </li>
                 </ul>
             </nav>
@@ -76,7 +82,7 @@ function LoginNav() {
                     }
                     </ul>
                 ) : (
-                    <img src={user && user.image ? user.image : profile} onClick={toggleMenu} alt="default-profile"></img>
+                    <img src={user && user.image ? user.image : profile} onClick={toggleMenu} id="user-nav-pic" alt="default-profile"></img>
                 )}
             </div>
         </nav>

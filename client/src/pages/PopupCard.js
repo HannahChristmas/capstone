@@ -35,10 +35,9 @@ function PopupCard({activity}) {
   .filter(username => username !== null);
 
   const visitedUsers = activity.user_activities
-  .filter(activity => activity.visited)
-  .map(activity => activity.user_id)
-  .map(userId => {
-    const user = activity.users.find(user => user.id === userId);
+  .filter(userActivity => userActivity.visited && userActivity.user_id !== user?.id)
+  .map(userActivity => {
+    const user = activity.users.find(user => user.id === userActivity.user_id);
     return user ? user : null;
   })
   .filter(username => username !== null)
@@ -226,53 +225,53 @@ function visitedClick() {
             </div>
             {/* DIV with Activity info & other user buttons */}
             <div id="popup-card-activity-info">
-            <p>{selectedActivity.neighborhood} · ${activity.cost}</p>
-            <p>{activity.address}</p>
-            <p>{activity.phone_number}</p>
-            <p>
-            {activity.category.map((category, index) => (
-                <span key={category}>
-                {category}
-                {index !== activity.category.length - 1 && ", "}
-                </span>
-            ))}
-            </p>
-            <div id="other-users-div">
-                <div id="other-users-expanded">
-            <button className="custom-button" onClick={displayInterestedUsers}>
-                <img className="who-buttons" src={whoLikes} alt="user-likes" />
-                </button>
-                {showInterestedUsers && 
-                (interestedUsers.length === 0 ?
-                    <p>no other users have added this to their interests yet.</p> :
-                    interestedUsers.map((user) => 
-                    <span>
-                        <a href={`/users/${user.id}`} key={user.id}>
-                        <h3><img src={userImage} className="generic-user-image"></img> {user.username}</h3>
-                        </a>
+                <p>{selectedActivity.neighborhood} · ${activity.cost}</p>
+                <p>{activity.address}</p>
+                <p>{activity.phone_number}</p>
+                <p>
+                {activity.category.map((category, index) => (
+                    <span key={category}>
+                    {category}
+                    {index !== activity.category.length - 1 && ", "}
                     </span>
-                    )
-                )
-                }
+                ))}
+                </p>
+                <div id="other-users-div">
+                    <div id="other-users-expanded">
+                        <button className="custom-button" onClick={displayInterestedUsers}>
+                            <img className="who-buttons" src={whoLikes} alt="user-likes" />
+                        </button>
+                        {showInterestedUsers && 
+                        (interestedUsers.length === 0 ?
+                            <p>no other users have added this to their interests yet.</p> :
+                            interestedUsers.map((user) => 
+                            <span>
+                                <a href={`/users/${user.id}`} key={user.id}>
+                                <h3><img src={userImage} className="generic-user-image" alt="generic-user"></img> {user.username}</h3>
+                                </a>
+                            </span>
+                            )
+                        )
+                        }
+                    </div>
+                    <div id="other-users-expanded">
+                        <button className="custom-button" onClick={displayVisitedUsers}>
+                            <img className="who-buttons" src={whoVisited} alt="user-visited" />
+                        </button>
+                        {showVisitedUsers && 
+                        (visitedUsers.length === 0 ?
+                            <p>no other users have visited yet.</p> :
+                            visitedUsers.map((user) => 
+                            <span>
+                                <a href={`/users/${user.id}`} key={user.id}>
+                                <h3><img src={userImage} className="generic-user-image" alt="generic-user"></img> {user.username}</h3>
+                                </a>
+                            </span>
+                            )
+                        )
+                        }
+                    </div>
                 </div>
-                <div id="other-users-expanded">
-
-            <button className="custom-button" onClick={displayVisitedUsers}>
-                <img className="who-buttons" src={whoVisited} alt="user-visited" />
-                </button>
-                {showVisitedUsers && 
-                (visitedUsers.length === 0 ?
-                    <p>no users have visited yet.</p> :
-                    visitedUsers.map((user) => 
-                    <a href={`/users/${user.id}`} key={user.id}>
-                    <h1>{user.username}</h1>
-                    </a>
-                    )
-                )
-                }
-                                </div>
-
-            </div>
             </div>
         </div>
         <div id="x-button-div">
