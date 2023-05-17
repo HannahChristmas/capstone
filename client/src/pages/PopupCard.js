@@ -253,7 +253,7 @@ function visitedClick() {
                 }
             <button className="custom-button" onClick={displayVisitedUsers}>
                 <img className="who-buttons" src={whoVisited} alt="user-visited" />
-                </button><br/>
+                </button>
                 {showVisitedUsers && 
                 (visitedUsers.length === 0 ?
                     <p>no users have visited yet.</p> :
@@ -264,8 +264,10 @@ function visitedClick() {
                     )
                 )
                 }
-            <Button onClick={() => handleXClick(selectedActivity)}>X</Button><br></br>
             </div>
+        </div>
+        <div id="x-button-div">
+            <h2 onClick={() => handleXClick(selectedActivity)}>X</h2>
         </div>
         </Paper>
      </>
