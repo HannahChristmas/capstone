@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  color: rgb(60, 67, 66);
+  color: #3C4342;
 }
 
 body {
@@ -388,14 +388,52 @@ nav li:hover {
 }
 
 .popup-card {
-  width: 500px;
-  border: solid rgb(17, 173, 114) 2px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  width: 700px;
+  /* border: solid rgb(17, 173, 114) 2px; */
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   height: 85vh;
+  overflow: auto;
 }
+
+.popup-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 5px solid black; */
+}
+
+/* #photo-and-current-user-buttons {
+  border: 2px solid red
+}
+
+#activity-info-other-user-buttons {
+  border: 2px solid purple
+}
+*/
+
+#activity-title-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  height: 100px;
+  /* border: 2px solid orange; */
+  background-color: #125B50;
+  font-family: 'Bright';
+  color: white !important;
+} 
+
+#activity-title-popup h2{
+  color: white !important;
+  font-size: 3.5rem;
+  font-weight: normal;
+} 
 
 .interest-icon {
   height: 30px;
@@ -415,6 +453,11 @@ nav li:hover {
 .website-icon {
   height: 30px;
   width: 29.25px;
+}
+
+.who-buttons {
+  height: 80px;
+  width: 80px;
 }
 
 /* LOGIN PAGE */
