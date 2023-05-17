@@ -11,6 +11,8 @@ import notVisitedImage from '../photos/Not-visited.png'
 import websiteImage from '../photos/Website.png'
 import whoVisited from '../photos/Who-visited.png'
 import whoLikes from '../photos/Who-likes.png'
+import editActivityImage from '../photos/Edit-activity.png'
+
 
 
 function PopupCard({activity}) {
@@ -187,8 +189,8 @@ function visitedClick() {
             <div id="photo-and-current-user-buttons">
                 <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img><br></br>
                 <button onClick={() => window.open(activity.website, '_blank')} className="custom-button">
-                <img className="website-icon" src={websiteImage} alt="website-icon"></img>
-            </button>
+                    <img className="website-icon" src={websiteImage} alt="website-icon"></img>
+                </button>
             { user ? (
                 <>
                 <button className="custom-button" onClick={() => interestedClick(selectedActivity)}>
@@ -212,11 +214,15 @@ function visitedClick() {
                         <img className="not-visited-icon" src={notVisitedImage} alt="not-visited-icon"></img>
                         </>
                     )}
-                    </button><br/><br/>
+                </button>
+                <button onClick={() => handleActivityPageClick(selectedActivity.id)} className="custom-button">
+                    <img className="website-icon" src={editActivityImage} alt="edit-activity-icon"></img>
+                </button>
                 </>
             ) : (
                 <p>You must log in to update your interests and places you've visited.</p>
             )}
+
             </div>
             {/* DIV with Activity info & other user buttons */}
             <div id="activity-info-other-user-buttons">
@@ -259,7 +265,6 @@ function visitedClick() {
                 )
                 }
             <Button onClick={() => handleXClick(selectedActivity)}>X</Button><br></br>
-            <Button onClick={() => handleActivityPageClick(selectedActivity.id)}>look at more</Button>
             </div>
         </div>
         </Paper>
