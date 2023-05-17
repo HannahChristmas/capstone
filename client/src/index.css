@@ -420,25 +420,36 @@ nav li:hover {
   margin-top: 30px;
 }
 
-/* #activity-info-other-user-buttons {
-  border: 2px solid purple
-} */
+#activity-info-other-user-buttons {
+  /* border: 2px solid purple; */
+  overflow: auto;
+  height: 60vh;
+  margin-bottom: 20px; 
+  margin-top: 20px;
+}
 
 #x-button-div {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  /* margin-top: 60px; */
   height: 50px;
+  /* width: 100%; */
+  width: 95vh;
+  position: fixed;
+  bottom: 20px;
   /* border: 2px solid yellow; */
   background-color: #125B50;
   font-family: 'Bright';
+  /* z-index: 999; */
 } 
 
 #x-button-div h2{
   color: white !important;
   font-size: 3rem;
   font-weight: normal;
+  /* position: relative; */
+  /* z-index: 1000; */
 } 
 
 #x-button-div h2:hover{
