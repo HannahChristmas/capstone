@@ -17,14 +17,6 @@ function LoginNav() {
 
     let menuRef = useRef();
 
-    // useEffect(() => {
-    //     document.addEventListener('mousedown', (event) => {
-    //         if (menuRef.current && menuRef.current.contains(event.target)) {
-    //             setIsMenuOpen(false);
-    //         }
-    //     });
-    // }, [menuRef]);
-
     useEffect(() => {
         document.addEventListener('mousedown', (event) => {
             if (menuRef && menuRef.current && !menuRef.current.contains(event.target)) {
@@ -42,26 +34,24 @@ function LoginNav() {
         });
     }
 
-    // console.log("from LoginNav.js:", user ? `Welcome, ${user.username}. You are logged in.` : "No user logged in")
-
     return (
     <>    
         <nav className="nav">
-        <nav className="activity-nav">
-            <ul>
-                <li>
-                    <NavLink to='/activities' className="login-nav">ALL ACTIVITIES</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
-                </li>
-            </ul>
-        </nav>
+            <nav className="activity-nav">
+                <ul>
+                    <li>
+                        <NavLink to='/activities' className="login-nav">ALL ACTIVITIES</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/interested' className="login-nav">I'M INTERESTED</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/visited' className="login-nav">I'VE BEEN THERE</NavLink>
+                    </li>
+                </ul>
+            </nav>
             <Link to='/' className="site-title">cincy social</Link>
-            <div ref={menuRef} id="avatar">
+            <div ref={menuRef}>
                 {isMenuOpen ? (
                     <ul>
                         {user ? (
@@ -70,7 +60,6 @@ function LoginNav() {
                                 <li><Link to='/edit-profile'>edit profile</Link></li>
                                 <li><Link 
                                     to='/logout' 
-                                    className="login-nav"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleLogoutClick();
@@ -80,8 +69,8 @@ function LoginNav() {
                             </>
                         ) : (
                             <>
-                                <li><Link to='/login' className='login-nav'>LOGIN</Link></li>
-                                <li><Link to='/create-account' className="login-nav">CREATE ACCOUNT</Link></li>
+                                <li><Link to='/login'>LOGIN</Link></li>
+                                <li><Link to='/create-account'>CREATE ACCOUNT</Link></li>
                             </>
                         )
                     }

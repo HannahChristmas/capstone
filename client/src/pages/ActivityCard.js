@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ActivitiesContext } from '../ActivitiesContext';
 import PopupCard from './PopupCard';
 import Paper from '@mui/material/Paper';
@@ -6,10 +6,25 @@ import Paper from '@mui/material/Paper';
 
 function ActivityCard({activity}) {
   const {  selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
+  const showPopup = selectedActivity?.id === activity?.id;
 
   const handleViewClick = (activity) => {
     (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showPopup && !event.target.closest('.popup-card')) {
+        setSelectedActivity(null);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [showPopup, setSelectedActivity]);
 
     return (
       <>
@@ -28,8 +43,12 @@ function ActivityCard({activity}) {
           <button id='quick-view-button' className='custom-button' onClick={() => handleViewClick(activity)}>I</button>
         </Paper>  
 
-        {selectedActivity?.id === activity?.id && (
-          <PopupCard activity={activity}></PopupCard>
+        {showPopup && (
+          <>
+            <div className="overlay">
+              <PopupCard activity={activity}></PopupCard>
+            </div>
+          </>
         )}  
      </>
     );

@@ -160,6 +160,9 @@ nav li:hover {
   /* border: solid green 2px; */
   gap: 2rem;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
 .nav ul {
@@ -172,7 +175,6 @@ nav li:hover {
   font-size: 18px;
   margin-right: 2rem;
   font-weight: 500;
-
 }
 
 .nav img {
@@ -197,6 +199,7 @@ nav li:hover {
   height: 2rem;
   align-items: center;
   flex: 10;
+  /* border: 2px solid purple; */
 }
 
 .activity-nav li {
@@ -382,7 +385,7 @@ nav li:hover {
   /* display: flex;
   justify-content: center;
   align-items: center; */
-  width: 700px;
+  width: 95vh;
   /* border: 3px solid #125B50; */
   position: absolute;
   top: 6rem;
@@ -397,6 +400,16 @@ nav li:hover {
   justify-content: center;
   align-items: center;
   /* border: 5px solid black; */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  z-index: 9999; /* Ensure the overlay is above other elements */
 }
 
 #photo-and-current-user-buttons {
