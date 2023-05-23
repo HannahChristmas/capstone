@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-    skip_before_action :authorize, only: [:index, :update] 
+    skip_before_action :authorize, only: [:index, :update, :destroy] 
 
     def index 
         activities = Activity.all.with_attached_image 
@@ -20,6 +20,12 @@ class ActivitiesController < ApplicationController
         activity = Activity.find_by(id: params[:id])
         activity.update!(activity_params)
         render json: activity, status: 202
+    end
+
+    def destroy 
+        activity = Activity.find(params[:id])
+        activity.destroy 
+        head :no_content
     end
 
     private 
