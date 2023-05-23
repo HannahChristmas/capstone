@@ -1,5 +1,5 @@
 class InterestsController < ApplicationController
-    skip_before_action :authorize, only: [:index, :destroy] 
+    skip_before_action :authorize, only: [:index, :destroy, :create] 
 
     def index 
         interests = Interest.all 
