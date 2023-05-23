@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8e1bb0ae.chunk.css",
+    "main.js": "/static/js/main.eaea16c1.chunk.js",
+    "main.js.map": "/static/js/main.eaea16c1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a58e84de.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a58e84de.js.map",
+    "static/js/2.9c13074d.chunk.js": "/static/js/2.9c13074d.chunk.js",
+    "static/js/2.9c13074d.chunk.js.map": "/static/js/2.9c13074d.chunk.js.map",
+    "static/js/3.8d815f5c.chunk.js": "/static/js/3.8d815f5c.chunk.js",
+    "static/js/3.8d815f5c.chunk.js.map": "/static/js/3.8d815f5c.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.8e1bb0ae.chunk.css.map": "/static/css/main.8e1bb0ae.chunk.css.map",
+    "static/js/2.9c13074d.chunk.js.LICENSE.txt": "/static/js/2.9c13074d.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Eyez.d99bb376.ttf",
+    "static/media/Edit-activity.8548fa20.png": "/static/media/Edit-activity.8548fa20.png",
+    "static/media/Interested-nav.f1ff2319.png": "/static/media/Interested-nav.f1ff2319.png",
+    "static/media/Visited-nav.51ec9279.png": "/static/media/Visited-nav.51ec9279.png",
+    "static/media/Who-likes.20b0792b.png": "/static/media/Who-likes.20b0792b.png",
+    "static/media/Who-visited.179d6151.png": "/static/media/Who-visited.179d6151.png",
+    "static/media/profile.8611cdd7.png": "/static/media/profile.8611cdd7.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a58e84de.js",
+    "static/js/2.9c13074d.chunk.js",
+    "static/css/main.8e1bb0ae.chunk.css",
+    "static/js/main.eaea16c1.chunk.js"
+  ]
+}
