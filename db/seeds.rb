@@ -49,7 +49,7 @@ activity5 = Activity.create(
     phone_number: '(513) 621-5553', 
     website: 'https://www.cincyfiremuseum.com',
     category: ['Museum', 'Quirky'])
-activity4 = Activity.create(
+activity6 = Activity.create(
     title: 'Taft Art Museum', 
     neighborhood: 'Downtown', 
     cost: 12, 
@@ -57,7 +57,7 @@ activity4 = Activity.create(
     phone_number: '(513) 241-0343', 
     website: 'https://www.taftmuseum.org/',
     category: ['Museum', 'Art'])
-activity4 = Activity.create(
+activity7 = Activity.create(
     title: 'Pendleton Art Center', 
     neighborhood: 'Pendleton', 
     cost: 0, 
@@ -65,7 +65,7 @@ activity4 = Activity.create(
     phone_number: '(513) 421-4339', 
     website: 'https://pendletonartcenter.com/',
     category: ['Art'])
-activity4 = Activity.create(
+activity8 = Activity.create(
     title: 'Riverboat Cruise', 
     neighborhood: 'Newport, KY', 
     cost: 34, 
@@ -73,7 +73,7 @@ activity4 = Activity.create(
     phone_number: '(800) 261-8586', 
     website: 'https://bbriverboats.com/',
     category: ['Events', 'Date Night', 'On the Water'])
-activity4 = Activity.create(
+activity9 = Activity.create(
     title: 'Haunted Tour', 
     neighborhood: 'OTR', 
     cost: 25, 
@@ -81,7 +81,7 @@ activity4 = Activity.create(
     phone_number: '(844) 757-5657', 
     website: 'https://cincinnatighosts.com/',
     category: ['Tour', 'Quirky', 'Date Night'])
-activity4 = Activity.create(
+activity10 = Activity.create(
     title: 'Paddlefest', 
     neighborhood: 'The Banks', 
     cost: 45, 
@@ -89,7 +89,7 @@ activity4 = Activity.create(
     phone_number: '', 
     website: 'https://www.ohioriverpaddlefest.org/',
     category: ['Events', 'On the Water', 'Outside'])
-activity4 = Activity.create(
+activity11 = Activity.create(
     title: 'American Sign Museum', 
     neighborhood: 'Camp Washington', 
     cost: 15,
@@ -97,7 +97,7 @@ activity4 = Activity.create(
     phone_number: '(513) 541-6366', 
     website: 'https://www.americansignmuseum.org/',
     category: ['Museum', 'Art', 'Quirky'])
-activity4 = Activity.create(
+activity12 = Activity.create(
     title: 'Cincinnati Art Museum', 
     neighborhood: 'Mt. Adams', 
     cost: 0, 
@@ -105,7 +105,7 @@ activity4 = Activity.create(
     phone_number: '(513) 721-2787', 
     website: 'https://www.cincinnatiartmuseum.org/',
     category: ['Art', 'Museum'])
-activity4 = Activity.create(
+activity13 = Activity.create(
     title: 'Cincinnati Museum Center', 
     neighborhood: 'Downtown', 
     cost: 22, 
@@ -113,7 +113,7 @@ activity4 = Activity.create(
     phone_number: '(513) 287-7000', 
     website: 'https://www.cincymuseum.org/',
     category: ['Museum', 'History'])
-activity4 = Activity.create(
+activity14 = Activity.create(
     title: 'Harriet Beecher Stowe House', 
     neighborhood: 'Walnut Hills', 
     cost: 6, 
@@ -121,7 +121,7 @@ activity4 = Activity.create(
     phone_number: '(513) 751-0651', 
     website: 'http://stowehousecincy.org/index.html',
     category: ['History', 'Tour'])
-activity4 = Activity.create(
+activity15 = Activity.create(
     title: 'Lucky Cat Museum', 
     neighborhood: 'Walnut Hills', 
     cost: 2, 
@@ -129,7 +129,7 @@ activity4 = Activity.create(
     phone_number: '(513) 633-3923', 
     website: 'http://www.luckycatmewseum.com/',
     category: ['Museum', 'Quirky'])
-activity4 = Activity.create(
+activity16 = Activity.create(
     title: 'National Underground Railroad Freedom Center', 
     neighborhood: 'The Banks', 
     cost: 16.50, 
@@ -137,7 +137,7 @@ activity4 = Activity.create(
     phone_number: '(513) 333-7500', 
     website: 'https://freedomcenter.org/',
     category: ['Museum', 'History'])
-activity4 = Activity.create(
+activity17 = Activity.create(
     title: 'Pyramid Hill Sculpture Park & Museum', 
     neighborhood: 'Cleves', 
     cost: 10, 
@@ -145,7 +145,7 @@ activity4 = Activity.create(
     phone_number: '(513) 868-8336', 
     website: 'https://www.pyramidhill.org/',
     category: ['Art', 'Outside'])
-activity4 = Activity.create(
+activity18 = Activity.create(
     title: 'Vent Haven Museum', 
     neighborhood: 'Fort Mitchell, KY', 
     cost: 15, 
@@ -153,7 +153,7 @@ activity4 = Activity.create(
     phone_number: '(859) 341-0461', 
     website: 'https://www.venthaven.org/',
     category: ['Museum', 'Quirky'])
-activity4 = Activity.create(
+activity19 = Activity.create(
     title: 'Cincinnati Observatory', 
     neighborhood: 'Hyde Park', 
     cost: 20, 
@@ -161,7 +161,7 @@ activity4 = Activity.create(
     phone_number: '(513) 321-5186', 
     website: 'https://www.cincinnatiobservatory.org/home/',
     category: ['Events', 'Date Night', 'Outside'])
-activity4 = Activity.create(
+activity20 = Activity.create(
     title: 'William Howard Taft National Historic Site', 
     neighborhood: 'Walnut Hills', 
     cost: 0, 

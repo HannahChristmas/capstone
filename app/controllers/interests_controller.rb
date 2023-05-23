@@ -11,9 +11,21 @@ class InterestsController < ApplicationController
         render json: interest
     end
 
+    def create
+        interest = Interest.create!(interest_params)
+        render json: interest, status: 201
+    end
+
     def destroy 
         interest = Interest.find(params[:id])
         interest.destroy 
         head :no_content
+    end
+
+    private 
+
+    def interest_params
+        params.permit(:name, :category)
+ 
     end
 end
