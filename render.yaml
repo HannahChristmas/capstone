@@ -7,6 +7,7 @@ services:
   - type: web
     name: capstone
     env: ruby
+    repo: https://github.com/HannahChristmas/capstone
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
