@@ -1,7 +1,6 @@
 import './index.css';
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import LoginHomeScreen from './pages/LoginHomeScreen.js';
 import LoginNav from './components/LoginNav';
 import LoginForm from './components/LoginForm';
 import CreateAccount from './pages/CreateAccount.js';
@@ -121,7 +120,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<AllActivities />}></Route>
                     <Route path="/login" element={<LoginForm />}></Route>
-                    <Route path="/logout" element={<LoginHomeScreen />}></Route>
+                    <Route path="/logout" element={<AllActivities />}></Route>
                     <Route path="/create-account" element={<CreateAccount />}></Route>
                     <Route path="/edit-profile" element={<EditProfile />}></Route>
                     <Route path="/activities" element={<AllActivities/>}></Route>
