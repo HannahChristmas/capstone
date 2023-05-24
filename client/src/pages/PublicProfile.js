@@ -5,8 +5,8 @@ function PublicProfile(){
     const { id } = useParams();
     const [publicProfile, setPublicProfile] = useState(null);
 
-    const publicVisited = publicProfile?.user_activities.filter(activity => activity.visited)
-    const publicInterested = publicProfile?.user_activities.filter(activity => activity.interested)
+    const publicVisited = publicProfile?.user_activities?.filter(activity => activity.visited)
+    const publicInterested = publicProfile?.user_activities?.filter(activity => activity.interested)
 
     const name = publicProfile?.username
 
@@ -50,7 +50,7 @@ function PublicProfile(){
                 
             <div>
                 <h1>{publicProfile?.username} likes:</h1>
-                {publicProfile?.user_interests.map(userInterest => {
+                {publicProfile?.user_interests?.map(userInterest => {
                     const interest = publicProfile?.interests.find(interest => interest.id === userInterest.interest_id);
                     if (!interest) return <p>no interests have been chosen yet</p> // ignore invalid user interests
                     return <p key={interest.id}>{interest.name}</p>;

@@ -17,7 +17,7 @@ function CreateAccount() {
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    
+
     const imageUpload = useRef()
     const navigate = useNavigate(); 
 
@@ -116,9 +116,6 @@ function CreateAccount() {
             </form>
         </div>
     </Paper>
-   </div>
-   <div id="login-footer">
-    {/* <img id="footer-image" src="https://i.ibb.co/qFPpqCQ/skyline3.png" alt="skyline"/> */}
    </div>
    </>
   );

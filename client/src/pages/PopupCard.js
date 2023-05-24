@@ -12,8 +12,7 @@ import whoVisited from '../photos/Who-visited.png'
 import whoLikes from '../photos/Who-likes.png'
 import editActivityImage from '../photos/Edit-activity.png'
 import userImage from '../photos/User.png'
-
-
+import Cincinnati2 from '../photos/Cincinnati2.jpeg'
 
 function PopupCard({activity}) {
   const { user } = useContext(UserContext)
@@ -186,7 +185,7 @@ function visitedClick() {
         <div className="popup-card-content">
             {/* DIV with photo & current user buttons */}
             <div id="photo-and-current-user-buttons">
-                <img src={activity.image} id="activity-card-pic" alt="activity-pic"></img><br></br>
+                <img src={activity.image ? activity.image : Cincinnati2} id="activity-card-pic" alt="activity-pic"></img><br></br>
                 <button onClick={() => window.open(activity.website, '_blank')} className="custom-button">
                     <img className="website-icon" src={websiteImage} alt="website-icon"></img>
                 </button>

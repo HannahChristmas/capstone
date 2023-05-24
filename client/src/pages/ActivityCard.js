@@ -4,7 +4,6 @@ import PopupCard from './PopupCard';
 import Paper from '@mui/material/Paper';
 import Cincinnati2 from '../photos/Cincinnati2.jpeg'
 
-
 function ActivityCard({activity}) {
   const {  selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
   const showPopup = selectedActivity?.id === activity?.id;
