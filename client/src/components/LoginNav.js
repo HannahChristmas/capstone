@@ -31,7 +31,7 @@ function LoginNav() {
         fetch("/logout", { method: "DELETE" }).then((r) => {
             if (r.ok) {
                 setUser(null);
-                navigate("/activities");
+                navigate("/-activities");
             } 
         });
     }
@@ -42,30 +42,30 @@ function LoginNav() {
             <nav className="activity-nav">
                 <ul>
                     <li>
-                        <NavLink to='/activities' className="login-nav" id="all-nav-link">all</NavLink>
+                        <NavLink to='/-activities' className="login-nav" id="all-nav-link">all</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/interested' className="login-nav">
+                        <NavLink to='/-interested' className="login-nav">
                             <img src={interestedNav} className="custom-button" id="nav-button-interest" alt="nav-button"></img>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to='/visited' className="login-nav">
+                        <NavLink to='/-visited' className="login-nav">
                             <img src={visitedNav} className="custom-button" id="nav-button-visit" alt="nav-button"></img>
                         </NavLink>
                     </li>
                 </ul>
             </nav>
-            <Link to='/activities' className="site-title">cincy social</Link>
+            <Link to='/-activities' className="site-title">cincy social</Link>
             <div ref={menuRef}>
                 {isMenuOpen ? (
                     <ul>
                         {user ? (
                             <>
-                                <li><Link to={`/users/${user.id}`}>view {user.username}</Link></li>
-                                <li><Link to='/edit-profile'>edit profile</Link></li>
+                                <li><Link to={`/-users/${user.id}`}>view {user.username}</Link></li>
+                                <li><Link to='/-edit-profile'>edit profile</Link></li>
                                 <li><Link 
-                                    to='/logout' 
+                                    to='/-logout' 
                                     onClick={(e) => {
                                         e.preventDefault();
                                         handleLogoutClick();
@@ -75,8 +75,8 @@ function LoginNav() {
                             </>
                         ) : (
                             <>
-                                <li><Link to='/login'>LOGIN</Link></li>
-                                <li><Link to='/create-account'>CREATE ACCOUNT</Link></li>
+                                <li><Link to='/-login'>LOGIN</Link></li>
+                                <li><Link to='/-create-account'>CREATE ACCOUNT</Link></li>
                             </>
                         )
                     }

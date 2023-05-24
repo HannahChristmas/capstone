@@ -31,7 +31,7 @@ function LoginForm() {
             if (r.ok) {
                 r.json().then((user) => {
                     setUser(user);
-                    navigate("/activities");
+                    navigate("/-activities");
                 });
                 console.log("user is logged in")
             } else {

@@ -22,6 +22,7 @@ function App() {
   const [filterNeighborhood, setFilterNeighborhood] = useState([])
   const [filterCategory, setFilterCategory] = useState([])
 
+  console.log("from App.js: ", selectedActivity)
   const location = useLocation();
 
   useEffect(() => {
@@ -119,15 +120,15 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<AllActivities />}></Route>
-                    <Route path="/login" element={<LoginForm />}></Route>
-                    <Route path="/logout" element={<AllActivities />}></Route>
-                    <Route path="/create-account" element={<CreateAccount />}></Route>
-                    <Route path="/edit-profile" element={<EditProfile />}></Route>
-                    <Route path="/activities" element={<AllActivities/>}></Route>
-                    <Route path="/interested" element={<Interested/>} ></Route>
-                    <Route path="/visited" element={<Visited/>}></Route>
-                    <Route path="/users/:id" element={<PublicProfile/>}></Route>
-                    <Route path="/activities/:id" element={<EditActivity/>}></Route>
+                    <Route path="/-login" element={<LoginForm />}></Route>
+                    <Route path="/-logout" element={<AllActivities />}></Route>
+                    <Route path="/-create-account" element={<CreateAccount />}></Route>
+                    <Route path="/-edit-profile" element={<EditProfile />}></Route>
+                    <Route path="/-activities" element={<AllActivities/>}></Route>
+                    <Route path="/-interested" element={<Interested/>} ></Route>
+                    <Route path="/-visited" element={<Visited/>}></Route>
+                    <Route path="/-users/:id" element={<PublicProfile/>}></Route>
+                    <Route path="/-activities/:id" element={<EditActivity/>}></Route>
 
                 </Routes>
             </main>

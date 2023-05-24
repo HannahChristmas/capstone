@@ -47,7 +47,7 @@ function PopupCard({activity}) {
 
   const handleActivityPageClick = (activityId) => {
     console.log(activityId)
-    navigate(`/activities/${activityId}`);
+    navigate(`/-activities/${activityId}`);
   }
 
   const displayInterestedUsers = () => {

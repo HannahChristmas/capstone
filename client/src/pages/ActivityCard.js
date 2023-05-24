@@ -6,6 +6,7 @@ import Cincinnati2 from '../photos/Cincinnati2.jpeg'
 
 function ActivityCard({activity}) {
   const {  selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
+
   const showPopup = selectedActivity?.id === activity?.id;
 
   // const handleViewClick = (activity) => {
@@ -18,27 +19,25 @@ function ActivityCard({activity}) {
 
   const handleViewClick = (activity) => {
     setSelectedActivity(activity)
-    console.log("clicked")
-    console.log("activity.id", activity.id)
-    console.log(selectedActivity)
-    console.log(activity)
   }
 
-  console.log("outside of everything", selectedActivity)
+  console.log("outside of everything in ActivityCard: ", selectedActivity)
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (showPopup && !event.target.closest('.popup-card')) {
-        setSelectedActivity(null);
-      }
-    };
+  // useEffect(() => {
+  //   console.log("in use effect", selectedActivity)
+  //   const handleClickOutside = (event) => {
+  //     if (showPopup && !event.target.closest('.popup-card')) {
+  //       console.log("Something")
+  //       setSelectedActivity(null);
+  //     }
+  //   };
 
-    document.addEventListener('click', handleClickOutside);
+  //   document.addEventListener('click', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [showPopup, setSelectedActivity]);
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, [showPopup, setSelectedActivity]);
 
     return (
       <>
