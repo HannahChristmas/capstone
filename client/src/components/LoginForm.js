@@ -60,6 +60,7 @@ function LoginForm() {
                         id="outlined-basic" 
                             label="password" 
                             variant="outlined"
+                            type="password" 
                             autoComplete="current-password"
                             value={password} 
                             onChange={(e) => setPassword(e.target.value)}

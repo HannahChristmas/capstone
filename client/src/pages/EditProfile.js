@@ -15,6 +15,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import DefaultProfile from '../photos/Profile.png'
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -26,20 +28,6 @@ const MenuProps = {
     },
   },
 };
-
-
-
-// const categories = [
-//   'Culture',
-//   'Festivals',
-//   'Fitness',
-//   'Going Out',
-//   'Hobbies', 
-//   'Playing Sports',
-//   'Sporting Events',
-//   'Water Sports',
-// ];
-
 
 function EditProfile () {
     const { user, setUser, selectedImage, setSelectedImage } = useContext(UserContext)
@@ -53,11 +41,28 @@ function EditProfile () {
     const [userInterests, setUserInterests] = useState([]);
     const [searchInterest, setSearchInterest] = useState('');
     const [filterCategory, setFilterCategory] = useState([])
+    const [previewImage, setPreviewImage] = useState(null);
 
     const categories = [...new Set(interests.flatMap((interest) => interest.category))].sort();
 
     const filteredUserInterests = userInterests?.filter((interest) => 
       interest.user?.id === user?.id)
+
+    const handleImageChange = (e) => {
+      const file = e.target.files[0];
+    
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewImage(reader.result);
+        };
+        reader.readAsDataURL(file);
+        setSelectedImage(file);
+      } else {
+        setPreviewImage(previewImage);
+        setSelectedImage(null);
+      }
+    };
 
     const handleSearchChange = (e) => {
         setSearchInterest(e.target.value);
@@ -93,7 +98,7 @@ function EditProfile () {
         if (user) {
             setUsername(user.username)
             setBio(user.bio)
-            // setUserInterests(user.interests)
+            setPreviewImage(user.image || DefaultProfile)
         }
       }, [user])
 
@@ -185,7 +190,7 @@ function EditProfile () {
             <Stack>
               <h1 id="edit-profile-username-h1">{user.username}</h1>
               <div >
-                <img src={user.image} id="profile-picture" alt="pro-pic"/>
+                <img src={previewImage} id="profile-picture" alt="pro-pic"/>
               </div><br></br>
                 <form id="edit-profile-form" onSubmit={handlePostUpdateSubmit}>
                 <TextField 
@@ -198,9 +203,9 @@ function EditProfile () {
                     /><br></br><br></br>
                 <TextField 
                   id="outlined-basic" 
-                  label="bio" 
+                  label="user bio" 
                   variant="outlined"
-                  value={bio ? bio : "Enter bio here"} 
+                  value={bio} 
                   onChange={(e) => setBio(e.target.value)}
                   sx={{ width: '90%' }}
                   InputProps={{ sx: { height: '10rem', color: '#125B50'} }}
@@ -209,7 +214,7 @@ function EditProfile () {
                 /><br></br><br></br>
                 <Input
                   type="file"
-                  onChange={e => setSelectedImage(e.target.files[0])}
+                  onChange={handleImageChange}
                   ref={imageUpload}
                   accept="image/png, image/jpeg"
                   sx={{ width: '90%' }}
