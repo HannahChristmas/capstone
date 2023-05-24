@@ -9,7 +9,7 @@ function ActivityCard({activity}) {
   const showPopup = selectedActivity?.id === activity?.id;
 
   const handleViewClick = (activity) => {
-    (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+    (activity.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
   }
 
   useEffect(() => {
