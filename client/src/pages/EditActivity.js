@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { Stack } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import { ActivitiesContext } from '../ActivitiesContext';
-
+ 
 
 function EditActivity() {
     const { filteredByAllCriteria, setActivities } = useContext(ActivitiesContext)
@@ -153,12 +153,12 @@ function EditActivity() {
                     sx={{ width: '75%' }}
                     /><br></br><br></br>
                 <Input
-                type="file"
-                onChange={e => setActivityImage(e.target.files[0])}
-                ref={imageUpload}
-                accept="image/png, image/jpeg"
-                sx={{ width: '75%' }}
-                /><br></br><br></br>             
+                    type="file"
+                    onChange={e => setActivityImage(e.target.files[0])}
+                    ref={imageUpload}
+                    accept="image/png, image/jpeg"
+                    sx={{ width: '75%' }}
+                    /><br></br><br></br>             
                 <Button type="submit">{isLoading ? "Loading..." : "update activity"}</Button>
                 <label>
                 {errors?.map((err) => (

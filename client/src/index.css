@@ -225,6 +225,46 @@ nav li:hover {
   padding-left: 2rem;
   /* border: solid 2px black; */
 }
+/*** LOGIN PAGE ***/
+
+#login-signup-container-div {
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid pink; */
+}
+
+#login-signup-paper {
+  width: 85rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* border: 2px solid orange; */
+}
+
+#login-signup-page-form{
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-pic{
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+#signup-pic{
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  margin-right: 30px;
+  margin-bottom: 60px;
+}
 
 
 /*** EDIT PROFILE PAGE  ***/
@@ -247,7 +287,7 @@ nav li:hover {
 
 #edit-activity-paper {
   width: 75%;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 #profile-picture {

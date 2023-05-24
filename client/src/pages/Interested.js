@@ -36,7 +36,7 @@ function Interested() {
     ) ;
   } else {
     return (
-      <h2>Please log in or create account to see the places you've visited.</h2>
+      <h2>Please log in or create account to see the places you're interested in.</h2>
     )
   }
 }

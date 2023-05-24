@@ -1,11 +1,16 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../UserContext";
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Cincinnati from '../photos/Cincinnati.jpeg'
+
 
 function LoginForm() {
     const { setUser } = useContext(UserContext)
     const navigate = useNavigate();
-
+ 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -38,36 +43,37 @@ function LoginForm() {
 
     return (
         <>
-        <div className="login-welcome-div">
-            <h1>log in</h1>
-        <form id="login-form" onSubmit={handleSubmit}>
-            <label>
-                Username: 
-                <input 
-                    htmlFor="username"
-                    type="text" 
-                    id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}/>
-            </label><br/>
-            <label>
-                Password: 
-                <input 
-                    htmlFor="password"
-                    type="password" 
-                    id="password"
-                    autoComplete="current-password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
-            </label><br/>
-            <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
-            <label>
-                {errors.map((err) => (
-                    <p key={err}>{err}</p>
-                ))}
-            </label>
-
-        </form>
+        <div id="login-signup-container-div">
+            <Paper id="login-signup-paper">
+                <div id="login-signup-page-form">
+                    <img src={Cincinnati} id="login-pic" alt="cincinnati skyline"></img>    
+                    <form id="login-form" onSubmit={handleSubmit}>
+                        <TextField
+                        id="outlined-basic" 
+                            label="username" 
+                            variant="outlined"
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)}
+                            sx={{ width: '20rem' }}
+                        /><br/><br></br>
+                        <TextField
+                        id="outlined-basic" 
+                            label="password" 
+                            variant="outlined"
+                            autoComplete="current-password"
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)}
+                            sx={{ width: '20rem' }}
+                        /><br/><br></br>
+                        <Button type="submit">{isLoading ? "Loading..." : "Login"}</Button>
+                        <label>
+                            {errors.map((err) => (
+                                <p key={err}>{err}</p>
+                            ))}
+                        </label>
+                    </form>
+                </div>
+            </Paper>
         </div>
         </>
     )

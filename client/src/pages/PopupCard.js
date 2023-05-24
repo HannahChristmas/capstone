@@ -243,7 +243,7 @@ function visitedClick() {
                         </button>
                         {showInterestedUsers && 
                         (interestedUsers.length === 0 ?
-                            <p>no other users have added this to their interests yet.</p> :
+                            <p>no other users have added this to their favorites yet.</p> :
                             interestedUsers.map((user) => 
                             <span>
                                 <a href={`/users/${user.id}`} key={user.id}>
