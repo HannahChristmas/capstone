@@ -72,7 +72,7 @@ activity8 = Activity.create(
     address: '101 Riverboat Row, Newport, KY 41071', 
     phone_number: '(800) 261-8586', 
     website: 'https://bbriverboats.com/',
-    category: ['Events', 'Date Night', 'On the Water'])
+    category: ['Events', 'Date Night', 'On the Water', 'Outside'])
 activity9 = Activity.create(
     title: 'Haunted Tour', 
     neighborhood: 'OTR', 
