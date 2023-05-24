@@ -27,16 +27,18 @@ const MenuProps = {
   },
 };
 
-const categories = [
-  'Culture',
-  'Festivals',
-  'Fitness',
-  'Going Out',
-  'Hobbies', 
-  'Playing Sports',
-  'Sporting Events',
-  'Water Sports',
-];
+
+
+// const categories = [
+//   'Culture',
+//   'Festivals',
+//   'Fitness',
+//   'Going Out',
+//   'Hobbies', 
+//   'Playing Sports',
+//   'Sporting Events',
+//   'Water Sports',
+// ];
 
 
 function EditProfile () {
@@ -51,6 +53,8 @@ function EditProfile () {
     const [userInterests, setUserInterests] = useState([]);
     const [searchInterest, setSearchInterest] = useState('');
     const [filterCategory, setFilterCategory] = useState([])
+
+    const categories = [...new Set(interests.flatMap((interest) => interest.category))].sort();
 
     const filteredUserInterests = userInterests?.filter((interest) => 
       interest.user?.id === user?.id)
