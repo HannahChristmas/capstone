@@ -97,7 +97,7 @@ function EditProfile () {
         } else {
             return false
         }
-        })
+        }) 
 
     useEffect(() => {
         if (user) {

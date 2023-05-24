@@ -46,7 +46,7 @@ function PublicProfile(){
                             <p key={visitedList.id}>{visitedList.title}</p>
                         );
                     })
-                )}
+                )} 
                 
             <div>
                 <h1>{publicProfile?.username} likes:</h1>

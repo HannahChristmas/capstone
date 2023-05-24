@@ -245,7 +245,7 @@ function visitedClick() {
                             <p>no other users have added this to their favorites yet.</p> :
                             interestedUsers.map((user) => 
                             <span>
-                                <a href={`/users/${user.id}`} key={user.id}>
+                                <a href={`/-users/${user.id}`} key={user.id}>
                                 <h3><img src={userImage} className="generic-user-image" alt="generic-user"></img> {user.username}</h3>
                                 </a>
                             </span>
@@ -262,7 +262,7 @@ function visitedClick() {
                             <p>no other users have visited yet.</p> :
                             visitedUsers.map((user) => 
                             <span>
-                                <a href={`/users/${user.id}`} key={user.id}>
+                                <a href={`/-users/${user.id}`} key={user.id}>
                                 <h3><img src={userImage} className="generic-user-image" alt="generic-user"></img> {user.username}</h3>
                                 </a>
                             </span>
