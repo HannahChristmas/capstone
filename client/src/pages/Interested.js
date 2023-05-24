@@ -36,7 +36,11 @@ function Interested() {
     ) ;
   } else {
     return (
-      <h2>Please log in or create account to see the places you're interested in.</h2>
+      <div id="login-signup-container-div">
+        <Paper id="login-signup-paper">
+        <h2>Please log in or create an account to save the places you're interested in checking out.</h2>
+        </Paper>
+      </div>
     )
   }
 }
