@@ -16,7 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import DefaultProfile from '../photos/Profile.png'
-
+import ProfileUpdatePopup from '../components/ProfileUpdatePopup';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -42,6 +42,7 @@ function EditProfile () {
     const [searchInterest, setSearchInterest] = useState('');
     const [filterCategory, setFilterCategory] = useState([])
     const [previewImage, setPreviewImage] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
 
     const categories = [...new Set(interests.flatMap((interest) => interest.category))].sort();
 
@@ -72,10 +73,14 @@ function EditProfile () {
         setFilterCategory(e.target.value)
       } 
 
-      function handleReset(){
-        setFilterCategory([])
-        setSearchInterest("")
-      }
+    function handleReset(){
+      setFilterCategory([])
+      setSearchInterest("")
+    }
+
+    const handleClosePopup = () => {
+      setShowPopup(false);
+    };
 
     const searchList = interests.filter(interest => {
         const { name, category } = interest;
@@ -169,6 +174,7 @@ function EditProfile () {
             r.json().then((err) => setErrors(err.errors))
           } else {
             r.json().then((updatedProfile) => setUser(updatedProfile));
+            setShowPopup(true);
             setErrors([])
           }
         })
@@ -226,6 +232,7 @@ function EditProfile () {
                   ))}
                 </label>
               </form>
+              {showPopup && <ProfileUpdatePopup open={showPopup} onClose={handleClosePopup} />}
             </Stack>
           </Paper>
           

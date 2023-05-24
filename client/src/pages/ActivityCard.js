@@ -8,9 +8,23 @@ function ActivityCard({activity}) {
   const {  selectedActivity, setSelectedActivity } = useContext(ActivitiesContext)
   const showPopup = selectedActivity?.id === activity?.id;
 
+  // const handleViewClick = (activity) => {
+  //   (activity?.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+  //   console.log("clicked")
+  //   console.log("activity.id", activity.id)
+  //   console.log(selectedActivity)
+  //   console.log(activity)
+  // }
+
   const handleViewClick = (activity) => {
-    (activity.id === selectedActivity?.id ? setSelectedActivity(null) : setSelectedActivity(activity))
+    setSelectedActivity(activity)
+    console.log("clicked")
+    console.log("activity.id", activity.id)
+    console.log(selectedActivity)
+    console.log(activity)
   }
+
+  console.log("outside of everything", selectedActivity)
 
   useEffect(() => {
     const handleClickOutside = (event) => {

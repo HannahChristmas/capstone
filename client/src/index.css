@@ -266,6 +266,16 @@ nav li:hover {
   margin-bottom: 60px;
 }
 
+#edited-profile-popup-link {
+  color: #125B50;
+  font-weight: 600;
+}
+
+#edited-profile-popup-link:hover {
+  color: #E85F5F;
+  text-decoration: underline;
+  text-decoration-color: #E1A400;
+}
 
 /*** EDIT PROFILE PAGE  ***/
 #main-edit-profile-container {

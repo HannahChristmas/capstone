@@ -12,12 +12,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete '/logout', to: 'sessions#destroy'
   # patch '/user/activities/:id', to: 'activities#update'
-
-
-  get '/my_interests', to: 'users#my_interests'
-
-
-
+  # get '/my_interests', to: 'users#my_interests'
 
   get 'favicon.ico', to: redirect('/assets/favicon.ico')
 
