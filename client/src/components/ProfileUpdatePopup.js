@@ -13,7 +13,7 @@ const { user } = useContext(UserContext)
       <DialogTitle>Your profile has been updated!</DialogTitle>
       <DialogContent>
         <Typography>
-          Click <Link to={`/users/${user.id}`} id="edited-profile-popup-link">here</Link> to view your updated profile.
+          Click <Link to={`/-users/${user.id}`} id="edited-profile-popup-link">here</Link> to view your updated profile.
         </Typography>
       </DialogContent>
       <DialogActions>
