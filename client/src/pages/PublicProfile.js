@@ -1,5 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Paper from '@mui/material/Paper';
+import Interested from '../photos/Not-interested.png'
+import Visited from '../photos/Not-visited.png'
+import Likes from '../photos/Not-liked.png'
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+
 
 function PublicProfile(){
     const { id } = useParams();
@@ -21,41 +27,54 @@ function PublicProfile(){
 
     return (
         <>
-            <h1>{name}'s profile</h1>
-            <img id="profile-picture" src={publicProfile?.image} alt="profile-pic"></img>
-            <p>{publicProfile?.bio}</p>
-            <h4>activities {name} wants to check out:</h4>
-                {publicInterested?.length === 0 ? (
-                    <p>no activities on the wishlist right now</p>
-                ) : (
-                    publicInterested?.map(activity => {
-                        const interestedList = publicProfile.activities.find(a => a.id === activity.activity_id);
-                        return (
-                            <p key={interestedList.id}>{interestedList.title}</p>
-                        );
-                    })
-                )}
+            <div id="display-profile-container">
+            <Grid  width="88%" container spacing={0} justifyContent="center">
 
-            <h4>activities {publicProfile?.username} has visited:</h4>
-                {publicVisited?.length === 0 ? (
-                    <p>{name} hasn't been anywhere in Cincinnati... yet!</p>
-                ) : (
-                publicVisited?.map(activity => {
-                        const visitedList = publicProfile.activities.find(a => a.id === activity.activity_id);
-                        return (
-                            <p key={visitedList.id}>{visitedList.title}</p>
-                        );
-                    })
-                )} 
-                
-            <div>
-                <h1>{publicProfile?.username} likes:</h1>
-                {publicProfile?.user_interests?.map(userInterest => {
-                    const interest = publicProfile?.interests.find(interest => interest.id === userInterest.interest_id);
-                    if (!interest) return <p>no interests have been chosen yet</p> // ignore invalid user interests
-                    return <p key={interest.id}>{interest.name}</p>;
-                })}
-            </div>   
+                    <Paper id="profile-picture-bio-div">
+                    <img id="profile-picture-public" src={publicProfile?.image} alt="profile-pic"></img>
+                    <h1 id="public-profile-name">{name}</h1>
+                    <p>{publicProfile?.bio}</p>
+                    </Paper>
+
+                    <Paper id="profile-likes">
+                        <img src={Likes} id="public-profile-likes"></img>
+                        {publicProfile?.user_interests?.map(userInterest => {
+                            const interest = publicProfile?.interests.find(interest => interest.id === userInterest.interest_id);
+                            if (!interest) return <p>no interests have been chosen yet</p> // ignore invalid user interests
+                            return <p key={interest.id}>{interest.name}</p>;
+                        })}
+                    </Paper> 
+
+                    <Paper id="profile-interested">
+                        <img src={Interested} id="public-profile-interested"></img>
+                        {publicInterested?.length === 0 ? (
+                            <p>no activities on the wishlist right now</p>
+                        ) : (
+                            publicInterested?.map(activity => {
+                                const interestedList = publicProfile.activities.find(a => a.id === activity.activity_id);
+                                return (
+                                    <p key={interestedList.id}>{interestedList.title}</p>
+                                );
+                            })
+                        )}
+                    </Paper>
+
+                    <Paper id="profile-visited">
+                    <img src={Visited} id="public-profile-visited"></img>
+                        {publicVisited?.length === 0 ? (
+                            <p>{name} hasn't been anywhere in Cincinnati... yet!</p>
+                        ) : (
+                        publicVisited?.map(activity => {
+                                const visitedList = publicProfile.activities.find(a => a.id === activity.activity_id);
+                                return (
+                                    <p key={visitedList.id}>{visitedList.title}</p>
+                                );
+                            })
+                        )} 
+                    </Paper>    
+                  
+            </Grid>
+        </div>
     </>
         
     )
