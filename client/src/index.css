@@ -227,20 +227,21 @@ nav li:hover {
 }
 
 
-#display-profile-paper {
+/* #display-profile-container {
   width: 85rem;
   height: 30rem;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 
-  /* border: 2px solid orange; */
-}
+  align-items: center;
+
+  border: 2px solid orange;
+  
+} */
 
 #profile-picture-bio-div {
   width: 20rem;
   margin: 5px;
-
   /* border: 2px solid green; */
 }
 
@@ -250,6 +251,8 @@ nav li:hover {
   overflow: auto;
   padding-top: 10px;
   margin: 5px;
+  padding: 15px;
+  max-height: 34rem;
 
 }
 
@@ -259,6 +262,8 @@ nav li:hover {
   overflow: auto;
   padding-top: 10px;
   margin: 5px;
+  padding: 15px;
+  max-height: 34rem;
 
 }
 
@@ -268,6 +273,8 @@ nav li:hover {
   overflow: auto;
   padding-top: 10px;
   margin: 5px;
+  max-height: 34rem;
+
 }
 
 #public-profile-likes {
@@ -302,7 +309,7 @@ nav li:hover {
 #login-signup-container-div {
   display: flex;
   justify-content: center;
-  border: 2px solid pink;
+  /* border: 2px solid pink; */
 }
 
 #login-signup-paper {
@@ -312,7 +319,7 @@ nav li:hover {
   justify-content: center;
   align-items: center;
 
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 }
 
 #login-signup-page-form{

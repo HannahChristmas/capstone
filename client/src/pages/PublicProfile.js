@@ -28,12 +28,15 @@ function PublicProfile(){
     return (
         <>
             <div id="display-profile-container">
-            <Grid  width="88%" container spacing={0} justifyContent="center">
-
+            <Grid 
+                width="88%" 
+                container spacing={0} 
+                justifyContent="center"
+                >
                     <Paper id="profile-picture-bio-div">
-                    <img id="profile-picture-public" src={publicProfile?.image} alt="profile-pic"></img>
-                    <h1 id="public-profile-name">{name}</h1>
-                    <p>{publicProfile?.bio}</p>
+                        <img id="profile-picture-public" src={publicProfile?.image} alt="profile-pic"></img>
+                        <h1 id="public-profile-name">{name}</h1>
+                        <p>{publicProfile?.bio}</p>
                     </Paper>
 
                     <Paper id="profile-likes">
