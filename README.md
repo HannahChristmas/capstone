@@ -1,5 +1,5 @@
 ## CincySocial
-![screenshot](https://github.com/HannahChristmas/capstone/blob/e351401e8ca7f0808393a66ffa749f89c9ddcc1c/Screen%20Shot%202023-06-16%20at%201.47.06%20PM.png)
+![screenshot of application](https://github.com/HannahChristmas/capstone/blob/e351401e8ca7f0808393a66ffa749f89c9ddcc1c/Screen%20Shot%202023-06-16%20at%201.47.06%20PM.png)
 
 ## Description
 A user-focused web application using a React frontend and Rails backend that allows users to connect with fellow Cincinnatians, check out activities, and keep a passport of their local interests and favorite places.
@@ -31,6 +31,7 @@ A user-focused web application using a React frontend and Rails backend that all
 - Deployed the application on Render.com, ensuring reliable and scalable hosting infrastructure, and enabling smooth access for users at all times
 
 ## Models 
+![models](https://github.com/HannahChristmas/capstone/blob/39bc6eeb98180137d9a7d1fb5735466709bb5342/Models.png)
 
 ## Contact 
 Hannah Christmann · [Email](mailto:hc109909@gmail.com) · [LinkedIn](https://www.linkedin.com/in/hannah-e-christmann/) · [Blog](https://medium.com/@hc109909) · [Video Demo](https://youtu.be/fCS8ymbEqUk)
