@@ -1,5 +1,5 @@
 ## CincySocial
-![screenshot](Screen%Shot%2023-06-16%at%1.47.06%PM.png)
+![screenshot](https://github.com/HannahChristmas/capstone/blob/e351401e8ca7f0808393a66ffa749f89c9ddcc1c/Screen%20Shot%202023-06-16%20at%201.47.06%20PM.png)
 
 ## Description
 A user-focused web application using a React frontend and Rails backend that allows users to connect with fellow Cincinnatians, check out activities, and keep a passport of their local interests and favorite places.
