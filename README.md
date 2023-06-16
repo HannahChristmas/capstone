@@ -1,5 +1,5 @@
 ## CincySocial
-![screenshot](Screen Shot 2023-06-16 at 1.47.06 PM.png)
+![screenshot](Screen%Shot%2023-06-16%at%1.47.06%PM.png)
 
 ## Description
 A user-focused web application using a React frontend and Rails backend that allows users to connect with fellow Cincinnatians, check out activities, and keep a passport of their local interests and favorite places.
@@ -11,7 +11,7 @@ A user-focused web application using a React frontend and Rails backend that all
 - Material UI - frontend
 - Ruby on Rails - backend
 
-## Deployed Site:
+## Deployed Site
 - [Website](https://capstone-hced.onrender.com/)
 - Login: hannah, password: cincy
 
@@ -33,4 +33,4 @@ A user-focused web application using a React frontend and Rails backend that all
 ## Models 
 
 ## Contact 
-Hannah Christmann [email](hc109909@gmail.com) [LinkedIn](https://www.linkedin.com/in/hannah-e-christmann/) [blog](https://medium.com/@hc109909) [video demo](https://youtu.be/fCS8ymbEqUk)
+Hannah Christmann · [Email](mailto:hc109909@gmail.com) · [LinkedIn](https://www.linkedin.com/in/hannah-e-christmann/) · [Blog](https://medium.com/@hc109909) · [Video Demo](https://youtu.be/fCS8ymbEqUk)
